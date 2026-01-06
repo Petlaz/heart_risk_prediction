@@ -1,0 +1,149 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Model files and weights (can be large)
+*.pkl
+*.joblib
+*.h5
+*.hdf5
+*.model
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+models/
+checkpoints/
+weights/
+*.weights
+
+# Large data files
+*.parquet
+*.feather
+*.hdf5
+*.h5
+*.db
+*.sqlite
+*.sqlite3
+
+# Data directories (except specific files we want to track)
+data/processed/*.csv
+!data/processed/feature_names.csv
+data/raw/*.csv
+!data/raw/heart_data.csv
+data/external/
+data/interim/
+data/temp/
+*.zip
+*.tar.gz
+*.tar
+*.rar
+
+# Results and outputs (can be large)
+results/plots/*
+results/confusion_matrices/*
+results/explainability/*
+results/metrics/*
+results/models/*
+outputs/
+artifacts/
+!results/**/.gitkeep
+!results/**/.keep
+
+# MLflow and experiment tracking
+mlruns/
+mlflow/
+wandb/
+.neptune/
+tensorboard_logs/
+logs/
+
+# Jupyter Notebook outputs (can be large)
+*.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+docker-compose.local.yml
+
+# Environment and configuration
+.env.local
+.env.production
+.env.staging
+config.local.*
+
+# Cache directories
+.cache/
+__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Large temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+*.log.*

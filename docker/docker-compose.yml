@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  heart-risk-app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "7860:7860"
+    volumes:
+      - ../data:/app/data
+      - ../results:/app/results
+    environment:
+      - PYTHONPATH=/app
+    restart: unless-stopped
+    
+  jupyter:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
+    ports:
+      - "8888:8888"
+    volumes:
+      - ../:/app
+    environment:
+      - PYTHONPATH=/app
+    restart: unless-stopped

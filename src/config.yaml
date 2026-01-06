@@ -1,0 +1,70 @@
+# Project Configuration
+project:
+  name: "Heart Risk Prediction"
+  version: "1.0.0"
+  author: "Your Name"
+  description: "Explainable AI for heart disease risk prediction"
+
+# Data Configuration
+data:
+  raw_data_path: "data/raw/heart_data.csv"
+  processed_data_path: "data/processed/"
+  feature_names_path: "data/processed/feature_names.csv"
+  test_size: 0.15
+  validation_size: 0.15
+  random_state: 42
+
+# Model Configuration
+models:
+  random_forest:
+    n_estimators: 100
+    max_depth: 10
+    min_samples_split: 5
+    min_samples_leaf: 2
+    random_state: 42
+  
+  logistic_regression:
+    C: 1.0
+    max_iter: 1000
+    random_state: 42
+  
+  svm:
+    C: 1.0
+    gamma: "scale"
+    random_state: 42
+  
+  neural_network:
+    hidden_layer_sizes: [100, 50]
+    max_iter: 1000
+    random_state: 42
+
+# Hyperparameter Tuning
+tuning:
+  method: "randomized_search"
+  cv_folds: 5
+  n_iter: 50
+  scoring: "roc_auc"
+  random_state: 42
+
+# Explainability Configuration  
+explainability:
+  shap:
+    max_display: 20
+    sample_size: 1000
+  
+  lime:
+    num_features: 10
+    num_samples: 5000
+
+# Output Configuration
+output:
+  results_dir: "results/"
+  models_dir: "results/models/"
+  plots_dir: "results/plots/"
+  metrics_dir: "results/metrics/"
+  explanations_dir: "results/explanations/"
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
