@@ -1,0 +1,581 @@
+{
+  "analysis_timestamp": "2026-01-09T01:22:24.662914",
+  "test_dataset_info": {
+    "n_samples": 8476,
+    "n_features": 22,
+    "class_distribution": {
+      "0": "7517",
+      "1": "959"
+    }
+  },
+  "misclassification_analysis": {
+    "Adaptive_Ensemble": {
+      "total_samples": 8476,
+      "total_misclassified": "1292",
+      "false_positives": "470",
+      "false_negatives": "822",
+      "misclassification_rate": 0.15243039169419537,
+      "high_confidence_errors": "385",
+      "low_confidence_predictions": "3755",
+      "feature_impact": {
+        "enjlf": {
+          "misclassified_mean": -0.6079859670348803,
+          "correct_mean": 0.10556252870781305,
+          "abs_difference": 0.7135484957426933
+        },
+        "wrhpp": {
+          "misclassified_mean": -0.5691002171535071,
+          "correct_mean": 0.09842446303625645,
+          "abs_difference": 0.6675246801897635
+        },
+        "happy": {
+          "misclassified_mean": -0.5248593519883034,
+          "correct_mean": 0.07933068894437889,
+          "abs_difference": 0.6041900409326822
+        },
+        "fltlnl": {
+          "misclassified_mean": 0.4205394788630908,
+          "correct_mean": -0.08622131898702479,
+          "abs_difference": 0.5067607978501156
+        },
+        "slprl": {
+          "misclassified_mean": 0.4390483234948915,
+          "correct_mean": -0.06390166630280704,
+          "abs_difference": 0.5029499897976986
+        },
+        "fltsd": {
+          "misclassified_mean": 0.41057512521948714,
+          "correct_mean": -0.06865796085033135,
+          "abs_difference": 0.4792330860698185
+        },
+        "flteeff": {
+          "misclassified_mean": 0.34586360525560134,
+          "correct_mean": -0.06146838635634825,
+          "abs_difference": 0.4073319916119496
+        },
+        "dosprt": {
+          "misclassified_mean": -0.33908893507932664,
+          "correct_mean": 0.05456981034017742,
+          "abs_difference": 0.3936587454195041
+        },
+        "fltdpr": {
+          "misclassified_mean": 0.3284174121157838,
+          "correct_mean": -0.04673907877482739,
+          "abs_difference": 0.3751564908906112
+        },
+        "ctrlife": {
+          "misclassified_mean": -0.3049731851703892,
+          "correct_mean": 0.04023648515979599,
+          "abs_difference": 0.3452096703301852
+        }
+      },
+      "confusion_matrix": [
+        [
+          7047,
+          470
+        ],
+        [
+          822,
+          137
+        ]
+      ],
+      "test_f1": 0.175,
+      "status": "winner"
+    },
+    "Optimal_Hybrid": {
+      "total_samples": 8476,
+      "total_misclassified": "1002",
+      "false_positives": "93",
+      "false_negatives": "909",
+      "misclassification_rate": 0.11821613968853233,
+      "high_confidence_errors": "702",
+      "low_confidence_predictions": "1223",
+      "feature_impact": {
+        "slprl": {
+          "misclassified_mean": 0.458849171475685,
+          "correct_mean": -0.04704121040709159,
+          "abs_difference": 0.5058903818827766
+        },
+        "flteeff": {
+          "misclassified_mean": 0.42534698818616257,
+          "correct_mean": -0.05631934596685896,
+          "abs_difference": 0.4816663341530215
+        },
+        "fltdpr": {
+          "misclassified_mean": 0.4113671573815767,
+          "correct_mean": -0.043303202724258395,
+          "abs_difference": 0.4546703601058351
+        },
+        "wrhpp": {
+          "misclassified_mean": -0.40100660836639285,
+          "correct_mean": 0.04998829053696291,
+          "abs_difference": 0.45099489890335576
+        },
+        "enjlf": {
+          "misclassified_mean": -0.3877119451154496,
+          "correct_mean": 0.048345023526029436,
+          "abs_difference": 0.436056968641479
+        },
+        "fltsd": {
+          "misclassified_mean": 0.38375885254976444,
+          "correct_mean": -0.046468035753287,
+          "abs_difference": 0.43022688830305145
+        },
+        "fltlnl": {
+          "misclassified_mean": 0.30225246637103437,
+          "correct_mean": -0.050700283678813116,
+          "abs_difference": 0.3529527500498475
+        },
+        "happy": {
+          "misclassified_mean": -0.3079583300244853,
+          "correct_mean": 0.026808620991713168,
+          "abs_difference": 0.33476695101619847
+        },
+        "bmi": {
+          "misclassified_mean": 0.2758023722701252,
+          "correct_mean": -0.04319207402097402,
+          "abs_difference": 0.31899444629109924
+        },
+        "dosprt": {
+          "misclassified_mean": -0.27991861283003705,
+          "correct_mean": 0.03136273259526915,
+          "abs_difference": 0.3112813454253062
+        }
+      },
+      "confusion_matrix": [
+        [
+          7424,
+          93
+        ],
+        [
+          909,
+          50
+        ]
+      ],
+      "test_f1": 0.091,
+      "status": "poor_generalization"
+    },
+    "Adaptive_LR": {
+      "total_samples": 8476,
+      "total_misclassified": "972",
+      "false_positives": "29",
+      "false_negatives": "943",
+      "misclassification_rate": 0.11467673430863615,
+      "high_confidence_errors": "851",
+      "low_confidence_predictions": "367",
+      "feature_impact": {
+        "slprl": {
+          "misclassified_mean": 0.43584789907402327,
+          "correct_mean": -0.042039351634317275,
+          "abs_difference": 0.47788725070834054
+        },
+        "flteeff": {
+          "misclassified_mean": 0.4140776116251178,
+          "correct_mean": -0.05293397495913958,
+          "abs_difference": 0.4670115865842574
+        },
+        "fltdpr": {
+          "misclassified_mean": 0.40385678121745344,
+          "correct_mean": -0.040512664819847034,
+          "abs_difference": 0.4443694460373005
+        },
+        "wrhpp": {
+          "misclassified_mean": -0.37041273632773813,
+          "correct_mean": 0.04422242025595637,
+          "abs_difference": 0.4146351565836945
+        },
+        "enjlf": {
+          "misclassified_mean": -0.35392238233266693,
+          "correct_mean": 0.04222493236343494,
+          "abs_difference": 0.39614731469610187
+        },
+        "fltsd": {
+          "misclassified_mean": 0.3549315081777195,
+          "correct_mean": -0.04101401318149607,
+          "abs_difference": 0.39594552135921557
+        },
+        "bmi": {
+          "misclassified_mean": 0.26940124557525263,
+          "correct_mean": -0.04108763258492002,
+          "abs_difference": 0.3104888781601727
+        },
+        "dosprt": {
+          "misclassified_mean": -0.2763389064769351,
+          "correct_mean": 0.02965458828050712,
+          "abs_difference": 0.3059934947574422
+        },
+        "happy": {
+          "misclassified_mean": -0.2726824427547237,
+          "correct_mean": 0.020900948955906364,
+          "abs_difference": 0.2935833917106301
+        },
+        "fltlnl": {
+          "misclassified_mean": 0.23752493829120513,
+          "correct_mean": -0.040905009185864094,
+          "abs_difference": 0.27842994747706923
+        }
+      },
+      "confusion_matrix": [
+        [
+          7488,
+          29
+        ],
+        [
+          943,
+          16
+        ]
+      ],
+      "test_f1": 0.032,
+      "status": "failed"
+    }
+  },
+  "feature_error_analysis": {
+    "Adaptive_Ensemble": {
+      "feature_error_correlations": {
+        "enjlf": -0.2572498639726921,
+        "wrhpp": -0.23870401691049095,
+        "happy": -0.21630616648009468,
+        "fltlnl": 0.18391069676032573,
+        "slprl": 0.18047975368330255,
+        "fltsd": 0.17083920219471296,
+        "flteeff": 0.14785825157209959,
+        "dosprt": -0.14236640256800118,
+        "fltdpr": 0.13381513417488797,
+        "ctrlife": -0.12361333531154259,
+        "mental_health_score": -0.11556087922784936,
+        "lifestyle_score": -0.11242099681433969,
+        "bmi": 0.09868368009959813,
+        "inprdsc": -0.09687762084618734,
+        "sclmeet": -0.08118346484327116,
+        "alcfreq": 0.07543784456676016,
+        "social_score": 0.07233841214264346,
+        "etfruit": -0.01879539180204305,
+        "paccnois": 0.017564668542686374,
+        "eatveg": 0.016553660845100585,
+        "gndr": -0.01041249974222713,
+        "cgtsmok": -0.006233691701912906
+      },
+      "top_error_features": [
+        [
+          "enjlf",
+          -0.2572498639726921
+        ],
+        [
+          "wrhpp",
+          -0.23870401691049095
+        ],
+        [
+          "happy",
+          -0.21630616648009468
+        ],
+        [
+          "fltlnl",
+          0.18391069676032573
+        ],
+        [
+          "slprl",
+          0.18047975368330255
+        ]
+      ],
+      "model_status": "winner"
+    },
+    "Optimal_Hybrid": {
+      "feature_error_correlations": {
+        "slprl": 0.1630632512690887,
+        "flteeff": 0.1570505013460069,
+        "fltdpr": 0.14567512564705518,
+        "wrhpp": -0.14486384848072228,
+        "enjlf": -0.14121176428361934,
+        "fltsd": 0.137763535244073,
+        "fltlnl": 0.11505792498327994,
+        "happy": -0.10765492528561783,
+        "bmi": 0.10280336555781099,
+        "dosprt": -0.10111991381434676,
+        "ctrlife": -0.07918781531988933,
+        "sclmeet": -0.07194365511970503,
+        "inprdsc": -0.06821270112142346,
+        "lifestyle_score": -0.06807549953530743,
+        "alcfreq": 0.048558131484278046,
+        "eatveg": 0.03183702607638789,
+        "social_score": 0.03156970259362377,
+        "mental_health_score": 0.025836249193600714,
+        "paccnois": 0.011215110312343077,
+        "cgtsmok": 0.0037241212372513873,
+        "etfruit": -0.0036971516487550897,
+        "gndr": -0.0009103967701764095
+      },
+      "top_error_features": [
+        [
+          "slprl",
+          0.1630632512690887
+        ],
+        [
+          "flteeff",
+          0.1570505013460069
+        ],
+        [
+          "fltdpr",
+          0.14567512564705518
+        ],
+        [
+          "wrhpp",
+          -0.14486384848072228
+        ],
+        [
+          "enjlf",
+          -0.14121176428361934
+        ]
+      ],
+      "model_status": "poor_generalization"
+    },
+    "Adaptive_LR": {
+      "feature_error_correlations": {
+        "slprl": 0.1520177347651226,
+        "flteeff": 0.15027606959334638,
+        "fltdpr": 0.14050833435699767,
+        "wrhpp": -0.13143881931987972,
+        "enjlf": -0.12660577082702892,
+        "fltsd": 0.12512419663775282,
+        "bmi": 0.09875052120741866,
+        "dosprt": -0.09809907836524749,
+        "happy": -0.09317340095984979,
+        "fltlnl": 0.08957463568189863,
+        "ctrlife": -0.07279750222473703,
+        "sclmeet": -0.07131787571584745,
+        "inprdsc": -0.06147737126095598,
+        "lifestyle_score": -0.061232753671386614,
+        "alcfreq": 0.04731146722252735,
+        "mental_health_score": 0.03618461894443151,
+        "eatveg": 0.031172361787424007,
+        "social_score": 0.012439166463826742,
+        "cgtsmok": 0.007782706994598906,
+        "etfruit": 0.0057046530439690225,
+        "paccnois": 0.004554275245822903,
+        "gndr": 0.004109559054328078
+      },
+      "top_error_features": [
+        [
+          "slprl",
+          0.1520177347651226
+        ],
+        [
+          "flteeff",
+          0.15027606959334638
+        ],
+        [
+          "fltdpr",
+          0.14050833435699767
+        ],
+        [
+          "wrhpp",
+          -0.13143881931987972
+        ],
+        [
+          "enjlf",
+          -0.12660577082702892
+        ]
+      ],
+      "model_status": "failed"
+    }
+  },
+  "cross_model_analysis": {
+    "model_agreement": {
+      "Adaptive_Ensemble_vs_Optimal_Hybrid": 0.9447852760736196,
+      "Adaptive_Ensemble_vs_Adaptive_LR": 0.9332232184992921,
+      "Optimal_Hybrid_vs_Adaptive_LR": 0.9884379424256725
+    },
+    "unique_errors": {
+      "Adaptive_Ensemble": {
+        "unique_error_count": 379,
+        "shared_error_count": 913,
+        "total_errors": 1292,
+        "unique_error_rate": 0.293343653250774
+      },
+      "Optimal_Hybrid": {
+        "unique_error_count": 0,
+        "shared_error_count": 1002,
+        "total_errors": 1002,
+        "unique_error_rate": 0.0
+      },
+      "Adaptive_LR": {
+        "unique_error_count": 34,
+        "shared_error_count": 938,
+        "total_errors": 972,
+        "unique_error_rate": 0.03497942386831276
+      }
+    },
+    "consensus_patterns": {},
+    "disagreement_patterns": {
+      "(1, 1, 0)": 98,
+      "(1, 0, 0)": 466,
+      "(0, 1, 1)": 2
+    }
+  },
+  "clinical_risk_analysis": {
+    "Adaptive_Ensemble": {
+      "current_performance": {
+        "sensitivity": 0.14285714285714285,
+        "specificity": 0.9374750565385127,
+        "ppv": 0.2257001647446458,
+        "npv": 0.8955394586351506,
+        "false_negative_rate": 0.8571428571428571,
+        "false_positive_rate": 0.06252494346148729
+      },
+      "clinical_impact": {
+        "missed_cases": 822,
+        "unnecessary_referrals": 470,
+        "cost_per_patient_eur": 102.52477583765928,
+        "total_cost_eur": 869000.0
+      },
+      "threshold_analysis": {
+        "0.3": {
+          "sensitivity": 0.6120959332638165,
+          "specificity": 0.5752294798456831,
+          "false_negatives": 372,
+          "false_positives": 3193
+        },
+        "0.4": {
+          "sensitivity": 0.29927007299270075,
+          "specificity": 0.8278568577890115,
+          "false_negatives": 672,
+          "false_positives": 1294
+        },
+        "0.5": {
+          "sensitivity": 0.14285714285714285,
+          "specificity": 0.9374750565385127,
+          "false_negatives": 822,
+          "false_positives": 470
+        },
+        "0.6": {
+          "sensitivity": 0.05943691345151199,
+          "specificity": 0.9843022482373287,
+          "false_negatives": 902,
+          "false_positives": 118
+        },
+        "0.7": {
+          "sensitivity": 0.01251303441084463,
+          "specificity": 0.9982705866702142,
+          "false_negatives": 947,
+          "false_positives": 13
+        }
+      },
+      "model_status": "winner",
+      "test_f1": 0.175
+    },
+    "Optimal_Hybrid": {
+      "current_performance": {
+        "sensitivity": 0.05213764337851929,
+        "specificity": 0.9876280431023015,
+        "ppv": 0.34965034965034963,
+        "npv": 0.890915636625465,
+        "false_negative_rate": 0.9478623566214807,
+        "false_positive_rate": 0.012371956897698549
+      },
+      "clinical_impact": {
+        "missed_cases": 909,
+        "unnecessary_referrals": 93,
+        "cost_per_patient_eur": 108.34119867862199,
+        "total_cost_eur": 918300.0
+      },
+      "threshold_analysis": {
+        "0.3": {
+          "sensitivity": 0.27007299270072993,
+          "specificity": 0.8710921910336571,
+          "false_negatives": 700,
+          "false_positives": 969
+        },
+        "0.4": {
+          "sensitivity": 0.12304483837330553,
+          "specificity": 0.9599574298257284,
+          "false_negatives": 841,
+          "false_positives": 301
+        },
+        "0.5": {
+          "sensitivity": 0.05213764337851929,
+          "specificity": 0.9876280431023015,
+          "false_negatives": 909,
+          "false_positives": 93
+        },
+        "0.6": {
+          "sensitivity": 0.009384775808133473,
+          "specificity": 0.9977384594918185,
+          "false_negatives": 950,
+          "false_positives": 17
+        },
+        "0.7": {
+          "sensitivity": 0.0031282586027111575,
+          "specificity": 0.9997339364108022,
+          "false_negatives": 956,
+          "false_positives": 2
+        }
+      },
+      "model_status": "poor_generalization",
+      "test_f1": 0.091
+    },
+    "Adaptive_LR": {
+      "current_performance": {
+        "sensitivity": 0.016684045881126174,
+        "specificity": 0.9961420779566317,
+        "ppv": 0.35555555555555557,
+        "npv": 0.8881508717827067,
+        "false_negative_rate": 0.9833159541188738,
+        "false_positive_rate": 0.003857922043368365
+      },
+      "clinical_impact": {
+        "missed_cases": 943,
+        "unnecessary_referrals": 29,
+        "cost_per_patient_eur": 111.59745162812648,
+        "total_cost_eur": 945900.0
+      },
+      "threshold_analysis": {
+        "0.3": {
+          "sensitivity": 0.11470281543274244,
+          "specificity": 0.9652787016096848,
+          "false_negatives": 849,
+          "false_positives": 261
+        },
+        "0.4": {
+          "sensitivity": 0.049009384775808136,
+          "specificity": 0.9861646933617134,
+          "false_negatives": 912,
+          "false_positives": 104
+        },
+        "0.5": {
+          "sensitivity": 0.016684045881126174,
+          "specificity": 0.9961420779566317,
+          "false_negatives": 943,
+          "false_positives": 29
+        },
+        "0.6": {
+          "sensitivity": 0.006256517205422315,
+          "specificity": 0.9990687774378076,
+          "false_negatives": 953,
+          "false_positives": 7
+        },
+        "0.7": {
+          "sensitivity": 0.0020855057351407717,
+          "specificity": 0.9997339364108022,
+          "false_negatives": 957,
+          "false_positives": 2
+        }
+      },
+      "model_status": "failed",
+      "test_f1": 0.032
+    }
+  },
+  "summary": {
+    "best_performing_model": "Adaptive_LR",
+    "lowest_misclassification_rate": 0.11467673430863615,
+    "model_ranking": [
+      "Adaptive_LR",
+      "Optimal_Hybrid",
+      "Adaptive_Ensemble"
+    ],
+    "total_models_analyzed": 3,
+    "clinical_concern_models": [
+      "Adaptive_LR",
+      "Optimal_Hybrid",
+      "Adaptive_Ensemble"
+    ]
+  }
+}

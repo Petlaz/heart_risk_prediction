@@ -1,0 +1,605 @@
+{
+  "model_name": "Adaptive_Ensemble",
+  "analysis_timestamp": "2026-01-09T01:25:28.944407",
+  "dataset_info": {
+    "total_samples": 8476,
+    "total_features": 22,
+    "class_distribution": {
+      "0": "7517",
+      "1": "959"
+    }
+  },
+  "misclassification_summary": {
+    "false_positives": 470,
+    "false_negatives": 822,
+    "true_positives": 137,
+    "true_negatives": 7047,
+    "total_misclassified": 1292
+  },
+  "false_positive_analysis": {
+    "total_false_positives": 470,
+    "confidence_distribution": {
+      "high_confidence": 13,
+      "medium_confidence": 457,
+      "low_confidence": 0
+    },
+    "top_discriminating_features": {
+      "enjlf": {
+        "fp_mean": -1.4749954444173208,
+        "fp_std": 0.6992709755596734,
+        "tn_mean": 0.1408033232800456,
+        "tn_std": 0.9062906559533618,
+        "effect_size": 1.782870381685273,
+        "description": "Enjoying life"
+      },
+      "happy": {
+        "fp_mean": -1.3406395644367437,
+        "fp_std": 0.8123827981789569,
+        "tn_mean": 0.10874777426724243,
+        "tn_std": 0.9303801062983064,
+        "effect_size": 1.5578442927704554,
+        "description": "Happiness/mood score"
+      },
+      "wrhpp": {
+        "fp_mean": -1.2822933078470775,
+        "fp_std": 0.8381226871677171,
+        "tn_mean": 0.12917036558922268,
+        "tn_std": 0.931074848851373,
+        "effect_size": 1.5159508123085508,
+        "description": "Work/life happiness"
+      },
+      "mental_health_score": {
+        "fp_mean": -1.1365467746480493,
+        "fp_std": 1.0080641064984406,
+        "tn_mean": 0.06246592521069844,
+        "tn_std": 0.9350292721787028,
+        "effect_size": 1.1894210815853532,
+        "description": "Mental health composite score"
+      },
+      "fltlnl": {
+        "fp_mean": 1.1821821081491095,
+        "fp_std": 1.2761435218219064,
+        "tn_mean": -0.11732982775294902,
+        "tn_std": 0.8804710664832276,
+        "effect_size": 1.0183117444711782,
+        "description": "Feeling lonely"
+      }
+    },
+    "outlier_analysis": {
+      "outlier_features": {
+        "ctrlife": {
+          "outlier_count": 32,
+          "outlier_percentage": 6.808510638297872,
+          "max_z_score": 2.9518292226387324,
+          "mean_z_score": 1.0542792802140908
+        },
+        "etfruit": {
+          "outlier_count": 6,
+          "outlier_percentage": 1.276595744680851,
+          "max_z_score": 2.8818173909477194,
+          "mean_z_score": 0.7863291525124821
+        },
+        "eatveg": {
+          "outlier_count": 6,
+          "outlier_percentage": 1.276595744680851,
+          "max_z_score": 2.5572166883111294,
+          "mean_z_score": 0.7401412589547267
+        },
+        "fltdpr": {
+          "outlier_count": 16,
+          "outlier_percentage": 3.404255319148936,
+          "max_z_score": 3.2032703040122805,
+          "mean_z_score": 1.0421556739627336
+        },
+        "flteeff": {
+          "outlier_count": 19,
+          "outlier_percentage": 4.042553191489362,
+          "max_z_score": 2.5017414996018945,
+          "mean_z_score": 1.0377909462506365
+        },
+        "fltlnl": {
+          "outlier_count": 64,
+          "outlier_percentage": 13.617021276595745,
+          "max_z_score": 3.13228370977547,
+          "mean_z_score": 1.4909424250290007
+        },
+        "fltsd": {
+          "outlier_count": 36,
+          "outlier_percentage": 7.659574468085106,
+          "max_z_score": 2.9576083830861934,
+          "mean_z_score": 1.1802890019405092
+        },
+        "paccnois": {
+          "outlier_count": 27,
+          "outlier_percentage": 5.74468085106383,
+          "max_z_score": 4.7341018356309235,
+          "mean_z_score": 0.47103418229567484
+        },
+        "bmi": {
+          "outlier_count": 15,
+          "outlier_percentage": 3.1914893617021276,
+          "max_z_score": 2.6273828232341736,
+          "mean_z_score": 0.7709733105125897
+        },
+        "lifestyle_score": {
+          "outlier_count": 8,
+          "outlier_percentage": 1.702127659574468,
+          "max_z_score": 3.178164231352351,
+          "mean_z_score": 0.8958058627266268
+        },
+        "social_score": {
+          "outlier_count": 36,
+          "outlier_percentage": 7.659574468085106,
+          "max_z_score": 3.822888457040183,
+          "mean_z_score": 1.1243915833392013
+        },
+        "mental_health_score": {
+          "outlier_count": 51,
+          "outlier_percentage": 10.851063829787234,
+          "max_z_score": 2.5931179065289203,
+          "mean_z_score": 1.3021994373396408
+        }
+      },
+      "total_outlier_instances": 316,
+      "samples_with_outliers": 12
+    },
+    "sample_characteristics": {
+      "mean_probability": 0.5706324034576792,
+      "std_probability": 0.0551577246589345,
+      "min_probability": 0.5001024758675061,
+      "max_probability": 0.7674409009554508
+    }
+  },
+  "false_negative_analysis": {
+    "total_false_negatives": 822,
+    "severity_analysis": {
+      "mean_threshold_distance": 0.17864397357901537,
+      "max_threshold_distance": 0.31702567690901035,
+      "cases_very_low_risk": "18",
+      "cases_borderline": "654"
+    },
+    "top_discriminating_features": {
+      "enjlf": {
+        "fn_mean": -0.11225062108628314,
+        "fn_std": 0.9729335210382146,
+        "tp_mean": -1.7071519191062217,
+        "tp_std": 0.6613912088103719,
+        "effect_size": 1.6392705807052717,
+        "description": "Enjoying life"
+      },
+      "happy": {
+        "fn_mean": -0.058415678203915515,
+        "fn_std": 0.9990327708626877,
+        "tp_mean": -1.433824057553572,
+        "tp_std": 0.8768601378300726,
+        "effect_size": 1.3767400023944756,
+        "description": "Happiness/mood score"
+      },
+      "wrhpp": {
+        "fn_mean": -0.16131341347226852,
+        "fn_std": 0.9892687234356691,
+        "tp_mean": -1.4830819259473427,
+        "tp_std": 0.8969371514793848,
+        "effect_size": 1.3361066423738273,
+        "description": "Work/life happiness"
+      },
+      "fltlnl": {
+        "fn_mean": -0.014949615740837294,
+        "fn_std": 0.9736216995031222,
+        "tp_mean": 1.5139367924981437,
+        "tp_std": 1.3358846948142873,
+        "effect_size": 1.1444748294324343,
+        "description": "Feeling lonely"
+      },
+      "mental_health_score": {
+        "fn_mean": 0.22424542854381013,
+        "fn_std": 0.9958815818275775,
+        "tp_mean": -0.6979147725065423,
+        "tp_std": 1.0051745413310367,
+        "effect_size": 0.9174130095149864,
+        "description": "Mental health composite score"
+      }
+    },
+    "risk_factor_analysis": {
+      "high_stress_low_happiness": {
+        "case_count": 37,
+        "percentage": 4.5012165450121655,
+        "description": "High stress with low happiness scores"
+      },
+      "social_isolation": {
+        "case_count": 26,
+        "percentage": 3.1630170316301705,
+        "description": "Social isolation patterns with loneliness"
+      },
+      "lifestyle_risk_factors": {
+        "case_count": 178,
+        "percentage": 21.654501216545015,
+        "description": "Smoking and alcohol risk factors"
+      },
+      "poor_mental_health": {
+        "case_count": 75,
+        "percentage": 9.124087591240876,
+        "description": "Poor overall mental health scores"
+      },
+      "low_physical_activity": {
+        "case_count": 304,
+        "percentage": 36.982968369829685,
+        "description": "Low physical activity levels"
+      }
+    },
+    "sample_characteristics": {
+      "mean_probability": 0.3213560264209846,
+      "std_probability": 0.07696029760927871,
+      "min_probability": 0.18297432309098965,
+      "max_probability": 0.49820936619031747
+    }
+  },
+  "clustering_analysis": {
+    "total_clusters": 3,
+    "total_misclassified": 1292,
+    "cluster_analysis": {
+      "cluster_0": {
+        "sample_count": 66,
+        "false_positives": 27,
+        "false_negatives": 39,
+        "dominant_error_type": "false_negative",
+        "feature_characteristics": {
+          "happy": {
+            "mean": -0.8588138420513444,
+            "std": 1.1100033998805099,
+            "description": "Happiness/mood score"
+          },
+          "sclmeet": {
+            "mean": -0.29645982593523246,
+            "std": 1.1002803453748675,
+            "description": "Social meeting frequency"
+          },
+          "inprdsc": {
+            "mean": -0.12401294662661007,
+            "std": 1.2284592528646228,
+            "description": "Income/productivity score"
+          },
+          "ctrlife": {
+            "mean": -0.5792431605801621,
+            "std": 1.1592517800164015,
+            "description": "Control over life"
+          },
+          "etfruit": {
+            "mean": 0.37556762638695174,
+            "std": 1.240693164450145,
+            "description": "Eating fruit frequency"
+          },
+          "eatveg": {
+            "mean": 0.21507591738356507,
+            "std": 1.0335614203149208,
+            "description": "Eating vegetables frequency"
+          },
+          "dosprt": {
+            "mean": -0.1250951214117882,
+            "std": 1.0349224801976296,
+            "description": "Physical activity/sport"
+          },
+          "cgtsmok": {
+            "mean": -0.12375969967610079,
+            "std": 1.0469329431486833,
+            "description": "Cigarette smoking status"
+          },
+          "alcfreq": {
+            "mean": 0.14050834674820628,
+            "std": 0.979803894972325,
+            "description": "Alcohol frequency"
+          },
+          "fltdpr": {
+            "mean": 0.5811498071874511,
+            "std": 1.1232031926471164,
+            "description": "Feeling depressed"
+          },
+          "flteeff": {
+            "mean": 0.5756973321007258,
+            "std": 1.0650507838458567,
+            "description": "Feeling ineffective"
+          },
+          "slprl": {
+            "mean": 0.7705166481981206,
+            "std": 1.0949988755056577,
+            "description": "Sleep related issues"
+          },
+          "wrhpp": {
+            "mean": -0.7270018054862998,
+            "std": 0.9475707130128582,
+            "description": "Work/life happiness"
+          },
+          "fltlnl": {
+            "mean": 0.6259654880464882,
+            "std": 1.2177972756261084,
+            "description": "Feeling lonely"
+          },
+          "enjlf": {
+            "mean": -0.7812101179504621,
+            "std": 1.0141077611914056,
+            "description": "Enjoying life"
+          },
+          "fltsd": {
+            "mean": 0.5825102886566629,
+            "std": 1.1584781256434762,
+            "description": "Feeling sad"
+          },
+          "gndr": {
+            "mean": -0.11264918495575602,
+            "std": 1.00716754470801,
+            "description": "Gender"
+          },
+          "paccnois": {
+            "mean": 4.611780934100224,
+            "std": 1.7899689682670997e-15,
+            "description": "Physical activity/noise"
+          },
+          "bmi": {
+            "mean": 0.032563568688612696,
+            "std": 0.9937990082058444,
+            "description": "Body mass index"
+          },
+          "lifestyle_score": {
+            "mean": 0.14678284342182613,
+            "std": 1.0373917291820782,
+            "description": "Overall lifestyle score"
+          },
+          "social_score": {
+            "mean": 0.21396385652161817,
+            "std": 1.0759292284086375,
+            "description": "Social interaction score"
+          },
+          "mental_health_score": {
+            "mean": -0.24190775120681962,
+            "std": 1.0220896588966,
+            "description": "Mental health composite score"
+          }
+        },
+        "cluster_description": "mixed clinical characteristics"
+      },
+      "cluster_1": {
+        "sample_count": 689,
+        "false_positives": 100,
+        "false_negatives": 589,
+        "dominant_error_type": "false_negative",
+        "feature_characteristics": {
+          "happy": {
+            "mean": 0.11280904221884244,
+            "std": 0.8968780195968463,
+            "description": "Happiness/mood score"
+          },
+          "sclmeet": {
+            "mean": 0.04239942389284609,
+            "std": 0.9546208768312964,
+            "description": "Social meeting frequency"
+          },
+          "inprdsc": {
+            "mean": 0.06294741826328618,
+            "std": 1.018582759507425,
+            "description": "Income/productivity score"
+          },
+          "ctrlife": {
+            "mean": 0.17904283919414346,
+            "std": 0.9219729903091048,
+            "description": "Control over life"
+          },
+          "etfruit": {
+            "mean": -0.09958789658852937,
+            "std": 0.9702870496602456,
+            "description": "Eating fruit frequency"
+          },
+          "eatveg": {
+            "mean": -0.019249079468634002,
+            "std": 0.961601583893995,
+            "description": "Eating vegetables frequency"
+          },
+          "dosprt": {
+            "mean": -0.08588449715599399,
+            "std": 1.0522707015959312,
+            "description": "Physical activity/sport"
+          },
+          "cgtsmok": {
+            "mean": 0.02955253105659398,
+            "std": 0.9372381632791206,
+            "description": "Cigarette smoking status"
+          },
+          "alcfreq": {
+            "mean": -0.031926819649950165,
+            "std": 1.0327382977857542,
+            "description": "Alcohol frequency"
+          },
+          "fltdpr": {
+            "mean": -0.1831747276458963,
+            "std": 0.8123824109903557,
+            "description": "Feeling depressed"
+          },
+          "flteeff": {
+            "mean": -0.0505996097430411,
+            "std": 0.9115140519015217,
+            "description": "Feeling ineffective"
+          },
+          "slprl": {
+            "mean": 0.11444267694888255,
+            "std": 1.0065602441687984,
+            "description": "Sleep related issues"
+          },
+          "wrhpp": {
+            "mean": 0.006032986659772566,
+            "std": 0.9542622847679049,
+            "description": "Work/life happiness"
+          },
+          "fltlnl": {
+            "mean": -0.2642095310346528,
+            "std": 0.723968847598089,
+            "description": "Feeling lonely"
+          },
+          "enjlf": {
+            "mean": -0.059507892018064494,
+            "std": 1.0148584467625807,
+            "description": "Enjoying life"
+          },
+          "fltsd": {
+            "mean": -0.16929326110162074,
+            "std": 0.8723695097110679,
+            "description": "Feeling sad"
+          },
+          "gndr": {
+            "mean": -0.10282815117003617,
+            "std": 1.0007827960312548,
+            "description": "Gender"
+          },
+          "paccnois": {
+            "mean": -0.2168359716754638,
+            "std": 0.0,
+            "description": "Physical activity/noise"
+          },
+          "bmi": {
+            "mean": 0.2815641337297096,
+            "std": 1.0167411065198095,
+            "description": "Body mass index"
+          },
+          "lifestyle_score": {
+            "mean": -0.11467827246940437,
+            "std": 1.0216873937422697,
+            "description": "Overall lifestyle score"
+          },
+          "social_score": {
+            "mean": -0.1498261427987022,
+            "std": 0.926957791349558,
+            "description": "Social interaction score"
+          },
+          "mental_health_score": {
+            "mean": -0.12661901969747558,
+            "std": 1.1567655239457608,
+            "description": "Mental health composite score"
+          }
+        },
+        "cluster_description": "mixed clinical characteristics"
+      },
+      "cluster_2": {
+        "sample_count": 537,
+        "false_positives": 343,
+        "false_negatives": 194,
+        "dominant_error_type": "false_positive",
+        "feature_characteristics": {
+          "happy": {
+            "mean": -1.301977652294752,
+            "std": 0.8366950472258755,
+            "description": "Happiness/mood score"
+          },
+          "sclmeet": {
+            "mean": -0.469608736479297,
+            "std": 1.1364083440032806,
+            "description": "Social meeting frequency"
+          },
+          "inprdsc": {
+            "mean": -0.6332971584719362,
+            "std": 0.8983960328490999,
+            "description": "Income/productivity score"
+          },
+          "ctrlife": {
+            "mean": -0.8922827241091565,
+            "std": 1.1370983743978178,
+            "description": "Control over life"
+          },
+          "etfruit": {
+            "mean": -0.031778089838612425,
+            "std": 1.0107961353216612,
+            "description": "Eating fruit frequency"
+          },
+          "eatveg": {
+            "mean": 0.09854231153048333,
+            "std": 1.0344967433245074,
+            "description": "Eating vegetables frequency"
+          },
+          "dosprt": {
+            "mean": -0.6902648185639333,
+            "std": 0.8192207950184724,
+            "description": "Physical activity/sport"
+          },
+          "cgtsmok": {
+            "mean": -0.07606920867807332,
+            "std": 1.0838756970547345,
+            "description": "Cigarette smoking status"
+          },
+          "alcfreq": {
+            "mean": 0.4691638617028415,
+            "std": 0.9697654186545986,
+            "description": "Alcohol frequency"
+          },
+          "fltdpr": {
+            "mean": 0.9537556732350901,
+            "std": 1.1589920992685578,
+            "description": "Feeling depressed"
+          },
+          "flteeff": {
+            "mean": 0.8262995999712185,
+            "std": 1.0426093854458944,
+            "description": "Feeling ineffective"
+          },
+          "slprl": {
+            "mean": 0.8147957742207518,
+            "std": 0.9967324670668036,
+            "description": "Sleep related issues"
+          },
+          "wrhpp": {
+            "mean": -1.2876202778562733,
+            "std": 0.7690608114126769,
+            "description": "Work/life happiness"
+          },
+          "fltlnl": {
+            "mean": 1.2738615481618638,
+            "std": 1.219187096286151,
+            "description": "Feeling lonely"
+          },
+          "enjlf": {
+            "mean": -1.290422838033312,
+            "std": 0.7810894865430449,
+            "description": "Enjoying life"
+          },
+          "fltsd": {
+            "mean": 1.1334458838570842,
+            "std": 1.0295046147037457,
+            "description": "Feeling sad"
+          },
+          "gndr": {
+            "mean": 0.08789186184888899,
+            "std": 0.9924592068912254,
+            "description": "Gender"
+          },
+          "paccnois": {
+            "mean": -0.21683597167546378,
+            "std": 2.778145494583432e-17,
+            "description": "Physical activity/noise"
+          },
+          "bmi": {
+            "mean": 0.1824407438053378,
+            "std": 1.0187208130966974,
+            "description": "Body mass index"
+          },
+          "lifestyle_score": {
+            "mean": -0.5174374812560644,
+            "std": 0.9807403649948249,
+            "description": "Overall lifestyle score"
+          },
+          "social_score": {
+            "mean": 0.5596659920780508,
+            "std": 1.2814222448191863,
+            "description": "Social interaction score"
+          },
+          "mental_health_score": {
+            "mean": -0.4592939025518817,
+            "std": 1.2388220381261474,
+            "description": "Mental health composite score"
+          }
+        },
+        "cluster_description": "low happiness"
+      }
+    },
+    "clustering_quality": {
+      "silhouette_score": 0.1350524000388448,
+      "calinski_harabasz_score": 137.67217584335762
+    }
+  },
+  "visualization_file": "/Users/peter/Desktop/heart_risk_prediction/results/explanations/Adaptive_Ensemble_misclassification_analysis.png"
+}

@@ -84,7 +84,7 @@ The entire workflow will be **containerized using Docker** for reproducibility a
 - Analyze misclassifications and document patterns
 - Begin literature review ("State of the Art") informed by error findings
 - Update Docker setup for reproducible experiments
-- Continue writing the Methods section
+- Continue writing the Methods section and other sections
 
 **Deliverables:** Optimized models + validation results + error summary + initial paper notes
 
@@ -105,7 +105,7 @@ The entire workflow will be **containerized using Docker** for reproducibility a
 - Compare local explanations across models
 - Interpret healthcare-related insights from local explanations
 - Ensure XAI modules run inside Docker
-- Continue writing State of the Art and Results sections
+- Continue writing State of the Art and Results section and other sections
 
 **Deliverables:** XAI visualizations + interpretability report + Dockerized XAI workflow
 
@@ -125,7 +125,7 @@ The entire workflow will be **containerized using Docker** for reproducibility a
 - Integrate the best performed model
 - Test usability, latency, and visual clarity
 - Containerize demo (EXPOSE 7860) and test locally
-- Continue report writing (Results + Discussion)
+- Continue report writing (Results + Discussion) and other sections
 
 **Deliverables:** Functional Gradio demo (classical + NN models) + Meeting 4 summary
 
