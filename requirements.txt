@@ -18,8 +18,14 @@ seaborn>=0.11.0
 plotly>=5.0.0
 
 # Web Interface
-gradio>=3.0.0
+gradio>=4.0.0
 streamlit>=1.0.0
+
+# Additional Professional App Dependencies
+xgboost>=1.6.0
+lightgbm>=3.3.0
+warnings-utils>=0.1.0
+gunicorn>=20.1.0
 
 # Data Processing
 pandas-profiling>=3.0.0

@@ -146,4 +146,4 @@ desktop.ini
 # Logs
 *.log
 logs/
-*.log.*
+*.log.*.gradio/
