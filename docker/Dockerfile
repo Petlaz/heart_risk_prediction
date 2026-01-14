@@ -8,17 +8,17 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements and install Python dependencies
-COPY requirements.txt .
+COPY docker/requirements_docker.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY ../app/ ./app/
-COPY ../src/ ./src/
-COPY ../data/ ./data/
-COPY ../notebooks/ ./notebooks/
+COPY app/ ./app/
+COPY src/ ./src/
+COPY data/ ./data/
+COPY notebooks/ ./notebooks/
 
 # Copy entrypoint script
-COPY entrypoint_app.sh /entrypoint_app.sh
+COPY docker/entrypoint_app.sh /entrypoint_app.sh
 RUN chmod +x /entrypoint_app.sh
 
 # Expose port for Gradio

@@ -59,10 +59,21 @@ Thumbs.db
 *.pt
 *.ckpt
 *.safetensors
+*.bin
+*.onnx
+*.pb
+*.tflite
 models/
 checkpoints/
 weights/
 *.weights
+
+# Machine Learning artifacts
+*.npy
+*.npz
+*.mat
+*.json.gz
+*.csv.gz
 
 # Large data files
 *.parquet
@@ -113,6 +124,12 @@ logs/
 .dockerignore
 docker-compose.override.yml
 docker-compose.local.yml
+docker-compose.prod.yml
+*.dockerfile
+.docker/
+docker/logs/
+docker/data/
+docker/volumes/
 
 # Environment and configuration
 .env.local
@@ -132,6 +149,27 @@ tmp/
 temp/
 *.tmp
 *.temp
+*.bak
+*.backup
+*.swp
+*.swo
+*.orig
+
+# Large media and binary files
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.flv
+*.webm
+*.mkv
+*.pdf
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
 
 # System files
 .DS_Store
@@ -146,4 +184,12 @@ desktop.ini
 # Logs
 *.log
 logs/
-*.log.*.gradio/
+*.log.*
+.gradio/
+
+# Gradio and web app artifacts
+gradio_cached_examples/
+flagged/
+*.gradio
+app_cache/
+static/uploads/
