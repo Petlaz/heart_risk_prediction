@@ -15,6 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app/ ./app/
 COPY src/ ./src/
 COPY data/ ./data/
+COPY results/ ./results/
 COPY notebooks/ ./notebooks/
 
 # Copy entrypoint script

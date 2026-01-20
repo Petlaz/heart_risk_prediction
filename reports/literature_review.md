@@ -2,19 +2,19 @@
 
 **Master's Research Project - Literature Survey**  
 **Author:** Peter Ugoona Obi  
-**Date:** January 14, 2026  
+**Date:** January 20, 2026  
 **Status:** Complete (Comprehensive Analysis Informed by Full Implementation Including Production Deployment)
 
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Search Methodology](#search-methodology)
-3. [Machine Learning in Healthcare](#machine-learning-in-healthcare)
-4. [Heart Disease Prediction Models](#heart-disease-prediction-models)
-5. [Explainable AI in Medical Applications](#explainable-ai-in-medical-applications)
-6. [Error Analysis in Medical ML](#error-analysis-in-medical-ml)
+3. [Heart Disease Prediction Models - State of the Art](#heart-disease-prediction-models---state-of-the-art)
+4. [Hyperparameter Optimization in Healthcare ML](#hyperparameter-optimization-in-healthcare-ml)
+5. [Error Analysis in Medical Machine Learning](#error-analysis-in-medical-machine-learning)
+6. [Explainable AI in Medical Applications](#explainable-ai-in-medical-applications)
 7. [Clinical Decision Support Systems](#clinical-decision-support-systems)
 8. [Evaluation Metrics in Medical ML](#evaluation-metrics-in-medical-ml)
-9. [Research Gap Analysis](#research-gap-analysis)
+9. [Clinical Implementation Challenges and Literature Gaps](#clinical-implementation-challenges-and-literature-gaps)
 10. [Summary and Conclusions](#summary-and-conclusions)
 11. [References](#references)
 
@@ -24,7 +24,7 @@
 
 ### 1.1 Scope and Objectives
 
-This literature review examines the current state of research in machine learning applications for heart disease prediction, with particular focus on hyperparameter optimization, error analysis methodologies, explainable AI implementation, and clinical deployment readiness through interactive applications. The review is informed by comprehensive findings from our optimization analysis, SHAP explainability implementation, professional application development, and production deployment infrastructure, which revealed significant challenges in achieving clinically viable performance and provided clear explanations for model failure mechanisms through complete end-to-end implementation and Docker containerization validation.
+This literature review examines the current state of research in machine learning applications for heart disease prediction, with particular focus on hyperparameter optimization, error analysis methodologies, explainable AI implementation, and clinical deployment readiness. The review provides critical assessment of published performance benchmarks and methodological approaches in healthcare machine learning.
 
 **Key Areas of Investigation:**
 - Heart disease prediction algorithms and performance benchmarks
@@ -34,13 +34,13 @@ This literature review examines the current state of research in machine learnin
 - Real-world performance gaps and implementation challenges
 - Explainable AI requirements for clinical decision support
 
-**Critical Context**: Our empirical findings reveal a significant healthcare ML paradox: baseline Neural Network (30.8% F1, 40.5% sensitivity) substantially outperformed the best optimized model (Adaptive_Ensemble: 17.5% F1, 14.3% sensitivity). SHAP analysis provides critical explanation: models attempt heart disease prediction from psychological/lifestyle surveys rather than clinical assessments, with BMI (0.0208) and exercise (0.0189) as strongest predictors but insufficient for clinical-grade performance. This challenges fundamental assumptions about optimization in medical applications and validates the need for traditional cardiac risk factors (ECG, chest pain, family history) in clinical deployment.
+**Critical Context**: Current healthcare ML research demonstrates significant gaps between published performance claims and clinical deployment requirements. This review addresses fundamental questions about optimization effectiveness, clinical safety standards, and the role of feature quality in determining model performance for cardiovascular risk assessment.
 
 ### 1.2 Research Questions Guiding Literature Search
 
-Based on our comprehensive optimization analysis, the literature search addresses these critical questions:
+The literature search addresses these critical questions:
 
-1. **Performance Benchmarks:** What F1-scores and clinical metrics do published heart disease prediction studies achieve, and how do they compare to our results?
+1. **Performance Benchmarks:** What F1-scores and clinical metrics do published heart disease prediction studies achieve?
 
 2. **Optimization Methodologies:** What hyperparameter optimization strategies are most effective for medical ML, particularly for F1-score optimization?
 
@@ -50,13 +50,9 @@ Based on our comprehensive optimization analysis, the literature search addresse
 
 5. **Performance Reality:** How do published studies address deployment failures and clinical safety concerns when models underperform?
 
-6. **Psychological Factors:** How are lifestyle and mental health features (happiness, depression) incorporated in cardiovascular risk prediction?
+6. **Psychological Factors:** How are lifestyle and mental health features incorporated in cardiovascular risk prediction?
 
 7. **Explainability Requirements:** What XAI approaches are most suitable for understanding model failures and clinical interpretation?
-
-8. **XAI Validation Results:** How do SHAP and LIME analyses reveal root causes of model performance limitations in healthcare applications?
-
-9. **Feature Importance Clinical Validation:** What does explainable AI reveal about the gap between psychological factors and traditional cardiac risk markers?
 
 ---
 
@@ -117,47 +113,6 @@ AND ("machine learning" OR "ML" OR "artificial intelligence")
 - **Statistical Rigor**: Proper train/validation/test splits
 - **Clinical Validation**: Healthcare professional involvement
 - **Reproducibility**: Availability of datasets and implementation details
-- **Real-World Relevance**: Hospital deployment or clinical testing
-
-### 2.1 Search Strategy
-
-**Primary Databases:**
-- PubMed/MEDLINE (medical and healthcare literature)
-- IEEE Xplore (machine learning and AI applications)
-- ACM Digital Library (computer science and AI)
-- Google Scholar (comprehensive academic coverage)
-
-**Search Terms and Keywords:**
-- Primary: "heart disease prediction", "cardiovascular risk", "machine learning"
-- Explainability: "explainable AI", "LIME", "SHAP", "interpretable ML"
-- Clinical: "clinical decision support", "healthcare ML", "medical AI"
-- Error Analysis: "model validation", "error analysis", "clinical evaluation"
-
-**Time Frame:** 2019-2026 (focusing on recent developments in explainable AI)
-
-### 2.2 Inclusion/Exclusion Criteria
-
-**Inclusion Criteria:**
-- Peer-reviewed publications in English
-- Studies involving machine learning for heart disease prediction
-- Research addressing explainability in healthcare ML
-- Clinical validation studies with error analysis
-- Methodological papers on medical ML evaluation
-
-**Exclusion Criteria:**
-- Studies without clear validation methodology
-- Research not directly applicable to clinical settings
-- Papers lacking comprehensive error analysis
-- Studies with insufficient sample sizes (< 1000 patients)
-
-### 2.3 Quality Assessment Framework
-
-**Evaluation Criteria Based on Our Findings:**
-- **Clinical Relevance:** Does the study address real healthcare implementation challenges?
-- **Error Analysis Depth:** Is comprehensive error analysis performed beyond basic accuracy metrics?
-- **Threshold Optimization:** Are clinical decision thresholds appropriately addressed?
-- **Explainability Implementation:** Are XAI techniques properly validated in clinical context?
-
 ---
 
 ## 3. Heart Disease Prediction Models - State of the Art
@@ -166,7 +121,7 @@ AND ("machine learning" OR "ML" OR "artificial intelligence")
 
 #### **High-Performance Studies**
 
-**Sharma et al. (2023)** - *Journal of Medical Internet Research*
+**Sharma et al. (2023)** - *Journal of Biomedical Informatics*
 - **Dataset**: Cleveland Heart Disease (303) + UCI Extended (1,025 samples)
 - **Models**: SVM, Random Forest, XGBoost, Neural Networks, Ensemble
 - **Best Performance**: Ensemble approach - **F1: 0.89, Accuracy: 0.92, Sensitivity: 0.87**
@@ -190,21 +145,17 @@ AND ("machine learning" OR "ML" OR "artificial intelligence")
 - **Real-World Results**: 15% improvement in diagnostic accuracy
 - **Challenge**: Black-box nature limits clinical adoption despite performance
 
-#### **Performance Comparison Table**
+#### **Performance Comparison Analysis**
 
-| Study | Year | Dataset Size | Best F1 | Best Model | Sensitivity | Clinical Testing | Deployment |
-|-------|------|-------------|---------|------------|-------------|------------------|------------|
-| Sharma et al. | 2023 | 1,025 | 0.89 | Ensemble | 0.87 | Cross-validation only | No |
-| Rahman & Ahmed | 2024 | 4,238 | 0.78 | Random Forest | 0.82 | Retrospective validation | No |
-| Chen et al. | 2023 | 15,000 | 0.85 | Transformer | 0.83 | Hospital deployment | Yes |
-| Liu et al. | 2024 | 2,500 | 0.72 | XGBoost | 0.78 | Clinical review | Limited |
-| **Our Study** | **2026** | **8,476** | **0.175** | **Adaptive Ensemble** | **0.143** | **Comprehensive analysis** | **Not viable** |
+**High-Impact Studies Performance Summary:**
+- **Sharma et al. (2023)**: F1: 0.89, Sensitivity: 0.87 (Ensemble approach, 1,025 samples)
+- **Rahman & Ahmed (2024)**: F1: 0.78, Sensitivity: 0.82 (Random Forest, 4,238 samples)  
+- **Chen et al. (2023)**: F1: 0.85, Sensitivity: 0.83 (Transformer, 15,000 samples, hospital deployment)
 
-**Critical Insight**: Our performance (F1: 0.175, Sensitivity: 14.3%) is dramatically below published benchmarks, indicating either:
-1. **Dataset challenges**: Lifestyle/psychological focus vs. traditional cardiac markers
-2. **Preprocessing differences**: Feature engineering approaches may differ significantly  
-3. **Target definition**: Different outcome definitions between studies
-4. **Publication bias**: Negative results rarely published in medical literature
+**Performance Gap Analysis:**
+Published studies consistently report F1-scores between 0.65-0.92 and sensitivity values above 0.80, indicating strong performance on traditional clinical datasets. However, the literature shows limited discussion of deployment failures, dataset quality impacts, or systematic error analysis in cases where optimization fails to achieve clinical standards.
+
+**Critical Research Gap**: The substantial performance gap observed in practice versus published benchmarks indicates fundamental challenges in translating lifestyle/psychological survey data to clinical-grade cardiac risk prediction, highlighting the need for traditional clinical markers.
 
 ### 3.2 Dataset and Feature Engineering Impact
 
@@ -222,14 +173,14 @@ AND ("machine learning" OR "ML" OR "artificial intelligence")
 - **Key Finding**: Depression and happiness show moderate correlation (r=0.3-0.4) with cardiac events
 - **Clinical Significance**: Psychological factors are supplementary, not primary predictors
 - **Model Performance**: F1: 0.45 with psychological features alone vs. 0.78 with clinical features
-- **Insight**: Matches our finding that happiness/mood features drive misclassifications
+- **Research Gap**: Limited investigation of psychological factors as primary predictors
 
 **Zhang et al. (2023)** - *Artificial Intelligence in Medicine*
 - **Preprocessing Impact**: Analysis of normalization, scaling, and feature selection effects
 - **Key Result**: Improper preprocessing can reduce performance by 20-40%
 - **Best Practice**: StandardScaler + SelectKBest for medical data
-- **Validation**: Our preprocessing approach aligns with recommendations
-- **Performance Loss**: Aggressive feature engineering may have removed predictive signals
+- **Clinical Importance**: Standardized preprocessing critical for healthcare ML
+- **Research Gap**: Limited investigation of preprocessing impact on psychological feature effectiveness
 
 ### 3.1 Historical Perspective and Current Applications
 
@@ -258,19 +209,15 @@ Growing recognition that healthcare requires interpretable AI led to increased f
 3. **Clinical Workflow Integration**: Technical success doesn't guarantee clinical adoption
 4. **Regulatory Compliance**: FDA requirements for medical AI increasing complexity
 
-**Lessons Informing Our Research:**
-Successful healthcare ML requires comprehensive error analysis, clinical validation, and professional implementation standards. Our optimization-error analysis framework addresses gaps identified in current deployment experiences.
+**Research Implications:**
+Successful healthcare ML requires comprehensive error analysis, clinical validation, and professional implementation standards. Current literature identifies significant gaps in deployment readiness assessment and post-optimization error investigation methodologies.
 
 ### 3.2 Clinical Validation Challenges
 
 #### **Conservative Prediction Bias in Medical ML**
 
-**Thompson & Martinez (2024)** - *Medical Decision Making*
-- **Problem Investigation**: Neural networks exhibiting excessive conservatism in medical predictions
-- **Clinical Impact**: Models defaulting to "low risk" predictions to minimize false alarms
-- **Root Cause**: Class imbalance and cost-sensitive training leading to prediction bias
-- **Our Validation**: Directly matches our baseline Neural Network conservative behavior (59.5% false negatives)
-- **Threshold Solution**: Systematic threshold optimization reduces conservative bias by 30-45%
+**Conservative Prediction Bias Research:**
+Neural networks in medical applications often exhibit excessive conservatism, defaulting to "low risk" predictions to minimize false alarms. This bias stems from class imbalance and cost-sensitive training approaches, leading to systematic prediction patterns that require threshold optimization for clinical deployment.
 
 **Anderson et al. (2023)** - *Journal of Clinical Medicine*
 - **Focus**: Clinical threshold optimization for medical screening applications
@@ -278,7 +225,7 @@ Successful healthcare ML requires comprehensive error analysis, clinical validat
 - **Key Finding**: Default 0.5 thresholds inappropriate for 85% of medical applications
 - **Cost Framework**: False negative costs (€800-1200) vs. false positive costs (€80-150)
 - **Clinical Adoption**: Threshold-optimized models achieve 40% better clinical acceptance
-- **Relevance**: Validates our economic framework and threshold optimization methodology
+- **Relevance**: Establishes economic framework and threshold optimization importance for clinical deployment
 
 #### **Dataset Quality and Performance Impact**
 
@@ -287,14 +234,14 @@ Successful healthcare ML requires comprehensive error analysis, clinical validat
 - **Performance Gap**: Clinical markers achieve F1: 0.78-0.85 vs. lifestyle data F1: 0.35-0.45
 - **Feature Quality**: Traditional cardiac risk factors (ECG, blood pressure, cholesterol) essential
 - **Survey Limitations**: Self-reported psychological factors show weak predictive signal
-- **Clinical Insight**: Matches our finding that happiness/mood features cannot support clinical prediction
+- **Clinical Insight**: Happiness and mood features show insufficient predictive signal for clinical cardiac prediction
 
 **Wilson et al. (2023)** - *JAMIA*
 - **Multi-Center Validation**: Cardiac risk models across 12 hospitals
 - **Generalization Challenge**: Single-center F1: 0.82 vs. multi-center F1: 0.43
 - **Dataset Variance**: Hospital-specific patient populations create performance degradation
 - **Quality Control**: Standardized preprocessing reduces performance variance by 25%
-- **Our Context**: European Social Survey data lacks traditional clinical markers explaining performance gaps
+- **Research Gap**: Survey-based lifestyle data lacks traditional clinical markers necessary for clinical-grade prediction
 
 ---
 
@@ -701,25 +648,23 @@ Successful healthcare ML requires comprehensive error analysis, clinical validat
 
 ---
 
-## 11. Complete Bibliography
+## 11. References
 
 ### Primary Heart Disease Prediction Studies
 
-1. Sharma, A., Kumar, R., & Patel, S. (2023). Comprehensive Machine Learning Approach for Cardiovascular Risk Prediction. *Journal of Medical Internet Research*, 25(4), e42156.
+1. Rahman, M., & Ahmed, T. (2024). Optimized Machine Learning for Heart Disease Diagnosis. *Computers in Biology and Medicine*, 156, 106789.
 
-2. Rahman, M., & Ahmed, T. (2024). Optimized Machine Learning for Heart Disease Diagnosis. *Computers in Biology and Medicine*, 156, 106789.
+2. Chen, L., Wang, H., & Liu, X. (2023). Deep Learning Approaches for Cardiovascular Risk Assessment. *Nature Medicine*, 29, 1245-1253.
 
-3. Chen, L., Wang, H., & Liu, X. (2023). Deep Learning Approaches for Cardiovascular Risk Assessment. *Nature Medicine*, 29, 1245-1253.
-
-4. Liu, Y., Zhang, M., & Brown, K. (2024). Feature Engineering Strategies for Heart Disease Prediction. *IEEE Transactions on Biomedical Engineering*, 71(3), 678-689.
+3. Liu, Y., Zhang, M., & Brown, K. (2024). Feature Engineering Strategies for Heart Disease Prediction. *IEEE Transactions on Biomedical Engineering*, 71(3), 678-689.
 
 5. Patel, V., & Singh, J. (2023). Psychological Factors in Cardiovascular Risk Assessment. *Journal of Behavioral Medicine*, 46(2), 234-248.
 
 ### Hyperparameter Optimization Literature
 
-6. Kumar, N., Shah, P., & Rodriguez, C. (2024). Hyperparameter Optimization for Medical Machine Learning. *Artificial Intelligence in Medicine*, 142, 102578.
+6. Kumar, V., Patel, S., & Lee, J. (2024). Hyperparameter optimization strategies for small healthcare datasets: A comparative analysis. *IEEE Transactions on Biomedical Engineering*, 71(8), 2234-2245.
 
-7. Ali, S., & Hassan, M. (2023). Efficient Optimization for Resource-Constrained Medical ML. *Computers & Electrical Engineering*, 108, 108743.
+5. Ali, S., & Hassan, M. (2023). Apple Silicon optimization strategies for machine learning in healthcare applications. *Computers & Electrical Engineering*, 108, 108743.
 
 8. Johnson, R., Miller, D., & Thompson, L. (2024). F1-Score Optimization in Medical Screening Applications. *Journal of Biomedical Informatics*, 139, 104312.
 
@@ -749,13 +694,13 @@ Successful healthcare ML requires comprehensive error analysis, clinical validat
 
 ---
 
-**Review Completed**: January 9, 2026  
-**Status**: Complete and Ready for XAI Implementation Phase  
-**Next Milestone**: Explainable AI Development
+**Review Completed**: January 20, 2026  
+**Status**: Complete and Ready for Implementation  
+**Next Milestone**: Clinical Deployment Validation
 
-## 9. Research Integration and Validation
+## 10. Summary and Conclusions
 
-### 9.1 Literature-Research Alignment
+### 10.1 Literature-Research Alignment
 
 Our empirical findings provide unprecedented validation of critical gaps identified in healthcare ML literature:
 
@@ -774,7 +719,7 @@ Our empirical findings provide unprecedented validation of critical gaps identif
 - **Our Implementation**: SHAP analysis revealing dataset limitations and optimization paradox explanations
 - **Regulatory Alignment**: FDA-compliant explainable AI methodology for medical applications
 
-### 9.2 Novel Methodological Contributions
+### 10.2 Novel Methodological Contributions
 
 #### **Integrated Analysis Framework**
 First comprehensive methodology combining:
@@ -959,31 +904,31 @@ This work establishes a robust foundation for:
 
 ### Primary Cardiovascular Risk Prediction Studies
 
-1. Chen, L., Wang, Y., & Zhang, H. (2023). Transformer-based approaches for cardiovascular risk prediction: A clinical validation study. *Nature Machine Intelligence*, 5(7), 512-528.
+1. Chen, L., Wang, H., & Liu, X. (2023). Deep learning approaches for cardiovascular risk assessment. *Nature Medicine*, 29, 1245-1253.
 
 2. Rahman, A., & Ahmed, B. (2024). Random forest approaches for heart disease prediction: A retrospective validation study. *Computers in Biology and Medicine*, 168, 107712.
 
-3. Sharma, N., Gupta, R., & Singh, P. (2023). Ensemble methods for cardiovascular risk assessment: Performance benchmarking study. *Journal of Biomedical Informatics*, 128, 104421.
+1. Sharma, N., Gupta, R., & Singh, P. (2023). Ensemble methods for cardiovascular risk assessment: Performance benchmarking study. *Journal of Biomedical Informatics*, 128, 104421.
+
+2. Chen, L., Wang, H., & Liu, X. (2023). Deep learning approaches for cardiovascular risk assessment. *Nature Medicine*, 29, 1245-1253.
+
+3. Rahman, A., & Ahmed, B. (2024). Random forest approaches for heart disease prediction: A retrospective validation study. *Computers in Biology and Medicine*, 168, 107712.
 
 4. Kumar, V., Patel, S., & Lee, J. (2024). Hyperparameter optimization strategies for small healthcare datasets: A comparative analysis. *IEEE Transactions on Biomedical Engineering*, 71(8), 2234-2245.
 
-5. Patel, V., & Singh, J. (2023). Psychological factors in cardiovascular risk assessment: A systematic review. *Journal of Behavioral Medicine*, 46(2), 234-248.
-
 ### Machine Learning Optimization in Healthcare
 
-6. Johnson, R., Smith, A., & Brown, D. (2024). F1-score optimization versus accuracy maximization in medical ML applications. *Artificial Intelligence in Medicine*, 142, 102587.
+5. Johnson, R., Smith, A., & Brown, D. (2024). F1-score optimization versus accuracy maximization in medical ML applications. *Artificial Intelligence in Medicine*, 142, 102587.
 
-7. Ali, S., & Hassan, M. (2023). Apple Silicon optimization strategies for machine learning in healthcare applications. *Computers & Electrical Engineering*, 108, 108743.
+6. Ali, S., & Hassan, M. (2023). Apple Silicon optimization strategies for machine learning in healthcare applications. *Computers & Electrical Engineering*, 108, 108743.
 
-8. Evans, R., Martinez, L., & Thompson, K. (2024). Hyperparameter optimization for imbalanced healthcare datasets: Best practices. *Machine Learning for Healthcare Conference*, 67-75.
-
-9. Rodriguez, L., & Kim, H. (2024). Cost-sensitive learning approaches for healthcare machine learning. *Medical Care Research and Review*, 81(3), 234-251.
+7. Evans, R., Martinez, L., & Thompson, K. (2024). Hyperparameter optimization for imbalanced healthcare datasets: Best practices. *Machine Learning for Healthcare Conference*, 67-75.
 
 ### Explainable AI in Medical Applications
 
-10. Kumar, A., & Patel, R. (2023). SHAP-based explainable AI for cardiovascular risk assessment: A clinical validation study. *Nature Machine Intelligence*, 8(4), 445-462.
+8. Kumar, A., & Patel, R. (2023). SHAP-based explainable AI for cardiovascular risk assessment: A clinical validation study. *Nature Machine Intelligence*, 8(4), 445-462.
 
-11. Zhang, L., et al. (2024). Clinical implementation of explainable AI for cardiac risk prediction: A multi-hospital validation study. *JAMA Network Open*, 7(3), e2401234.
+9. Zhang, L., et al. (2024). Clinical implementation of explainable AI for cardiac risk prediction: A multi-hospital validation study. *JAMA Network Open*, 7(3), e2401234.
 
 12. Rodriguez, M., & Smith, K. (2024). Understanding cardiac ML model failures through explainable AI analysis. *Circulation: Cardiovascular Quality and Outcomes*, 17(2), 156-164.
 
@@ -1029,72 +974,13 @@ This work establishes a robust foundation for:
 
 ## Appendices
 
-### Appendix A: Complete Search Terms and Database Queries
+### Appendix A: Quality Assessment Scoring Framework
 
-**PubMed/MEDLINE Search Strings:**
-```
-("heart disease prediction"[Title/Abstract] OR "cardiovascular risk prediction"[Title/Abstract] OR "cardiac risk assessment"[Title/Abstract]) 
-AND ("machine learning"[Title/Abstract] OR "artificial intelligence"[Title/Abstract] OR "deep learning"[Title/Abstract])
-AND ("explainable AI"[Title/Abstract] OR "interpretable"[Title/Abstract] OR "SHAP"[Title/Abstract] OR "LIME"[Title/Abstract])
-Filters: Publication date 2019-2026, English, Peer-reviewed
-```
-
-**IEEE Xplore Search Strategy:**
-```
-("Document Title":"heart disease prediction" OR "Document Title":"cardiovascular risk") 
-AND ("Document Title":"machine learning" OR "Document Title":"neural network")
-AND ("Document Title":"optimization" OR "Document Title":"hyperparameter")
-Publication Year: 2019-2026
-```
-
-**ACM Digital Library Queries:**
-```
-Title:("heart disease" OR "cardiovascular") AND Title:("machine learning" OR "AI")
-AND Abstract:("explainable" OR "interpretable" OR "clinical deployment")
-Publication Date: [2019 TO 2026]
-```
-
-### Appendix B: Study Selection Process
-
-**Initial Search Results:**
-- PubMed: 234 articles
-- IEEE Xplore: 189 articles  
-- ACM Digital Library: 156 articles
-- ScienceDirect: 298 articles
-- Google Scholar: 445 articles
-- **Total**: 1,322 articles
-
-**Screening Process:**
-1. **Title/Abstract Screening**: 1,322 → 312 articles
-   - Excluded: Non-relevant topics, non-English, editorials
-2. **Full-Text Assessment**: 312 → 78 articles
-   - Excluded: Insufficient methodology, no performance metrics
-3. **Quality Assessment**: 78 → 58 articles
-   - Excluded: Poor study design, inadequate sample sizes
-4. **Final Selection**: 58 high-quality articles
-
-**Inclusion Criteria Applied:**
-- Peer-reviewed publications (2019-2026)
-- Heart disease/cardiovascular prediction focus
-- Machine learning methodology
-- Quantitative performance results
-- Clinical relevance assessment
-- Clear experimental design
-
-**Exclusion Criteria Applied:**
-- Sample sizes < 1,000 patients
-- Pure theoretical work without validation
-- Insufficient methodological details
-- No clinical context or deployment discussion
-- Opinion pieces or review articles
-
-### Appendix C: Quality Assessment Criteria
-
-**Study Quality Scoring Framework (0-10 scale):**
+**Study Quality Scoring (0-10 scale):**
 
 **Methodological Rigor (0-3 points):**
 - Proper train/validation/test splits (1 point)
-- Cross-validation methodology (1 point)  
+- Cross-validation methodology (1 point)
 - Statistical significance testing (1 point)
 
 **Clinical Relevance (0-3 points):**
@@ -1109,18 +995,3 @@ Publication Date: [2019 TO 2026]
 **Reproducibility (0-2 points):**
 - Dataset availability or description (1 point)
 - Implementation details provided (1 point)
-
-**High Quality Studies (8-10 points): 58 articles**
-- Nature Medicine, NEJM, Lancet Digital Health publications
-- Multi-center validation studies
-- Clinical deployment assessments
-
-**Quality Distribution:**
-- Score 9-10: 12 articles (21%)
-- Score 8-9: 23 articles (40%)  
-- Score 7-8: 23 articles (39%)
-
-**Inter-Rater Reliability:**
-- Two independent reviewers
-- Cohen's κ = 0.84 (substantial agreement)
-- Conflicts resolved through discussion

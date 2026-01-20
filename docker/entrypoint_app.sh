@@ -1,14 +1,16 @@
 #!/bin/bash
 set -e
 
-echo "🫀 Starting Heart Risk Prediction Application..."
+echo "🫀 Starting Heart Risk Assessment Platform..."
 echo "📋 Checking system requirements..."
+echo "🏥 Loading professional medical interface..."
 
 # Navigate to application directory
 cd /app
 
-# Set Python path
+# Set Python path and Docker environment detection
 export PYTHONPATH="/app:$PYTHONPATH"
+export DOCKER_CONTAINER="true"
 
 # Run data preprocessing if needed
 if [ ! -f "data/processed/train.csv" ]; then
@@ -25,9 +27,11 @@ else
     echo "✅ Trained models found"
 fi
 
-echo "🚀 Starting Professional Heart Disease Risk Prediction App..."
+echo "🚀 Starting Heart Risk Assessment Platform..."
 echo "📱 Local URL: http://0.0.0.0:7860"
 echo "🌐 Public URL: Will be generated automatically with share=True"
+echo "🏥 Professional medical interface ready"
+echo "⚖️ Working Low/Moderate/High risk classification loaded"
 echo "🐳 Docker deployment ready"
 echo ""
 

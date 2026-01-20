@@ -12,6 +12,7 @@ services:
       - ../results:/app/results
     environment:
       - PYTHONPATH=/app
+      - DOCKER_CONTAINER=true
     restart: unless-stopped
     
   jupyter:

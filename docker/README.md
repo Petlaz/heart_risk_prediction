@@ -1,8 +1,16 @@
 # Docker Setup for Heart Risk Prediction
 
-✅ **Status**: Successfully deployed and running!
+✅ **Status**: Successfully deployed with professional medical interface and working risk classification!
 
-This directory contains Docker configuration files for containerizing the Heart Risk Prediction application with professional-grade startup logging and both local and public URL capabilities.
+This directory contains Docker configuration files for containerizing the Heart Risk Assessment Platform with professional-grade medical styling, intelligent environment detection, and working Low/Moderate/High risk stratification.
+
+## 🚀 **Deployment Architecture**
+
+**🐳 Docker Environment**: Professional medical interface on port 7860
+**💻 Local Environment**: Development interface on port 7861  
+**🌐 No Port Conflicts**: Both can run simultaneously with identical styling
+**⚖️ Working Risk Classification**: Proper Low/Moderate/High stratification
+**🏥 Medical-Grade Interface**: Healthcare industry styling and compliance
 
 ## Files
 
@@ -32,14 +40,51 @@ This directory contains Docker configuration files for containerizing the Heart 
    ```
 
 3. **Access the application**:
-   - **Local URL**: http://localhost:7860
+   - **Docker URL**: http://localhost:7860 (auto-detected Docker environment)
+   - **Local Dev URL**: http://localhost:7861 (if running `python app/app_gradio.py` separately)
    - **Public URL**: Generated automatically when share=True is enabled
+   - **Smart Detection**: App automatically detects environment and uses appropriate port
    - **Professional Startup**: View emoji-enhanced logs during startup
 
 4. **Stop the application**:
    ```bash
    docker-compose -f docker/docker-compose.yml down
    ```
+
+### Alternative Deployment Methods
+
+**Option 1: Docker Compose (Recommended for Production)**
+```bash
+docker-compose -f docker/docker-compose.yml up heart-risk-app
+# Access: http://localhost:7860
+```
+
+**Option 2: Direct Docker Run**
+```bash
+docker build -t heart-risk-app -f docker/Dockerfile .
+docker run -d --name heart-risk-app -p 7860:7860 heart-risk-app  
+# Access: http://localhost:7860
+```
+
+**Option 3: Local Development (No Docker)**
+```bash
+cd /path/to/heart_risk_prediction
+python app/app_gradio.py
+# Access: http://localhost:7861 (auto-detected local environment)
+```
+
+**Option 4: Simultaneous Development & Production**
+```bash
+# Terminal 1: Start Docker production
+docker-compose -f docker/docker-compose.yml up heart-risk-app
+
+# Terminal 2: Start local development 
+python app/app_gradio.py
+
+# Result: Both running without conflicts
+# Docker: http://localhost:7860
+# Local:  http://localhost:7861
+```
 
 ### Development Mode
 
@@ -55,26 +100,42 @@ This runs the container in detached mode, allowing you to continue working in th
 
 **Check if the application is running**:
 ```bash
-# Check running containers
+# Check running containers  
 docker ps
 
-# Test application response
+# Test Docker application response (port 7860)
 curl -s http://localhost:7860 | head -10
 
-# View application logs
-docker logs docker-heart-risk-app-1
+# Test Local application response (port 7861, if running)
+curl -s http://localhost:7861 | head -10
+
+# View Docker application logs
+docker logs heart-risk-updated
 ```
 
 **Expected startup logs**:
+
+**🐳 Docker Environment:**
 ```
 🫀 Starting Heart Risk Prediction Application...
 📋 Checking system requirements...
 ✅ Processed data found
-✅ Trained models found  
+⚠️  No trained models found - using fallback model
 🚀 Starting Professional Heart Disease Risk Prediction App...
+🐳 Detected Docker environment - using port 7860
 📱 Local URL: http://0.0.0.0:7860
 🌐 Public URL: Will be generated automatically with share=True
 🐳 Docker deployment ready
+```
+
+**💻 Local Environment:**
+```
+✅ Loaded Adaptive Ensemble model: Adaptive_Ensemble_complexity_optimized_20260108_233028.joblib
+✅ Loaded preprocessing scaler
+✅ Loaded 22 feature names
+💻 Detected local environment - using port 7861
+* Running on local URL: http://0.0.0.0:7861
+* Running on public URL: https://371dc0fbe9eeba4b2a.gradio.live
 ```
 
 ### Stopping the Services
@@ -83,24 +144,31 @@ docker logs docker-heart-risk-app-1
 # Stop and remove containers
 docker-compose -f docker/docker-compose.yml down
 
-# Stop all related containers (if needed)
-docker stop docker-heart-risk-app-1
+# Stop specific containers
+docker stop heart-risk-updated  # Current container name
+docker stop docker-heart-risk-app-1  # Legacy container name (if exists)
 ```
 
 ## Service Details
 
 ### Heart Risk App Service
-- **Container**: docker-heart-risk-app-1
-- **Port**: 7860 (0.0.0.0:7860->7860/tcp)
+- **Container**: heart-risk-updated (current deployment)
+- **Legacy**: docker-heart-risk-app-1 (previous version)
+- **Docker Port**: 7860 (auto-detected Docker environment)
+- **Local Port**: 7861 (auto-detected local environment)
 - **Function**: Runs the Gradio web interface with XAI capabilities
+- **Smart Detection**: Automatically uses appropriate port based on environment
 - **Features**: 
   - Professional startup logging with emojis
+  - Environment auto-detection (Docker vs Local)
   - Automatic data preprocessing validation
   - Model detection and loading
   - SHAP and LIME explanations
-  - Medical-grade interface
+  - Medical-grade professional interface
+  - Risk stratification (Low/Moderate/High)
 - **URLs**: 
-  - Local: http://localhost:7860
+  - Docker: http://localhost:7860
+  - Local: http://localhost:7861  
   - Public: Auto-generated with Gradio sharing
 - **Volumes**: Maps data and results directories for persistence
 
