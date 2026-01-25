@@ -649,5 +649,3 @@ if __name__ == "__main__":
         debug=False,
         show_error=True
     )
-
-# Run the app: python app/app_gradio.py

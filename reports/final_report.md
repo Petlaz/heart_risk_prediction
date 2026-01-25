@@ -40,13 +40,13 @@ Heart disease remains the leading cause of death globally, accounting for approx
 
 However, the adoption of machine learning in healthcare faces significant challenges, particularly the "black box" nature of complex models that limits clinical acceptance. Healthcare professionals require not only accurate predictions but also interpretable explanations to understand and trust automated decision support systems.
 
-### Problem Statement
+## Problem Statement
 
 Current heart disease prediction systems often struggle with the trade-off between model accuracy and interpretability. While sophisticated machine learning models can achieve high predictive performance, their lack of transparency creates barriers to clinical adoption. Healthcare professionals need prediction systems that provide both accurate risk assessment and clear explanations of the contributing factors.
 
 Additionally, many existing studies fail to address critical clinical considerations such as the cost of false positives versus false negatives, threshold optimization for healthcare contexts, and the systematic analysis of model errors that could impact patient safety.
 
-### Research Objectives
+## Research Objectives
 
 Primary Objective:
 
@@ -60,7 +60,7 @@ Secondary Objectives:
 4. Develop an interactive clinical decision support interface
 5. Provide evidence-based recommendations for healthcare implementation
 
-### Research Questions
+## Research Questions
 
 1. Performance Question: Which machine learning algorithms achieve the best performance for heart disease prediction, and what are their relative strengths and limitations?
 
@@ -70,7 +70,7 @@ Secondary Objectives:
 
 4. Implementation Question: What are the key considerations for implementing machine learning-based heart disease prediction in clinical practice?
 
-### Research Project Structure
+## Research Project Structure
 
 This research project is organized into seven main sections. Following this introduction, Section 2 presents a comprehensive literature review of machine learning applications in healthcare, heart disease prediction models, and explainable AI techniques. Section 3 describes the methodology, including dataset characteristics, preprocessing pipeline, model selection, and evaluation framework. Section 4 presents the experimental results, including baseline model performance, comprehensive error analysis, and explainability findings. Section 5 discusses the implications of the results, clinical considerations, and limitations. Section 6 concludes with key contributions and future work directions. Section 7 provides comprehensive references.
 
@@ -162,7 +162,7 @@ This research employs two complementary methodological approaches to address the
 
 The first methodology encompasses the complete machine learning research pipeline, from data preprocessing through model optimization and clinical validation.
 
-#### Dataset Description and Preprocessing
+### Dataset Description and Preprocessing
 
 This research utilizes a comprehensive health dataset containing demographic, lifestyle, and clinical variables related to heart disease risk. The dataset includes 8,476 samples in the test set, with a target variable `hltprhc` indicating heart disease status (1 = disease present, 0 = no disease).
 
@@ -184,7 +184,7 @@ A robust preprocessing pipeline was implemented to ensure data quality and model
 4. Feature Engineering: Correlation analysis and feature selection optimization
 5. Preprocessing Artifacts: Serialized scalers and transformers for reproducible deployment
 
-#### Baseline Model Selection and Implementation
+### Baseline Model Selection and Implementation
 
 Baseline Algorithm Selection:
 
@@ -210,7 +210,7 @@ Baseline Implementation Details:
 - Class Imbalance: Weighted loss functions across all models
 - Feature Scaling: StandardScaler for neural network compatibility
 
-#### Hyperparameter Optimization Framework
+### Hyperparameter Optimization Framework
 
 Systematic Optimization Implementation:
 
@@ -240,7 +240,7 @@ Optimized Models:
    - Parameter Grid: C values, penalty types, solver optimization
    - Result: 3.2% F1, severe overfitting despite optimization
 
-#### Validation and Error Analysis Framework
+### Validation and Error Analysis Framework
 
 Test Set Validation Protocol:
 
@@ -279,7 +279,7 @@ Comprehensive Error Analysis Components:
    - Clinical threshold optimization for deployment readiness
    - Safety recommendations and deployment guidelines
 
-#### Clinical Decision Support Evaluation
+### Clinical Decision Support Evaluation
 
 Healthcare-Specific Evaluation:
 
@@ -289,7 +289,7 @@ Healthcare-Specific Evaluation:
 - Threshold Optimization: Healthcare-specific threshold adjustment for safety
 - Deployment Assessment: Multi-dimensional clinical evaluation including safety, cost, and utility
 
-#### Explainable AI Implementation
+### Explainable AI Implementation
 
 SHAP (SHapley Additive exPlanations) Framework:
 
@@ -299,7 +299,7 @@ SHAP (SHapley Additive exPlanations) Framework:
 - Clinical Interpretation: Feature importance analysis with healthcare context
 - Root Cause Investigation: Explaining optimization paradox through feature analysis
 
-#### Experimental Setup
+### Experimental Setup
 
 Development Environment:
 
@@ -320,7 +320,7 @@ Quality Assurance:
 
 The second methodology focuses on developing a production-ready clinical decision support application that translates research findings into a deployable healthcare tool.
 
-#### Application Architecture Design
+### Application Architecture Design
 
 Framework Selection and Integration:
 
@@ -338,9 +338,10 @@ System Architecture Components:
 - Output System: Risk stratification with clinical recommendations
 - Safety Layer: Medical disclaimers, emergency protocols, and professional guidance
 
-#### Professional Interface Implementation
+### Professional Interface Implementation
 
 Medical-Grade Interface Design:
+
 - Color Scheme: Healthcare industry standard blue/teal gradients
 - Typography: Clinical font hierarchies optimized for medical professionals
 - Layout: Responsive design following medical device interface guidelines
@@ -348,6 +349,7 @@ Medical-Grade Interface Design:
 - Accessibility: Compliance with healthcare accessibility standards
 
 Input System Development:
+
 - Personal Information: Age, height, weight with automatic BMI calculation
 - Lifestyle Factors: Physical activity, smoking, alcohol consumption (0-10 scales)
 - Wellbeing Assessment: Mental health and quality of life indicators
@@ -355,15 +357,17 @@ Input System Development:
 - Error Handling: Comprehensive error management with user-friendly messaging
 
 Output System Implementation:
+
 - Risk Visualization: Clear Low/Moderate/High risk classification display
 - Probability Scoring: Percentage-based risk assessment with confidence intervals
 - Clinical Recommendations: Evidence-based lifestyle and medical guidance
 - SHAP Integration: Feature importance explanation for clinical transparency
 - Safety Protocols: Medical disclaimers and emergency symptom guidance
 
-#### Docker Containerization and Deployment
+### Docker Containerization and Deployment
 
 Containerization Strategy:
+
 - Base Image: Python 3.9-slim for optimized healthcare applications
 - Dependency Management: Version-constrained requirements for stability
 - Environment Configuration: Healthcare-specific environment variables
@@ -371,14 +375,16 @@ Containerization Strategy:
 - Port Configuration: Smart port allocation for development and production
 
 Docker Implementation Components:
+
 - Dockerfile: Complete application containerization specification
 - docker-compose.yml: Multi-service orchestration for development
 - entrypoint_app.sh: Professional startup script with medical-grade logging
 - requirements_docker.txt: Optimized dependency list for containerized deployment
 
-#### Environment Detection and Dual-Port Configuration
+### Environment Detection and Dual-Port Configuration
 
 Smart Environment Detection:
+
 - Docker Detection: Automatic identification of containerized environments
 - Local Detection: Development environment recognition and configuration
 - Port Allocation: Intelligent assignment (Docker: 7860, Local: 7861)
@@ -386,6 +392,7 @@ Smart Environment Detection:
 - Conflict Resolution: Simultaneous deployment without port conflicts
 
 Implementation Logic:
+
 ```python
 # Environment detection algorithm
 is_docker = (
@@ -400,9 +407,10 @@ else:
     server_port = 7861  # Local development
 ```
 
-#### Risk Classification Implementation
+### Risk Classification Implementation
 
 Threshold Calibration:
+
 - Low Risk: <25% probability (typically 18-24%)
 - Moderate Risk: 25-35% probability (typically 27-32%)
 - High Risk: ≥35% probability (typically 36%+)
@@ -410,15 +418,17 @@ Threshold Calibration:
 - Dynamic Adjustment: Configurable thresholds for different clinical contexts
 
 Feature Engineering Pipeline:
+
 - Input Preprocessing: StandardScaler integration for consistent feature scaling
 - Feature Mapping: User-friendly inputs to model-required feature space
 - Validation Pipeline: Comprehensive input validation and sanitization
 - Model Inference: Real-time prediction with error handling
 - Output Processing: Risk probability to clinical classification conversion
 
-#### Clinical Compliance and Safety Standards
+### Clinical Compliance and Safety Standards
 
 Medical Disclaimers and Guidance:
+
 - Research Limitation Notice: Clear communication of research-grade vs. clinical-grade assessment
 - Professional Consultation: Explicit guidance to consult healthcare professionals
 - Emergency Protocols: Warning systems for critical symptoms requiring immediate care
@@ -426,15 +436,17 @@ Medical Disclaimers and Guidance:
 - Ethical Implementation: Transparent communication of model limitations
 
 Safety Implementation:
+
 - Input Validation: Comprehensive range checking for physiological parameters
 - Output Verification: Risk assessment reasonableness checking
 - Error Boundaries: Graceful handling of edge cases and invalid inputs
 - Logging System: Comprehensive audit trail for clinical review
 - Update Protocols: Version control and model update procedures
 
-#### Production Deployment Validation
+### Production Deployment Validation
 
 Deployment Testing Framework:
+
 - Functional Testing: Complete application functionality validation
 - Performance Testing: Response time and scalability assessment
 - Security Testing: Healthcare data protection and access control
@@ -442,6 +454,7 @@ Deployment Testing Framework:
 - User Acceptance: Clinical usability and interface effectiveness
 
 Quality Assurance Protocols:
+
 - Code Review: Professional software development standards
 - Documentation: Comprehensive technical and user documentation
 - Version Control: Professional Git workflow with release management
@@ -499,12 +512,12 @@ Critical Finding: Validation performance does not predict test performance, high
 
 Critical Performance Analysis: Optimization Impact
 
-| Model Type | Best Model | F1-Score | Sensitivity | Specificity | Clinical Status |
-|------------|------------|----------|-------------|-------------|----------------|
-| Baseline | Neural Network | 30.8% | 40.5% | 75.2% | Moderate performance |
-| Optimized | Adaptive Ensemble | 17.5% | 14.3% | 98.4% | Performance degraded |
-| Optimized | Optimal Hybrid | 9.1% | 5.2% | 99.1% | Poor generalization |
-| Optimized | Adaptive LR | 3.2% | 1.7% | 99.7% | Severe overfitting |
+| Model Type  | Best Model        | F1-Score | Sensitivity | Specificity | Clinical Status       |
+|-------------|-------------------|----------|-------------|-------------|-----------------------|
+| Baseline    | Neural Network    | 30.8%    | 40.5%       | 75.2%       | Moderate performance  |
+| Optimized   | Adaptive_Ensemble | 17.5%    | 14.3%       | 98.4%       | Performance degraded  |
+| Optimized   | Optimal_Hybrid    | 9.1%     | 5.2%        | 99.1%       | Poor generalization   |
+| Optimized   | Adaptive_LR       | 3.2%     | 1.7%        | 99.7%       | Severe overfitting    |
 
 Critical Finding: Optimization Paradox
 
@@ -702,6 +715,7 @@ Methodological Validation:
 Critical Finding: Optimization Paradox
 
 The most significant finding of this research is the dramatic performance degradation following systematic hyperparameter optimization. Despite implementing best practices (RandomizedSearchCV, F1-score optimization, clinical metrics focus), optimized models performed substantially worse than baseline models:
+
 - F1-Score Decline: Neural Network baseline (30.8%) → Adaptive_Ensemble optimized (17.5%)
 - Sensitivity Collapse: Baseline (40.5%) → Optimized (14.3%)
 - Clinical Impact: Optimization reduced heart disease detection capability by 65%
@@ -775,12 +789,14 @@ Major Research Discoveries:
 ## Clinical and Academic Impact
 
 Healthcare AI Implications:
+
 - Model Selection Guidance: Baseline models may outperform optimized versions in healthcare contexts, challenging standard ML practices
 - Feature Quality Priority: Clinical biomarkers significantly outweigh lifestyle survey data for reliable cardiac prediction
 - Deployment Standards: Professional interface development and comprehensive safety evaluation essential for clinical acceptance
 - XAI Integration: Explainable AI crucial for understanding model limitations and appropriate use cases
 
 Academic Contributions:
+
 - Publication Bias Documentation: Systematic literature review reveals significant gaps between published benchmarks (65-89% F1) and achievable performance (17.5% F1)
 - Transparent Methodology: Complete research transparency including negative results and deployment failures
 - Reproducible Infrastructure: Open-source implementation with professional deployment capabilities
@@ -789,12 +805,14 @@ Academic Contributions:
 ## Future Research Directions
 
 Immediate Research Opportunities:
+
 1. Clinical Feature Integration: Incorporating traditional cardiac biomarkers (cholesterol, blood pressure, ECG data) to achieve clinically viable performance
 2. Ensemble Methodology: Advanced ensemble techniques specifically designed for healthcare contexts with safety constraints
 3. Regulatory Compliance: FDA/CE marking pathways for medical device software implementation
 4. Multi-site Validation: External validation across diverse healthcare systems and demographic populations
 
 Long-term Healthcare AI Development:
+
 - Federated Learning: Privacy-preserving multi-institutional model development
 - Real-time Clinical Integration: EHR integration with live clinical decision support
 - Personalized Risk Assessment: Individual risk trajectory modeling with temporal data
@@ -805,6 +823,7 @@ Long-term Healthcare AI Development:
 The research successfully delivers a complete professional healthcare ML implementation including production-ready "Heart Disease Risk Assessment Platform" with medical-grade interface, intelligent deployment infrastructure, and comprehensive safety protocols. This practical implementation validates research findings while providing foundation for future clinical AI development.
 
 Technical Achievements:
+
 - Professional Docker containerization with environment detection
 - Working Low/Moderate/High risk stratification with proper threshold calibration
 - Medical-grade interface design following healthcare industry standards
@@ -939,6 +958,7 @@ B.3 Clinical Evaluation Functions
 Following comprehensive XAI analysis, development focused on creating a professional web-based application for real-world deployment testing. The "Heart Disease Risk Prediction App" integrates the trained Adaptive_Ensemble model with explainable AI insights into a user-friendly clinical interface.
 
 Application Architecture:
+
 - Framework: Gradio 4.0+ with professional medical-grade styling and healthcare industry standards
 - Model Integration: Direct integration of Adaptive_Ensemble VotingClassifier with intelligent feature mapping
 - Risk Assessment: Working Low/Moderate/High classification with calibrated thresholds (Low <25%, Moderate 25-35%, High >35%)
@@ -948,6 +968,7 @@ Application Architecture:
 - Clinical Standards: Evidence-based guidance, medical disclaimers, and emergency protocols
 
 Interface Design Features:
+
 - Professional Styling: Medical-grade interface with custom CSS and clinical color scheme
 - Comprehensive Input System: Covers personal information, lifestyle factors, and wellbeing assessment
 - Real-time Predictions: Instant risk assessment using trained ensemble model
@@ -955,6 +976,7 @@ Interface Design Features:
 - Safety Compliance: Comprehensive medical disclaimers and professional consultation guidance
 
 Technical Implementation Results:
+
 - Model Loading: Successfully integrated Adaptive_Ensemble model with VotingClassifier architecture
 - Feature Mapping: Complete mapping from user inputs to 22-feature model requirements
 - Risk Calculation: Probability-based assessment with clinical risk stratification
@@ -962,6 +984,7 @@ Technical Implementation Results:
 - Accessibility: Responsive design with clear instructions and intuitive controls
 
 Deployment Validation:
+
 - Dual Environment Testing: Automatic detection and port allocation (Docker: 7860, Local: 7861)
 - Professional Interface: Medical-grade styling maintained across all deployment environments
 - Smart Configuration: Environment-specific startup logging and intelligent deployment detection
@@ -970,9 +993,11 @@ Deployment Validation:
 - Cross-platform: Validated on macOS with Docker and local Python environments
 
 Clinical Interface Assessment:
+
 The application successfully demonstrates professional healthcare ML implementation with fully functional Low/Moderate/High risk stratification. Through systematic feature mapping corrections and threshold calibration, the interface now provides meaningful risk variation based on user inputs (Low Risk: 18-24%, Moderate Risk: 25-34%, High Risk: 35%+), resolving previous issues where all predictions showed high risk. The professional medical-grade styling, dual-environment deployment capability, and intelligent port detection create a clinical-standard interface suitable for healthcare research and educational demonstrations.
 
 Risk Classification Validation:
+
 - Low Risk Example: Young healthy profile (25 years, BMI 21, high exercise) → 18.8% probability
 - Moderate Risk Example: Middle-aged mixed profile (45 years, BMI 27, moderate lifestyle) → 27.4% probability  
 - High Risk Example: Older unhealthy profile (65 years, BMI 35, poor lifestyle) → 36.8% probability
@@ -980,6 +1005,7 @@ Risk Classification Validation:
 The corrected risk stratification demonstrates successful clinical interface development while maintaining transparency about the underlying model limitations identified through comprehensive XAI analysis.
 
 Professional Standards Compliance:
+
 - Medical Disclaimers: Clear warnings about research-grade vs. clinical-grade assessment
 - User Guidance: Explicit instructions to consult healthcare professionals
 - Ethical Implementation: Transparent about model limitations and appropriate use cases
