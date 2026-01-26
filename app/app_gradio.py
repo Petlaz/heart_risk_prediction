@@ -136,11 +136,17 @@ class HeartRiskPredictor:
     def _prepare_features(self, inputs):
         """Convert user inputs to model features with proper scaling"""
         # Map user inputs to actual model features based on the dataset structure
-        # Normalize inputs to match training data scale (typically -3 to +3 standardized range)
+        # Normalize inputs to match training data scale using Z-score standardization
         
         # Normalize 0-10 scale inputs to standardized range
         def normalize_0_10(value, mean_val=5, std_val=2.5):
-            """Convert 0-10 scale to standardized scale"""
+            """Convert 0-10 scale to standardized scale
+            
+            Z-score formula: (value - mean) / std_dev
+            Input range: 0-10 → Output range: -2.0 to +2.0
+            - For value=0: (0-5)/2.5 = -2.0
+            - For value=10: (10-5)/2.5 = +2.0
+            """
             return (value - mean_val) / std_val
         
         # Calculate BMI if not provided
