@@ -217,7 +217,7 @@ class HeartRiskPredictor:
                 risk_msg = "Lower cardiovascular risk. Maintain healthy lifestyle."
             
             # Feature importance insights
-            key_factors = self._get_key_factors(X[0])
+            key_factors = self._get_key_factors(inputs)
             
             result = f"""
 ## {risk_color} **{risk_level}**
@@ -254,15 +254,20 @@ For comprehensive evaluation, consult healthcare professionals.*
         except Exception as e:
             return f"❌ **Prediction Error**\n\nUnable to process prediction: {str(e)}\n\nPlease check your inputs and try again."
     
-    def _get_key_factors(self, features):
-        """Analyze key contributing factors"""
-        # Simplified feature importance based on research findings
+    def _get_key_factors(self, inputs):
+        """Analyze key contributing factors using original user inputs"""
+        # Calculate BMI from height/weight
+        height_m = inputs.get('height', 170) / 100  # Convert cm to meters
+        weight = inputs.get('weight', 70)  # kg
+        bmi = weight / (height_m ** 2)
+        
+        # Use original 0-10 scale inputs for analysis
         factor_weights = {
-            'BMI': features[18] if len(features) > 18 else 25,
-            'Physical Activity': features[6] if len(features) > 6 else 4,
-            'Mental Wellbeing': features[0] if len(features) > 0 else 7,
-            'Sleep Quality': features[11] if len(features) > 11 else 2,
-            'Social Engagement': features[1] if len(features) > 1 else 5
+            'BMI': bmi,
+            'Physical Activity': inputs.get('exercise', 4),
+            'Life Satisfaction': inputs.get('happiness', 7),
+            'Sleep Quality': inputs.get('sleep_quality', 7),
+            'Social Engagement': inputs.get('social_meetings', 5)
         }
         
         analysis = []
@@ -561,7 +566,9 @@ cardiovascular risk analysis with clinical-grade explainable AI insights.
                      happiness, life_control, social_meetings, sleep_quality: 
                 predictor.predict_risk(
                     age=age, 
-                    bmi=weight / ((height/100) ** 2),  # Calculate BMI
+                    height=height,  # Pass height to inputs
+                    weight=weight,  # Pass weight to inputs  
+                    bmi=weight / ((height/100) ** 2),  # Calculate BMI # Convert cm to meters, then square
                     exercise=exercise,
                     smoking=smoking,
                     alcohol=alcohol, 
