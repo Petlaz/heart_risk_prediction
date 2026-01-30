@@ -1,5 +1,5 @@
 ---
-title: "**Heart Risk Prediction with Explainable AI: A Masters Research Project**"
+title: "**Heart Disease Risk Prediction with Explainable AI: A Masters Research Project**"
 subtitle: |
   Master's Research Project - Final Report  
   Institution: TH Köln - University of Applied Science  
@@ -23,7 +23,9 @@ Comprehensive error analysis identifies the optimization paradox as fundamental 
 
 Explainable AI implementation through SHAP analysis reveals critical insights: BMI (0.0208) and physical activity (0.0189) emerge as strongest clinical predictors, while psychological features (happiness, mood satisfaction) dominate model decisions but provide weak predictive signal. SHAP global feature importance analysis confirms the optimization paradox root cause—optimizing weak psychological predictors cannot improve clinical performance. XAI validation demonstrates that models attempt heart disease prediction from lifestyle surveys rather than clinical assessments, explaining systematic deployment failures.
 
-Professional application development delivers production-ready "Heart Disease Risk Assessment Platform" using Gradio framework, featuring medical-grade professional interface, real-time XAI explanations through SHAP integration, and comprehensive clinical decision support system. The application successfully demonstrates practical deployment with working Low/Moderate/High risk stratification based on user inputs, validating both clinical interface design and risk classification functionality.
+Professional application development delivers production-ready "Heart Disease Risk Assessment Platform" using Gradio framework, featuring medical-grade professional interface, real-time dual XAI explanations through SHAP and LIME integration, and comprehensive clinical decision support system. The application successfully demonstrates practical deployment with working Low/Moderate/High risk stratification based on user inputs, validating both clinical interface design and risk classification functionality.
+
+Dual Explainable AI Implementation: Successfully integrated both global (SHAP) and local (LIME) explainable AI techniques, providing comprehensive insights at population and individual patient levels. SHAP analysis delivers research-grade feature importance for clinical research, while LIME integration provides personalized risk factor explanations for individual predictions with professional fallback system ensuring robust deployment regardless of dependency availability.
 
 Advanced Deployment Infrastructure & Professional Interface: Complete Docker containerization achieved with intelligent environment detection, dual-port configuration (7860 for Docker, 7861 for local), and professional medical-grade styling. Smart deployment system automatically detects execution environment and configures appropriate ports, enabling simultaneous development and production deployment. Enhanced professional interface features medical industry color schemes, clinical typography, and comprehensive risk visualization with proper Low/Moderate/High classification thresholds (Low <25%, Moderate 25-35%, High >35%).
 

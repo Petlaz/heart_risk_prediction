@@ -1,4 +1,4 @@
-# Heart Risk Prediction with Explainable AI
+# Heart Disease Risk Prediction with Explainable AI
 **A Comprehensive Machine Learning Approach to Clinical Decision Support**
 
 **Master's Research Project Defense**
@@ -7,10 +7,6 @@
 - **Supervisor:** Prof. Dr. Beate Rhein  
 - **Industry Partner:** Nightingale Heart – Mr. Håkan Lane
 - **Date:** January 2026
-
-::: notes
-Open with the clinical urgency: heart disease remains the leading global cause of death (17.9M annually, WHO 2023). This investigation addresses a critical gap between published ML performance claims and practical deployment outcomes in healthcare settings.
-:::
 
 ---
 
@@ -26,13 +22,9 @@ Open with the clinical urgency: heart disease remains the leading global cause o
 
 1. How do systematically optimized models perform compared to baseline implementations?
 2. What drives misclassification patterns in healthcare ML applications?
-3. Can explainable AI reveal fundamental limitations in psychological-based cardiac prediction?
+3. Can dual explainable AI (SHAP + LIME) reveal fundamental limitations in psychological-based cardiac prediction and provide individual patient insights?
 
 **Research Contribution:** First comprehensive study documenting the "optimization paradox" in healthcare ML
-
-::: notes
-Frame this as addressing a critical methodological crisis in healthcare AI. The optimization paradox represents our novel contribution to the field.
-:::
 
 ---
 
@@ -59,10 +51,6 @@ Frame this as addressing a critical methodological crisis in healthcare AI. The 
 
 ![](results/plots/ml_pipeline_diagram.png)
 
-::: notes
-Emphasize the methodological innovation of testing complete research-to-production pipeline, unlike studies that stop at cross-validation.
-:::
-
 ---
 
 ## Baseline Results
@@ -84,10 +72,6 @@ Emphasize the methodological innovation of testing complete research-to-producti
 - Algorithmic diversity suggested ensemble optimization potential
 
 ![](results/plots/roc_curves_baseline_models.png)
-
-::: notes
-Position these results as reasonable starting points that created expectation for improvement through systematic optimization.
-:::
 
 ---
 
@@ -112,10 +96,6 @@ Position these results as reasonable starting points that created expectation fo
 
 ![](results/plots/optimization_paradox_comparison.png)
 
-::: notes
-This is your key research contribution. Position this as a fundamental discovery that challenges core ML assumptions in healthcare contexts.
-:::
-
 ---
 
 ## Clinical Deployment Assessment
@@ -139,15 +119,11 @@ This is your key research contribution. Position this as a fundamental discovery
 - **Regulatory Non-Compliance:** No models meet clinical deployment safety standards
 - **Economic Paradox:** Despite acceptable cost per patient (€152), safety risks create insurmountable liability
 
-::: notes
-Emphasize the clinical safety implications. The optimization paradox isn't just an academic finding—it has serious patient safety consequences.
-:::
-
 ---
 
-## Explainable AI Insights
+## Dual Explainable AI Implementation
 
-### SHAP Analysis Reveals Root Causes
+### SHAP Analysis Reveals Root Causes (Global Insights)
 
 **Top Predictive Features (SHAP Values):**
 
@@ -159,17 +135,30 @@ Emphasize the clinical safety implications. The optimization paradox isn't just 
 | 4 | **Sleep Quality** | 0.0126 | Moderate cardiac relevance | **Moderate** |
 | 5 | **Happiness/Mood** | 0.0093-0.0079 | Psychological factors | **Weak** |
 
-### Critical XAI Findings
+### Critical Dual XAI Findings
 
-- **60% of top features** are psychological variables with weak cardiac predictive validity
+- **Global Analysis (SHAP):** 60% of top features are psychological variables with weak cardiac predictive validity
+- **Individual Analysis (LIME):** Enables personalized risk communication despite dataset limitations
 - **Missing clinical markers:** No ECG, biomarkers, or imaging data
 - **Optimization paradox mechanism:** Hyperparameter tuning cannot overcome fundamental dataset limitations
+- **Clinical Application Value:** Dual XAI approach provides both research insights and practical patient communication
 
 ![](results/plots/shap_feature_importance_academic.png)
 
-::: notes
-SHAP analysis provides the mechanistic explanation for the optimization paradox. We're asking models to predict heart disease from happiness surveys rather than clinical assessments.
-:::
+### LIME Individual Patient Analysis (Local Interpretability)
+
+**Personalized Risk Factor Assessment:**
+
+- **Individual Explanations:** Patient-specific risk factor contributions
+- **Clinical Communication:** Professional medical language for practitioner use
+- **Robust Implementation:** Graceful fallback system for production reliability
+- **Dual XAI Strategy:** Global population insights + Local patient analysis
+
+**Key LIME Capabilities:**
+- Real-time individual patient explanations
+- Risk factor classification (Protective/Risk factors)
+- Professional clinical presentation format
+- Enhanced patient-provider communication
 
 ---
 
@@ -180,7 +169,8 @@ SHAP analysis provides the mechanistic explanation for the optimization paradox.
 **Technical Achievement:**
 
 - **Medical-Grade Interface:** Gradio with healthcare industry standards
-- **SHAP-Informed Design:** Application uses research findings (Weeks 5-6) to inform feature selection rather than real-time XAI computation
+- **Dual XAI Integration:** SHAP research insights  + LIME individual explanations for comprehensive explainability
+- **Personalized Analysis:** Real-time individual risk factor explanations using LIME with professional fallback system
 - **Risk Stratification:** Evidence-based Low/Moderate/High classification with WHO/AHA threshold validation
 - **Clinical Decision Support:** Traffic light system (6-4 threshold) based on validated health behavior scales
 - **Safety Compliance:** Medical disclaimers and professional consultation requirements
@@ -190,13 +180,28 @@ SHAP analysis provides the mechanistic explanation for the optimization paradox.
 
 ![](results/plots/gradio_application_interface.png)
 
+**Current interface featuring:**
+
+- **Risk Probability:** Clinical terminology (not "Model Confidence")  
+- **Personalized Risk Analysis (LIME):** Individual patient explanations
+- **Key Risk Factors Summary:** Professional emoji indicators (🔴🟡✅)
+- **Clinical Recommendations:** Evidence-based guidance
+- **Professional Formatting:** Medical-grade presentation with em-dash formatting
+
+### Current Application Features
+
+**Complete Dual XAI Implementation:**
+
+- **LIME Individual Explanations**: Real-time personalized risk factor analysis with professional medical language
+- **Dual XAI Display**: Global SHAP research insights + Local LIME patient explanations  
+- **Professional Medical Interface**: Clinical terminology, emoji indicators, and proper formatting
+- **Robust Fallback System**: Professional analysis ensuring 100% uptime regardless of dependencies
+- **Enhanced Patient Communication**: Individual risk factor explanations with clinical evidence base
+- **Production-Ready Deployment**: Complete Docker integration with intelligent environment detection
+
 ### Strategic Research Value
 
-Despite model limitations, demonstrates methodological capability for responsible healthcare AI development with transparent limitation communication and separation of research analysis from practical deployment.
-
-::: notes
-Position the application as demonstrating complete methodology while maintaining transparency about limitations—a model for responsible healthcare AI research.
-:::
+The updated interface demonstrates **complete research-to-production methodology** with transparent limitation communication and successful integration of both global (SHAP) and local (LIME) explainable AI techniques. This represents a comprehensive approach to responsible healthcare AI development, combining rigorous research analysis with practical clinical deployment capabilities.
 
 ---
 
@@ -216,11 +221,12 @@ Position the application as demonstrating complete methodology while maintaining
 - Demonstrated systematic evaluation of regulatory compliance
 - Highlighted patient safety vs. algorithmic performance tensions
 
-**3. Explainable AI Integration**
+**3. Dual Explainable AI Implementation**
 
-- SHAP analysis revealed dataset limitation mechanisms
-- Psychological features insufficient for reliable cardiac prediction
-- Evidence-based feature engineering recommendations
+- SHAP analysis revealed dataset limitation mechanisms at global level
+- LIME integration provided individual patient-level explanations
+- Demonstrated complete XAI pipeline from research to clinical application
+- Professional fallback system ensures robust deployment
 
 ### Strategic Healthcare AI Recommendations
 
@@ -228,10 +234,6 @@ Position the application as demonstrating complete methodology while maintaining
 2. **Safety-First Optimization:** Develop healthcare-specific optimization frameworks
 3. **Mandatory XAI Integration:** Explainability required for clinical validation
 4. **Transparent Research Standards:** Honest assessment of deployment failures
-
-::: notes
-Conclude by positioning your research as establishing new methodological standards for responsible healthcare AI development and contributing to evidence-based healthcare AI policy.
-:::
 
 ---
 
@@ -254,10 +256,6 @@ Conclude by positioning your research as establishing new methodological standar
 
 Comprehensive research ethics compliance with transparent limitation reporting to prevent potential misuse and ensure patient safety prioritization.
 
-::: notes
-Acknowledge limitations while positioning future work as building on your methodological contributions. Emphasize the ethical responsibility of honest research reporting.
-:::
-
 ---
 
 ## Thank You
@@ -265,7 +263,7 @@ Acknowledge limitations while positioning future work as building on your method
 ### Questions and Discussion Welcome
 
 **Novel Research Contribution:**  
-*First systematic documentation of the optimization paradox in healthcare machine learning*
+*First systematic documentation of the optimization paradox in healthcare machine learning with comprehensive dual explainable AI implementation (SHAP + LIME)*
 
 **Research Repository:**  
 https://github.com/Petlaz/heart_risk_prediction
@@ -277,7 +275,3 @@ Nightingale Heart Partnership – Mr. Håkan Lane
 ---
 
 *"Responsible healthcare AI development requires honest assessment of both successes and limitations."*
-
-::: notes
-Be prepared to discuss: (1) The methodological implications of the optimization paradox, (2) How your findings challenge current healthcare ML research practices, (3) The clinical safety framework you've established, (4) Future research directions building on your contributions.
-:::

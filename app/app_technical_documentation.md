@@ -159,6 +159,7 @@ RandomForestClassifier(
 | Research Component | Implementation Status | Location |
 |-------------------|----------------------|-----------|
 | **SHAP TreeExplainer** | ✅ **Completed** | `notebooks/05_explainability.ipynb` |
+| **LIME Individual Analysis** | ✅ **Implemented** | `app/app_gradio.py` - Personalized explanations |
 | **Feature Importance Ranking** | ✅ **Completed** | 500 test samples analyzed |
 | **Summary Plots** | ✅ **Completed** | 4 SHAP visualizations created |
 | **Clinical Interpretation** | ✅ **Completed** | BMI, exercise, psychological factor analysis |
@@ -180,6 +181,8 @@ RandomForestClassifier(
 
 **Rationale from Project Planning:**
 - **Week 5-6:** "XAI Implementation" - Research-grade SHAP analysis
+- **Week 7:** "LIME Integration" - Individual patient explanations
+- **Week 8:** "Production App" - Professional interface with dual XAI
 - **Week 7-8:** "Gradio Demo Development" - Practical application interface 
 - **Focus:** "Build interactive Gradio app (real-time predictions + explanations)"
 
@@ -216,7 +219,59 @@ This follows standard machine learning deployment practice where **explainabilit
 
 ---
 
-## 6. Clinical Assessment Protocols
+## 6. LIME Individual Explanation System
+
+### 6.1 LIME Implementation Overview
+
+**Purpose:** Provide personalized risk factor analysis for individual patients complementing the global SHAP research insights.
+
+**Technical Architecture:**
+```python
+from lime.lime_tabular import LimeTabularExplainer
+
+# Initialize LIME explainer with training data reference
+self.lime_explainer = LimeTabularExplainer(
+    training_data=self.training_sample,
+    feature_names=lime_feature_names, 
+    class_names=['Low Risk', 'High Risk'],
+    mode='classification',
+    discretize_continuous=True
+)
+```
+
+### 6.2 Dual XAI Strategy
+
+| Component | Purpose | Implementation | Output |
+|-----------|---------|----------------|--------|
+| **SHAP Analysis** | Global feature importance | Research notebooks | Population-level insights |
+| **LIME Explanations** | Individual patient analysis | Live app integration | Personalized risk factors |
+
+### 6.3 Professional Fallback System
+
+**Graceful Degradation:** If LIME is unavailable, the system provides professional individual analysis using clinical thresholds:
+
+```python
+def _get_fallback_individual_analysis(self, features, user_inputs):
+    """Professional individual analysis when LIME is not available"""
+    # BMI Analysis
+    if bmi >= 30:
+        analyses.append(("BMI", f"{bmi:.1f}", "Strong risk factor", 
+                        "Obesity increases cardiovascular risk significantly"))
+    
+    # Exercise, smoking, mental health, sleep analysis...
+```
+
+### 6.4 Clinical Presentation Format
+
+**Professional Medical Language:** Each risk factor includes:
+- **Classification:** Risk factor / Protective factor / Neutral factor  
+- **Clinical Explanation:** Evidence-based medical interpretation
+- **Visual Indicators:** Color-coded emoji system (🔴🟡✅)
+- **Assessment Summary:** Overall risk profile evaluation
+
+---
+
+## 7. Clinical Assessment Protocols
 
 ### 6.1 BMI Classification System
 

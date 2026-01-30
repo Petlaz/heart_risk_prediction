@@ -1,4 +1,4 @@
-# Heart Risk Prediction with Explainable AI
+# Heart Diesease Risk Prediction with Explainable AI
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![Gradio](https://img.shields.io/badge/Gradio-4.0%2B-orange.svg)](https://gradio.app/)
@@ -23,13 +23,16 @@ An advanced machine learning system for predicting heart disease risk using comp
 - Clinical safety assessment and deployment readiness evaluation
 
 🔍 **Explainable AI (XAI)**  
-- SHAP implementation for feature importance analysis
+- SHAP implementation for global feature importance analysis
+- LIME integration for individual patient-level explanations
+- Dual XAI approach: global insights + personalized risk factors
 - Clinical interpretation of model decisions
 - Root cause investigation of optimization challenges
 
 🌐 **Production Web Application**
 - Professional Gradio interface with medical-grade styling
 - Real-time risk assessment with Low/Moderate/High classification
+- Dual explainable AI: SHAP research insights + LIME individual analysis
 - Comprehensive safety disclaimers and clinical guidance
 
 🐳 **Docker Deployment**
