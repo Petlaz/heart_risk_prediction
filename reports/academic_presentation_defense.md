@@ -6,7 +6,7 @@
 - **Author:** Peter Ugonna Obi
 - **Supervisor:** Prof. Dr. Beate Rhein  
 - **Industry Partner:** Nightingale Heart – Mr. Håkan Lane
-- **Date:** January 2026
+- **Date:** February 2026
 
 ---
 
@@ -44,10 +44,10 @@
 - Systematic hyperparameter optimization using RandomizedSearchCV
 - Clinical performance assessment with safety criteria
 
-**Method 2: Production-Ready Application**
+**Method 2: Professional Application Development**
 
-- Professional Gradio web interface with medical compliance
-- Docker containerization for deployment readiness
+- Professional Gradio web interface with medical compliance features
+- Docker containerization for development and testing environments
 
 ![](results/plots/ml_pipeline_diagram.png)
 
@@ -184,9 +184,9 @@
 
 - **Risk Probability:** Clinical terminology (not "Model Confidence")  
 - **Personalized Risk Analysis (LIME):** Individual patient explanations
-- **Key Risk Factors Summary:** Professional emoji indicators (🔴🟡✅)
+- **Three-Level Risk Classification:** Low Risk, Moderate Risk, High Risk with clinical probabilities
 - **Clinical Recommendations:** Evidence-based guidance
-- **Professional Formatting:** Medical-grade presentation with em-dash formatting
+- **Clinical Risk Messaging:** Evidence-based recommendations with probability thresholds
 
 ### Current Application Features
 
@@ -194,14 +194,14 @@
 
 - **LIME Individual Explanations**: Real-time personalized risk factor analysis with professional medical language
 - **Dual XAI Display**: Global SHAP research insights + Local LIME patient explanations  
-- **Professional Medical Interface**: Clinical terminology, emoji indicators, and proper formatting
+- **Professional Medical Interface**: Clinical terminology, three-tier risk classification, and medical-grade presentation
 - **Robust Fallback System**: Professional analysis ensuring 100% uptime regardless of dependencies
 - **Enhanced Patient Communication**: Individual risk factor explanations with clinical evidence base
-- **Production-Ready Deployment**: Complete Docker integration with intelligent environment detection
+- **Professional Development Environment**: Complete Docker integration with intelligent environment detection for testing
 
 ### Strategic Research Value
 
-The updated interface demonstrates **complete research-to-production methodology** with transparent limitation communication and successful integration of both global (SHAP) and local (LIME) explainable AI techniques. This represents a comprehensive approach to responsible healthcare AI development, combining rigorous research analysis with practical clinical deployment capabilities.
+The application demonstrates professional development methodology with transparent limitation communication and successful integration of both global (SHAP) and local (LIME) explainable AI techniques. This represents a comprehensive approach to responsible healthcare AI development, combining rigorous research analysis with professional interface development suitable for testing and demonstration purposes.
 
 ---
 

@@ -11,16 +11,16 @@
 
 ## 🫀 Project Overview
 
-An advanced machine learning system for predicting heart disease risk using comprehensive health and lifestyle data from the European Social Survey. The project integrates state-of-the-art ML algorithms with explainable AI (XAI) techniques, delivering insights through a production-ready web application with Docker deployment.
+An advanced machine learning system for predicting heart disease risk using comprehensive health and lifestyle data from the European Social Survey. The project integrates state-of-the-art ML algorithms with explainable AI (XAI) techniques, delivering insights through a professional web application with Docker containerization.
 
-**🎯 Status**: Production Complete | **📊 Performance**: Research-grade analysis | **🏥 Focus**: Clinical applicability
+**Status**: Production Complete | **Performance**: Research-grade analysis | **Focus**: Clinical applicability
 
 ## ⭐ Key Features
 
 🧠 **Machine Learning Pipeline**
 - 5 baseline algorithms with comprehensive evaluation  
 - Advanced hyperparameter optimization using RandomizedSearchCV
-- Clinical safety assessment and deployment readiness evaluation
+- Clinical safety assessment and application readiness evaluation
 
 🔍 **Explainable AI (XAI)**  
 - SHAP implementation for global feature importance analysis
@@ -29,38 +29,39 @@ An advanced machine learning system for predicting heart disease risk using comp
 - Clinical interpretation of model decisions
 - Root cause investigation of optimization challenges
 
-🌐 **Production Web Application**
-- Professional Gradio interface with medical-grade styling
-- Real-time risk assessment with Low/Moderate/High classification
-- Dual explainable AI: SHAP research insights + LIME individual analysis
-- Comprehensive safety disclaimers and clinical guidance
+**Production Web Application**
+- Professional medical interface with evidence-based risk assessment
+- Three-tier classification system (Low/Moderate/High risk) 
+- Comprehensive explainable AI with SHAP and LIME analysis
+- Clinical interpretation with patient-friendly explanations
+- Medical-grade styling with comprehensive safety guidance
 
-🐳 **Docker Deployment**
-- Complete containerization with environment auto-detection  
-- Dual-port configuration (local: 7861, Docker: 7860)
-- Professional startup logging and system validation
+**Docker Containerization**
+- Complete containerization with automatic environment detection
+- Configuration with optimized port management
+- Professional logging and system validation protocols
 
-📚 **Academic Documentation**
+**Academic Documentation**
 - Comprehensive final report and literature review
 - 58 peer-reviewed references (2019-2026)
 - Master's thesis-quality documentation and analysis
 
-## 🔬 Research Achievements
+## Research Achievements
 
-### 📈 Model Performance Analysis
+### Model Performance Analysis
 | Model | F1-Score | Sensitivity | Specificity | Clinical Status |
 |-------|----------|-------------|-------------|------------------|
 | **Adaptive_Ensemble** | **0.175** | 14.3% | 98.4% | Best performance |
 | Optimal_Hybrid | 0.091 | 5.4% | 99.1% | Extremely conservative |
 | Adaptive_LR | 0.032 | 1.8% | 99.4% | Clinically unusable |
 
-### 🎯 Key Findings
-- **📊 Performance Gap**: Significant disparity vs. published benchmarks (0.65-0.92 F1) 
-- **🏥 Clinical Safety**: All models fail deployment criteria (≥80% sensitivity required)
-- **🧬 Feature Analysis**: BMI (0.0208) and Physical Activity (0.0189) top predictors
-- **⚠️ Medical Risk**: 822 missed cases per 8,476 patients represents unacceptable clinical risk
+### Key Findings
+- **Performance Gap**: Significant disparity vs. published benchmarks (0.65-0.92 F1) 
+- **Clinical Safety**: All models fail clinical safety criteria (≥80% sensitivity required)
+- **Feature Analysis**: BMI (0.0208) and Physical Activity (0.0189) top predictors
+- **Medical Risk**: 822 missed cases per 8,476 patients represents unacceptable clinical risk
 
-### 💡 Clinical Implications
+### Clinical Implications
 - **Dataset Limitations**: Missing traditional cardiac risk factors (ECG, chest pain, family history)
 - **Feature Quality**: Lifestyle/psychological variables insufficient for clinical-grade prediction
 - **Optimization Paradox**: Standard ML optimization may worsen healthcare performance
@@ -71,7 +72,7 @@ An advanced machine learning system for predicting heart disease risk using comp
 ### Prerequisites
 - Python 3.8+ 
 - Git
-- Docker (optional, for containerized deployment)
+- Docker (optional, for containerization)
 
 ### Clone Repository
 ```bash
@@ -87,9 +88,13 @@ source heart_risk_env/bin/activate  # On Windows: heart_risk_env\Scripts\activat
 pip install -r requirements.txt
 ```
 
-## �🚀 Quick Start
+## Web Application Development
 
-### Option 1: Docker Deployment (Recommended)
+[![App Status](https://img.shields.io/badge/App-Production%20Ready-brightgreen?style=for-the-badge&logo=gradio)](app/app_gradio.py)
+[![Docker](https://img.shields.io/badge/Docker-Supported-blue?style=for-the-badge&logo=docker)](docker/docker-compose.yml)
+[![XAI](https://img.shields.io/badge/XAI-SHAP%20%2B%20LIME-orange?style=for-the-badge)](results/explainability/)
+
+### Docker Setup (Recommended)
 ```bash
 # Build and run the containerized application
 docker build -f docker/Dockerfile -t heart-risk-app .
@@ -99,7 +104,7 @@ docker run -d --name heart-risk-container -p 7860:7860 heart-risk-app
 open http://localhost:7860
 ```
 
-### Option 2: Local Development
+### Local Development
 ```bash
 # Install dependencies
 pip install -r requirements.txt
@@ -110,11 +115,13 @@ python app/app_gradio.py
 # Access at http://localhost:7861
 ```
 
-### 🌐 Features
-- **🔄 Environment Auto-Detection**: Automatically configures ports based on environment
-- **🎨 Professional Interface**: Medical-grade styling with clinical compliance
-- **📊 Risk Classification**: Three-tier assessment (Low/Moderate/High)
-- **🔍 XAI Integration**: SHAP-based explanations for transparency
+### Application Features
+- **Automatic Environment Detection**: Intelligent port configuration based on execution context
+- **Professional Medical Interface**: Clinical-grade styling with comprehensive safety protocols
+- **Three-Tier Risk Assessment**: Low/Moderate/High classification with clinical thresholds
+- **Dual Explainable AI**: SHAP global analysis and LIME individual explanations
+- **Evidence-Based Interpretation**: Clinical risk factor analysis with patient-friendly language
+- **Containerization Ready**: Docker setup with optimized performance
 
 ## Research Methodology
 
@@ -124,7 +131,7 @@ python app/app_gradio.py
 3. **Error Analysis**: Comprehensive post-optimization investigation with clinical safety assessment
 4. **Literature Review**: 58 peer-reviewed references (2019-2026) with healthcare ML methodology analysis
 5. **Explainable AI**: SHAP implementation for clinical feature importance and root cause analysis
-6. **Production Deployment**: Professional Docker containerization with medical-grade interface
+6. **Application Framework**: Professional Docker containerization with medical-grade interface
 
 ### Performance Results
 | Model | Test F1-Score | Sensitivity | Specificity | Clinical Assessment |
@@ -134,45 +141,45 @@ python app/app_gradio.py
 | Adaptive_LR | 0.032 | 1.8% | 99.4% | Nearly unusable for screening |
 
 ### Key Findings
-- **Clinical Safety Failure**: All models fail healthcare deployment criteria (required ≥80% sensitivity)
+- **Clinical Safety Failure**: All models fail healthcare safety criteria (required ≥80% sensitivity)
 - **Performance Gap**: Significant disparity vs. published benchmarks (65-92% F1) indicates methodological challenges
 - **Psychological Insufficiency**: Mental health variables inadequate for clinical-grade heart disease prediction
 - **Economic Impact**: 822 missed cases per 8,476 patients represents unacceptable medical risk
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 heart_risk_prediction/
-├── app/                         # 🌐 Web Application
+├── app/                         # Web Application
 │   └── app_gradio.py            # Professional medical interface
-├── data/                        # 📊 Dataset & Processing  
+├── data/                        # Dataset & Processing  
 │   ├── raw/heart_data.csv        # European Social Survey data
 │   └── processed/               # Clean splits & preprocessing artifacts
-├── docker/                      # 🐳 Containerization
+├── docker/                      # Containerization
 │   ├── Dockerfile               # Optimized container image
 │   ├── docker-compose.yml       # Multi-service orchestration
 │   └── entrypoint_app.sh        # Professional startup script
-├── notebooks/                   # 🔬 Research Pipeline (Complete)
+├── notebooks/                   # Research Pipeline (Complete)
 │   ├── 01_eda.ipynb             # Data exploration & analysis
 │   ├── 02_data_processing.ipynb # Preprocessing & feature engineering 
 │   ├── 03_modeling.ipynb        # Model training & optimization
 │   ├── 04_error_analysis.ipynb  # Clinical safety assessment
 │   └── 05_explainability.ipynb  # SHAP analysis & XAI implementation
-├── reports/                     # 📚 Academic Documentation
+├── reports/                     # Academic Documentation
 │   ├── final_report.md          # Master's thesis report
 │   └── literature_review.md     # 58-reference state-of-the-art review
-├── results/                     # 📊 Model Artifacts & Analysis
+├── results/                     # Model Artifacts & Analysis
 │   ├── explainability/          # SHAP visualizations & clinical insights
 │   ├── models/                  # Trained models & preprocessing artifacts
 │   └── metrics/                 # Performance evaluation results
-└── src/                        # ⚚️ Core Implementation
+└── src/                        # Core Implementation
     ├── tuning/                  # Hyperparameter optimization
     └── analysis/                # Clinical decision support
 ```
 
-## 🔧 Research Pipeline
+## Research Pipeline
 
-### 📓 Jupyter Notebooks
+### Jupyter Notebooks
 Systematic 5-notebook research methodology:
 
 1. **01_eda.ipynb** - Data exploration and statistical analysis
@@ -181,61 +188,61 @@ Systematic 5-notebook research methodology:
 4. **04_error_analysis.ipynb** - Clinical safety assessment and diagnostics
 5. **05_explainability.ipynb** - SHAP implementation and XAI analysis
 
-### 📋 Dataset Information
+### Dataset Information
 - **Source**: European Social Survey Health Dataset
 - **Sample Size**: 8,476 patients with 22 health/lifestyle features  
 - **Target**: Binary heart disease indicator (18.4% positive rate)
 - **Splits**: 70% train / 15% validation / 15% test (stratified)
 
-### ⚙️ Configuration
+### Configuration
 Modify `src/config.yaml` for:
 - Model hyperparameters and training settings
 - Data processing and feature engineering 
 - Clinical evaluation thresholds
 - XAI explanation parameters
 
-## 🔬 Research Methodology & Critical Findings
+## Research Methodology & Critical Findings
 
-### 🏅 Optimization Framework
+### Optimization Framework
 1. **Hyperparameter Optimization**: RandomizedSearchCV with F1-score focus
 2. **Model Validation**: Comprehensive test set evaluation 
-3. **Clinical Assessment**: Healthcare deployment criteria analysis
+3. **Clinical Assessment**: Healthcare safety criteria analysis
 4. **Error Investigation**: Systematic diagnostic and safety evaluation
 5. **XAI Implementation**: SHAP analysis for feature importance and root cause investigation
 
-### 🚨 Critical Research Findings
+### Critical Research Findings
 
-📏 **Clinical Safety Crisis**
-- All models fail healthcare deployment criteria (required ≥80% sensitivity)
+**Clinical Safety Crisis**
+- All models fail healthcare safety criteria (required ≥80% sensitivity)
 - 822 missed heart disease cases per 8,476 patients = unacceptable medical risk
 - Best model sensitivity: only 14.3% (misses 85.7% of actual cases)
 
-📉 **Performance vs. Literature Gap** 
+**Performance vs. Literature Gap** 
 - Our results: 17.5% F1-score vs. published benchmarks: 65-92% F1
 - Significant methodological challenges identified
 - Demonstrates need for honest assessment in healthcare ML
 
-🧬 **Root Cause Analysis (via SHAP)**
+**Root Cause Analysis (via SHAP)**
 - Missing traditional cardiac risk factors (ECG, chest pain, family history)
 - Dataset emphasizes psychological/lifestyle factors with weak predictive signal  
 - Optimization paradox: weak predictors cannot be optimized for clinical performance
 
-## 📚 Academic Documentation
+## Academic Documentation
 
-### 📄 Research Reports
+### Research Reports
 - **[Final Report](reports/final_report.md)**: Master's thesis with comprehensive methodology and findings
 - **[Literature Review](reports/literature_review.md)**: 58 peer-reviewed references (2019-2026)
 - **[Technical Documentation](reports/)**: Progress reports and implementation specifications
 
-### 🎯 Research Impact
+### Research Impact
 - **Academic Contribution**: Methodology for honest assessment of healthcare ML challenges
-- **Clinical Insight**: Demonstrates gap between ML research and clinical deployment
+- **Clinical Insight**: Demonstrates gap between ML research and clinical application
 - **Technical Innovation**: Complete end-to-end pipeline with professional containerization
 - **Safety Focus**: Patient-centered evaluation prioritizing clinical safety over accuracy
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 ### Academic Research
 1. Review methodology in [final report](reports/final_report.md)
@@ -251,7 +258,7 @@ Modify `src/config.yaml` for:
 
 ---
 
-## 📋 License & Acknowledgments
+## License & Acknowledgments
 
 **License**: MIT License - see [LICENSE](LICENSE) file
 
@@ -263,4 +270,4 @@ Modify `src/config.yaml` for:
 
 ---
 
-**🎯 Project Status**: Production Complete | **📅 Last Updated**: January 2026 | **👨‍💻 Author**: Peter Ugoona Obi
+**Project Status**: Production Complete | **Last Updated**: January 2026 | **Author**: Peter Ugoona Obi
