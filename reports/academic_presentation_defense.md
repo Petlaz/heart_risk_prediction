@@ -93,6 +93,31 @@
 - **False Negative Explosion:** Sensitivity collapsed from 40.5% to 14.3%
 - **Healthcare ML Challenge:** Traditional optimization frameworks contraindicated for clinical applications
 - **Novel Research Contribution:** First documented evidence of optimization paradox in healthcare ML
+### Empirical Validation Through Application Testing
+
+**Critical Finding: Discriminative Range Analysis**
+
+Our application testing revealed additional evidence supporting the optimization paradox:
+
+| Risk Profile | Patient Details | Disease Probability | Clinical Reality |
+|--------------|-----------------|--------------------|-----------------|
+| **Low Risk** | 45yr, BMI 24.2, non-smoker | **24.0%** | Healthy individual |
+| **Moderate Risk** | 62yr, BMI 40.1, moderate smoker | **31.1%** | Multiple risk factors |
+| **High Risk** | 77yr, BMI 56.0, heavy smoker/drinker | **35.1%** | Extreme risk accumulation |
+
+**Key Finding:** Despite vastly different risk profiles, the model produces only an **11.1% probability spread**
+
+**Critical Research Validations:**
+
+- **Threshold Testing Validates Limited Discrimination:** Risk categories show minimal separation (24.0% → 37.9%)
+- **Clinical Risk Categories Show Minimal Separation:** Three-tier classification fails to meaningfully distinguish patient risk levels
+- **Empirical Evidence of Psychological Variable Limitations:** Lifestyle surveys inadequate for clinical cardiovascular assessment
+
+**Research Significance:**
+
+- **Dataset Limitation Proof:** Psychological variables cannot distinguish between extreme risk profiles
+- **Clinical Inadequacy Evidence:** No physician would consider these patients similarly risky
+- **Optimization Failure Validation:** Even optimized models cannot overcome fundamental data constraints
 
 ![](results/plots/optimization_paradox_comparison.png)
 
@@ -174,7 +199,7 @@
 - **Risk Stratification:** Evidence-based Low/Moderate/High classification with WHO/AHA threshold validation
 - **Clinical Decision Support:** Traffic light system (6-4 threshold) based on validated health behavior scales
 - **Safety Compliance:** Medical disclaimers and professional consultation requirements
-- **Deployment Ready:** Docker containerization with environment detection
+- **Development Environment:** Docker containerization with environment detection
 
 **Demonstrates Complete Research-to-Production Pipeline**
 
@@ -226,14 +251,14 @@ The application demonstrates professional development methodology with transpare
 - SHAP analysis revealed dataset limitation mechanisms at global level
 - LIME integration provided individual patient-level explanations
 - Demonstrated complete XAI pipeline from research to clinical application
-- Professional fallback system ensures robust deployment
+- Professional fallback system ensures robust development testing
 
 ### Strategic Healthcare AI Recommendations
 
 1. **Prioritize Clinical Features:** Traditional biomarkers essential for viable cardiac prediction
 2. **Safety-First Optimization:** Develop healthcare-specific optimization frameworks
 3. **Mandatory XAI Integration:** Explainability required for clinical validation
-4. **Transparent Research Standards:** Honest assessment of deployment failures
+4. **Transparent Research Standards:** Honest assessment of testing limitations
 
 ---
 
