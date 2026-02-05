@@ -93,13 +93,13 @@ Quality Criteria: Peer-reviewed publications from high-impact journals and confe
 
 Comprehensive Performance Analysis:
 
-| Study | Year | Dataset Size | Best F1 | Best Model | Sensitivity | Implementation Level |
-|-------|------|-------------|---------|------------|-------------|---------------------|
-| Sharma et al. | 2023 | 1,025 | 0.89 | Ensemble | 0.87 | Cross-validation only |
-| Rahman & Ahmed | 2024 | 4,238 | 0.78 | Random Forest | 0.82 | Retrospective validation |
-| Chen et al. | 2023 | 15,000 | 0.85 | Transformer | 0.83 | Hospital deployment |
+| Study | Year | N | F1 | Model | Sens | Implementation |
+|-------|------|---|----|----|------|----------------|
+| Sharma et al. | 2023 | 1,025 | 0.89 | Ensemble | 0.87 | CV only |
+| Rahman & Ahmed | 2024 | 4,238 | 0.78 | RF | 0.82 | Retrospective |
+| Chen et al. | 2023 | 15,000 | 0.85 | DL | 0.83 | Hospital deploy |
 | Kumar et al. | 2024 | 2,500 | 0.72 | XGBoost | 0.78 | Clinical review |
-| Our Study | 2026 | 8,476 | 0.175 | Adaptive Ensemble | 0.143 | Complete end-to-end implementation |
+| Our Study | 2026 | 8,476 | 0.175 | Adaptive Ensemble | 0.143 | Full implementation |
 
 Critical Performance Gap Analysis:
 
@@ -364,8 +364,8 @@ Input System Implementation:
 
 Output System Implementation:
 
-- Risk Classification: Color-coded Low (green), Moderate (yellow), High (red) categories
-- Probability Display: Percentage-based risk score with two decimal precision
+- Risk Classification: Text-based Low Risk, Moderate Risk, High Risk categories with clinical messaging
+- Probability Display: Percentage-based risk score with two decimal precision and color-coded probability boxes (red for disease risk, green for no disease)
 - Dual XAI Integration: SHAP global analysis and LIME individual explanations
 - Clinical Interpretation: Patient-friendly explanations of risk factors and protective factors
 - Professional Interface: Structured output with clear medical terminology and recommendations
@@ -431,11 +431,11 @@ else:
 
 Calibrated Threshold System:
 
-- Low Risk: <25% probability with green color coding for reassurance
-- Moderate Risk: 25-35% probability with yellow color coding for awareness
-- High Risk: ≥35% probability with red color coding for immediate attention
+- Low Risk: <25% probability with clinical messaging for reassurance
+- Moderate Risk: 25-35% probability with clinical messaging for awareness
+- High Risk: ≥35% probability with clinical messaging for immediate attention
 - Evidence-Based Calibration: Thresholds derived from cardiovascular epidemiology literature
-- Visual Classification: Color-coded risk display with clear clinical messaging
+- Visual Classification: Text-based risk display with clear clinical messaging
 
 Feature Engineering Pipeline Implementation:
 
@@ -494,11 +494,11 @@ Through comprehensive application testing with diverse risk profiles, we discove
 
 **Test Case Analysis:**
 
-| Risk Level | Patient Profile | Disease Probability | Key Observations |
-|------------|-----------------|--------------------|-----------------|
-| **Low Risk** | 45yr, BMI 24.2, non-smoker, active | **24.0%** | Healthy baseline profile |
-| **Moderate Risk** | 62yr, BMI 40.1, moderate smoker | **31.1%** | Severe obesity + smoking |
-| **High Risk** | 77yr, BMI 56.0, heavy smoker/drinker | **35.1%** | Extreme risk accumulation |
+| Risk Level | Patient Profile | Prob | Observations |
+|------------|-----------------|------|--------------|
+| **Low Risk** | 45yr, BMI 24.2, non-smoker, active | **24.0%** | Healthy baseline |
+| **Moderate Risk** | 62yr, BMI 40.1, moderate smoker | **31.1%** | Obesity + smoking |
+| **High Risk** | 77yr, BMI 56.0, heavy smoker/drinker | **35.1%** | Extreme risk |
 
 **Critical Discovery: Narrow Discriminative Range**
 
@@ -511,7 +511,7 @@ Despite dramatically different risk profiles, the model produces only an **11.1%
 
 **Research Significance:**
 
-This discriminative analysis transforms a potential model limitation into **empirical proof** of our core research thesis. The application successfully demonstrates that psychological-based cardiac prediction, regardless of algorithmic sophistication, cannot achieve clinically meaningful risk stratification.
+This discriminative analysis transforms a potential model limitation into **empirical proof** of our core research project. The application successfully demonstrates that psychological-based cardiac prediction, regardless of algorithmic sophistication, cannot achieve clinically meaningful risk stratification.
 
 **Key Research Validations:**
 
@@ -537,11 +537,11 @@ Five baseline machine learning algorithms were implemented and evaluated using c
 
 Table 4.1: Baseline Model Performance Results
 
-| Model | CV F1 Mean | CV F1 Std | Val Accuracy | Val Precision | Val Recall | Val F1 | Val AUC | Rank |
-|-------|:----------:|:---------:|:------------:|:-------------:|:----------:|:------:|:-------:|:----:|
+| Model | CV F1 | CV Std | Val Acc | Val Prec | Val Rec | Val F1 | AUC | Rank |
+|-------|:-----:|:------:|:-------:|:--------:|:-------:|:------:|:---:|:----:|
 | Neural Network | N/A | N/A | 79.4% | 24.8% | 40.5% | 30.8% | 68.2% | 1 |
 | XGBoost | 29.8% | 0.007 | 73.7% | 21.7% | 50.8% | 30.4% | 69.1% | 2 |
-| Support Vector Machine | 29.8% | 0.006 | 70.6% | 20.2% | 54.4% | 29.5% | 68.6% | 3 |
+| SVM | 29.8% | 0.006 | 70.6% | 20.2% | 54.4% | 29.5% | 68.6% | 3 |
 | Logistic Regression | 28.4% | 0.006 | 65.4% | 18.9% | 62.5% | 29.0% | 68.9% | 4 |
 | Random Forest | 30.5% | 0.009 | 79.8% | 24.0% | 36.4% | 28.9% | 70.1% | 5 |
 
@@ -565,9 +565,9 @@ Following systematic hyperparameter optimization using RandomizedSearchCV, three
 
 Table 4.2: Hyperparameter Optimization Results
 
-| Model | Validation F1 | Test F1 | Generalization Gap | Clinical Status |
-|-------|:-------------:|:-------:|:-----------------:|:---------------:|
-| Adaptive Ensemble | 0.29 | 0.175 | -0.115 | Clinically insufficient |
+| Model | Val F1 | Test F1 | Gen Gap | Status |
+|-------|:------:|:-------:|:-------:|:-------:|
+| Adaptive Ensemble | 0.29 | 0.175 | -0.115 | Insufficient |
 | Optimal Hybrid | 0.28 | 0.091 | -0.189 | Poor generalization |
 | Adaptive LR | 0.29 | 0.032 | -0.258 | Severe overfitting |
 
@@ -577,12 +577,12 @@ Critical Finding: Validation performance does not predict test performance, high
 
 Critical Performance Analysis: Optimization Impact
 
-| Model Type  | Best Model        | F1-Score | Sensitivity | Specificity | Clinical Status       |
-|-------------|-------------------|----------|-------------|-------------|-----------------------|
-| Baseline    | Neural Network    | 30.8%    | 40.5%       | 75.2%       | Moderate performance  |
-| Optimized   | Adaptive_Ensemble | 17.5%    | 14.3%       | 98.4%       | Performance degraded  |
-| Optimized   | Optimal_Hybrid    | 9.1%     | 5.2%        | 99.1%       | Poor generalization   |
-| Optimized   | Adaptive_LR       | 3.2%     | 1.7%        | 99.7%       | Severe overfitting    |
+| Type | Model | F1 | Sens | Spec | Status |
+|------|-------|----|----|------|--------|
+| Baseline | Neural Network | 30.8% | 40.5% | 75.2% | Moderate |
+| Optimized | Adaptive_Ens | 17.5% | 14.3% | 98.4% | Degraded |
+| Optimized | Optimal_Hybrid | 9.1% | 5.2% | 99.1% | Poor generalization |
+| Optimized | Adaptive_LR | 3.2% | 1.7% | 99.7% | Severe overfitting |
 
 Critical Finding: Optimization Paradox
 
@@ -651,12 +651,12 @@ Clinical Insight: Psychological and mood-related features dominate misclassifica
 
 Baseline vs. Optimized Error Comparison:
 
-| Error Type | Baseline (Neural Network) | Optimized (Adaptive_Ensemble) | Change |
-|------------|---------------------------|-------------------------------|--------|
-| False Negatives | ~340 (59.5% miss rate) | 822 (85.7% miss rate) | +142% increase |
-| False Positives | ~420 (moderate) | 470 (slightly higher) | +12% increase |
-| Total Errors | ~760 total errors | 1,292 total errors | +70% increase |
-| Error Rate | ~20.6% error rate | ~15.2% error rate | Better accuracy, worse clinical outcomes |
+| Error Type | Baseline (NN) | Optimized (AE) | Change |
+|------------|---------------|----------------|--------|
+| False Negatives | ~340 (59.5%) | 822 (85.7%) | +142% |
+| False Positives | ~420 (moderate) | 470 (higher) | +12% |
+| Total Errors | ~760 total | 1,292 total | +70% |
+| Error Rate | ~20.6% | ~15.2% | Better acc, worse clinical |
 
 Critical Error Analysis Insight:
 
@@ -704,18 +704,18 @@ Using SHAP TreeExplainer on Baseline Random Forest model with 500 test samples, 
 
 SHAP Global Feature Importance Results:
 
-| Rank | Feature | SHAP Value | Clinical Meaning | Insight |
-|------|---------|------------|------------------|----------|
-| 1 | BMI | 0.0208 | Body Mass Index | Strongest predictor - clinically valid |
-| 2 | dosprt | 0.0189 | Physical Activity | Exercise frequency - excellent validity |
-| 3 | flteeff | 0.0149 | Feeling Everything is Effort | Mental health indicator - weak predictor |
-| 4 | slprl | 0.0126 | Sleep Quality (Restless) | Sleep-cardiac link - moderate signal |
-| 5 | alcfreq | 0.0105 | Alcohol Frequency | Lifestyle factor - limited value |
-| 6 | wrhpp | 0.0093 | Work/Life Happiness | Psychological - weak predictor |
-| 7 | lifestyle_score | 0.0090 | Lifestyle Composite | Derived feature - marginal |
-| 8 | cgtsmok | 0.0086 | Smoking Status | Traditional risk factor |
-| 9 | ctrlife | 0.0080 | Life Control | Psychological - weak signal |
-| 10 | enjlf | 0.0079 | Enjoying Life | Mental health - poor predictor |
+| # | Feature | SHAP | Clinical Meaning | Insight |
+|---|---------|------|------------------|----------|
+| 1 | BMI | 0.0208 | Body Mass Index | Strongest - valid |
+| 2 | dosprt | 0.0189 | Physical Activity | Exercise - valid |
+| 3 | flteeff | 0.0149 | Feeling Effort | Mental health - weak |
+| 4 | slprl | 0.0126 | Sleep Restless | Sleep-cardiac link |
+| 5 | alcfreq | 0.0105 | Alcohol Frequency | Lifestyle - limited |
+| 6 | wrhpp | 0.0093 | Work/Life Happy | Psychological - weak |
+| 7 | lifestyle_score | 0.0090 | Lifestyle Composite | Derived - marginal |
+| 8 | cgtsmok | 0.0086 | Smoking Status | Risk factor |
+| 9 | ctrlife | 0.0080 | Life Control | Psychological - weak |
+| 10 | enjlf | 0.0079 | Enjoying Life | Mental health - poor |
 
 Critical XAI Insights:
 
@@ -831,7 +831,6 @@ Future Directions:
 - Feature Enhancement: Incorporate traditional clinical markers and imaging data
 - Advanced Algorithms: Explore deep learning architectures optimized for healthcare
 - Clinical Collaboration: Engage healthcare professionals in validation and interpretation
-- Explainable AI: Implement SHAP and LIME for clinical interpretability
 
 
 
@@ -1054,7 +1053,7 @@ Risk Classification System Validation:
   - Low Risk: Young healthy (25y, BMI 21, exercise 8/10) → 18.8% probability
   - Moderate Risk: Middle-aged mixed (45y, BMI 27, lifestyle 5/10) → 27.4% probability  
   - High Risk: Older unhealthy (65y, BMI 35, poor lifestyle) → 36.8% probability
-- Color-coded visual classification (green/yellow/red) with clinical messaging
+- Text-based risk classification with clinical messaging and probability box color coding (red/green)
 
 #### Professional Interface Design Results
 
@@ -1076,7 +1075,8 @@ Comprehensive Input System:
 
 Clinical Output System:
 
-- Structured risk probability display with percentage precision
+- Structured risk probability display with percentage precision and color-coded probability boxes (red for disease risk, green for no disease)
+- Three-tier text-based risk classification (Low Risk, Moderate Risk, High Risk) with clinical messaging
 - Dual AI explanations: SHAP global analysis + LIME individual assessment
 - Patient-friendly risk factor interpretations with protective/risk categorization
 - Clinical recommendations based on specific risk profile analysis
