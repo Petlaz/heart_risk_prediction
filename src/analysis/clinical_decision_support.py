@@ -45,7 +45,7 @@ class ClinicalDecisionSupport:
         
     def load_clinical_test_data(self):
         """Load test data and preprocessing artifacts for clinical evaluation."""
-        print("🏥 Loading clinical test data...")
+        print("Loading clinical test data...")
         
         # Load test data
         test_df = pd.read_csv(self.data_path / 'test.csv')
@@ -113,7 +113,7 @@ class ClinicalDecisionSupport:
             }
             
         except Exception as e:
-            print(f"❌ Failed to evaluate model {model_path}: {e}")
+            print(f"Failed to evaluate model {model_path}: {e}")
             return None
             
     def _calculate_clinical_utility(self, tp, fp, tn, fn):
@@ -149,7 +149,7 @@ class ClinicalDecisionSupport:
         
     def analyze_threshold_optimization(self, y_test, y_proba):
         """Analyze optimal clinical decision thresholds."""
-        print("📊 Analyzing threshold optimization for clinical use...")
+        print("Analyzing threshold optimization for clinical use...")
         
         thresholds = np.arange(0.1, 1.0, 0.05)
         threshold_results = []
@@ -183,9 +183,9 @@ class ClinicalDecisionSupport:
             
         return threshold_results
         
-    def generate_clinical_risk_stratification(self, y_test, y_proba):
+    def create_clinical_risk_stratification(self, y_test, y_proba):
         """Create clinical risk stratification analysis."""
-        print("🎯 Creating clinical risk stratification...")
+        print("Creating clinical risk stratification...")
         
         # Risk categories
         risk_categories = {
@@ -229,7 +229,7 @@ class ClinicalDecisionSupport:
         
     def create_clinical_decision_support_report(self, model_name, evaluation_results, threshold_analysis, risk_stratification):
         """Create comprehensive clinical decision support report."""
-        print(f"📋 Creating clinical decision support report for {model_name}...")
+        print(f"Creating clinical decision support report for {model_name}...")
         
         # Extract key metrics
         clinical_metrics = evaluation_results['clinical_metrics']
@@ -263,7 +263,7 @@ class ClinicalDecisionSupport:
                 'max_net_benefit': max(t['net_benefit'] for t in threshold_analysis),
                 'min_cost_per_patient': min(t['cost_per_patient'] for t in threshold_analysis)
             },
-            'clinical_recommendations': self._generate_clinical_recommendations(
+            'clinical_recommendations': self._create_clinical_recommendations(
                 evaluation_results, optimal_threshold, clinical_threshold
             ),
             'confusion_matrix': confusion_matrix_data
@@ -271,7 +271,7 @@ class ClinicalDecisionSupport:
         
         return report
         
-    def _generate_clinical_recommendations(self, evaluation_results, optimal_threshold, clinical_threshold):
+    def _create_clinical_recommendations(self, evaluation_results, optimal_threshold, clinical_threshold):
         """Create clinical recommendations based on model evaluation."""
         recommendations = []
         
@@ -349,7 +349,7 @@ class ClinicalDecisionSupport:
         
     def create_clinical_visualizations(self, model_name, threshold_analysis, risk_stratification, evaluation_results):
         """Create clinical decision support visualizations."""
-        print("📊 Creating clinical decision support visualizations...")
+        print("Creating clinical decision support visualizations...")
         
         fig, axes = plt.subplots(2, 3, figsize=(18, 12))
         
@@ -460,12 +460,12 @@ class ClinicalDecisionSupport:
         plt.savefig(output_file, dpi=300, bbox_inches='tight')
         plt.close()
         
-        print(f"✅ Clinical visualizations saved to {output_file}")
+        print(f"Clinical visualizations saved to {output_file}")
         return output_file
         
     def run_comprehensive_clinical_analysis(self):
         """Run comprehensive clinical decision support analysis."""
-        print("🏥 STARTING COMPREHENSIVE CLINICAL DECISION SUPPORT ANALYSIS")
+        print("STARTING COMPREHENSIVE CLINICAL DECISION SUPPORT ANALYSIS")
         print("=" * 80)
         
         # Load clinical test data
@@ -484,7 +484,7 @@ class ClinicalDecisionSupport:
         
         for model_name, model_config in clinical_models.items():
             if model_config['path'].exists():
-                print(f"\n🔬 Analyzing {model_name} for clinical deployment...")
+                print(f"\nAnalyzing {model_name} for clinical deployment...")
                 
                 # Evaluate model
                 evaluation = self.evaluate_clinical_model_performance(
@@ -498,7 +498,7 @@ class ClinicalDecisionSupport:
                     )
                     
                     # Risk stratification
-                    risk_stratification = self.generate_clinical_risk_stratification(
+                    risk_stratification = self.create_clinical_risk_stratification(
                         y_test, evaluation['probabilities']
                     )
                     
@@ -527,39 +527,39 @@ class ClinicalDecisionSupport:
         with open(results_file, 'w') as f:
             json.dump(comprehensive_results, f, indent=2, default=str)
             
-        print(f"\n💾 Comprehensive clinical analysis saved to {results_file}")
+        print(f"\nComprehensive clinical analysis saved to {results_file}")
         
         return comprehensive_results
         
     def _print_clinical_summary(self, model_name, clinical_report):
         """Print clinical summary for a model."""
-        print(f"\n📋 CLINICAL SUMMARY - {model_name}")
+        print(f"\nCLINICAL SUMMARY - {model_name}")
         print("-" * 50)
         
         default_perf = clinical_report['clinical_performance']['default_threshold']
         utility = clinical_report['clinical_utility_analysis']
         
-        print(f"🎯 Clinical Performance:")
+        print(f"Clinical Performance:")
         print(f"   Sensitivity: {default_perf['sensitivity']:.2%} (catches {default_perf['sensitivity']*100:.1f}% of cases)")
         print(f"   Specificity: {default_perf['specificity']:.2%} (avoids {default_perf['specificity']*100:.1f}% false alarms)")
         print(f"   PPV: {default_perf['ppv']:.2%}")
         print(f"   NPV: {default_perf['npv']:.2%}")
         
-        print(f"\n💰 Clinical Utility:")
+        print(f"\nClinical Utility:")
         print(f"   Cost per patient: €{utility['cost_per_patient']:.2f}")
         print(f"   Net benefit: {utility['net_benefit']:.4f}")
         print(f"   Lives saved per 1000: {utility['lives_saved_per_1000']:.1f}")
         print(f"   Missed cases per 1000: {utility['missed_cases_per_1000']:.1f}")
         
-        print(f"\n⚖️ Clinical Criteria:")
-        criteria_met = "✅ MEETS" if default_perf['meets_criteria'] else "❌ FAILS"
+        print(f"\nClinical Criteria:")
+        criteria_met = "MEETS" if default_perf['meets_criteria'] else "FAILS"
         print(f"   {criteria_met} clinical deployment criteria")
         
         recommendations = clinical_report['clinical_recommendations']
         high_priority = [r for r in recommendations if r['priority'] in ['CRITICAL', 'HIGH']]
         
         if high_priority:
-            print(f"\n⚠️ Critical Recommendations:")
+            print(f"\nCritical Recommendations:")
             for rec in high_priority[:3]:  # Top 3 priority recommendations
                 print(f"   {rec['priority']}: {rec['recommendation']}")
 
@@ -573,10 +573,10 @@ def main():
     results = clinical_analyzer.run_comprehensive_clinical_analysis()
     
     if results:
-        print(f"\n🎉 Clinical decision support analysis completed successfully!")
-        print(f"📁 Results directory: {clinical_analyzer.results_path}")
+        print(f"\nClinical decision support analysis completed successfully!")
+        print(f"Results directory: {clinical_analyzer.results_path}")
     else:
-        print("❌ Clinical analysis failed. Check model files and data availability.")
+        print("Clinical analysis failed. Check model files and data availability.")
 
 
 if __name__ == "__main__":

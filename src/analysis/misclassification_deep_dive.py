@@ -59,8 +59,8 @@ class MisclassificationAnalysis:
         }
         
     def load_misclassification_data(self, model_name):
-        """Load data and generate misclassification indices."""
-        print(f"📊 Loading misclassification data for {model_name}...")
+        """Load data and create misclassification indices."""
+        print(f"Loading misclassification data for {model_name}...")
         
         # Load test data
         test_df = pd.read_csv(self.data_path / 'test.csv')
@@ -107,7 +107,7 @@ class MisclassificationAnalysis:
         
     def analyze_false_positive_patterns(self, X_test, y_test, y_pred, y_proba, fp_indices):
         """Deep analysis of false positive misclassifications."""
-        print("🔍 Analyzing false positive patterns...")
+        print("Analyzing false positive patterns...")
         
         if not fp_indices:
             return {'message': 'No false positives found', 'analysis': {}}
@@ -176,7 +176,7 @@ class MisclassificationAnalysis:
         
     def analyze_false_negative_patterns(self, X_test, y_test, y_pred, y_proba, fn_indices):
         """Deep analysis of false negative misclassifications."""
-        print("🔍 Analyzing false negative patterns...")
+        print("Analyzing false negative patterns...")
         
         if not fn_indices:
             return {'message': 'No false negatives found', 'analysis': {}}
@@ -313,7 +313,7 @@ class MisclassificationAnalysis:
         
     def perform_clustering_analysis(self, X_test, misclass_indices):
         """Perform clustering analysis on misclassified samples."""
-        print("🔬 Performing clustering analysis on misclassifications...")
+        print("ANALYSIS: Performing clustering analysis on misclassifications...")
         
         # Combine all misclassified samples
         all_misclass = misclass_indices['false_positives'] + misclass_indices['false_negatives']
@@ -425,7 +425,7 @@ class MisclassificationAnalysis:
         
     def create_misclassification_visualizations(self, model_name, X_test, misclass_indices, fp_analysis, fn_analysis, clustering_results):
         """Create comprehensive misclassification visualizations."""
-        print("📊 Creating misclassification visualizations...")
+        print("Creating misclassification visualizations...")
         
         fig, axes = plt.subplots(3, 3, figsize=(20, 18))
         
@@ -571,12 +571,12 @@ class MisclassificationAnalysis:
         plt.savefig(output_file, dpi=300, bbox_inches='tight')
         plt.close()
         
-        print(f"✅ Misclassification visualizations saved to {output_file}")
+        print(f"Misclassification visualizations saved to {output_file}")
         return output_file
         
     def run_comprehensive_misclassification_analysis(self, model_name='Adaptive_Ensemble'):
         """Run comprehensive misclassification analysis for a specific model."""
-        print(f"🔍 STARTING COMPREHENSIVE MISCLASSIFICATION ANALYSIS")
+        print(f"STARTING COMPREHENSIVE MISCLASSIFICATION ANALYSIS")
         print(f"Target Model: {model_name}")
         print("=" * 70)
         
@@ -629,7 +629,7 @@ class MisclassificationAnalysis:
             with open(results_file, 'w') as f:
                 json.dump(comprehensive_results, f, indent=2, default=str)
                 
-            print(f"\n💾 Misclassification analysis saved to {results_file}")
+            print(f"\nSAVED: Misclassification analysis saved to {results_file}")
             
             # Print summary
             self._print_misclassification_summary(comprehensive_results)
@@ -637,7 +637,7 @@ class MisclassificationAnalysis:
             return comprehensive_results
             
         except Exception as e:
-            print(f"❌ Misclassification analysis failed: {e}")
+            print(f"ERROR: Misclassification analysis failed: {e}")
             return None
             
     def _print_misclassification_summary(self, results):
@@ -645,13 +645,13 @@ class MisclassificationAnalysis:
         summary = results['misclassification_summary']
         
         print("\n" + "="*70)
-        print("🎯 MISCLASSIFICATION ANALYSIS SUMMARY")
+        print("MISCLASSIFICATION ANALYSIS SUMMARY")
         print("="*70)
         
         total_samples = summary['false_positives'] + summary['false_negatives'] + summary['true_positives'] + summary['true_negatives']
         accuracy = (summary['true_positives'] + summary['true_negatives']) / total_samples
         
-        print(f"\n📊 Classification Results:")
+        print(f"\nClassification Results:")
         print(f"   True Positives: {summary['true_positives']}")
         print(f"   True Negatives: {summary['true_negatives']}")
         print(f"   False Positives: {summary['false_positives']} (unnecessary referrals)")
@@ -660,14 +660,14 @@ class MisclassificationAnalysis:
         
         # False Positive insights
         if results['false_positive_analysis'] and 'top_discriminating_features' in results['false_positive_analysis']:
-            print(f"\n🔴 False Positive Insights:")
+            print(f"\nFalse Positive Insights:")
             fp_features = results['false_positive_analysis']['top_discriminating_features']
             for feature, data in list(fp_features.items())[:3]:
                 print(f"   {data['description']}: Effect size {data['effect_size']:.3f}")
                 
         # False Negative insights
         if results['false_negative_analysis'] and 'top_discriminating_features' in results['false_negative_analysis']:
-            print(f"\n🟠 False Negative Insights:")
+            print(f"\nFalse Negative Insights:")
             fn_features = results['false_negative_analysis']['top_discriminating_features']
             for feature, data in list(fn_features.items())[:3]:
                 print(f"   {data['description']}: Effect size {data['effect_size']:.3f}")
@@ -675,11 +675,11 @@ class MisclassificationAnalysis:
         # Clustering insights
         if results['clustering_analysis'] and 'cluster_analysis' in results['clustering_analysis']:
             clusters = results['clustering_analysis']['cluster_analysis']
-            print(f"\n🔬 Clustering Insights:")
+            print(f"\nCLUSTERING INSIGHTS: Clustering Insights:")
             for cluster_name, cluster_data in clusters.items():
                 print(f"   {cluster_name}: {cluster_data['sample_count']} samples - {cluster_data['cluster_description']}")
         
-        print("\n✅ MISCLASSIFICATION ANALYSIS COMPLETE")
+        print("\nMISCLASSIFICATION ANALYSIS COMPLETE")
 
 
 def main():
@@ -691,10 +691,10 @@ def main():
     results = analyzer.run_comprehensive_misclassification_analysis('Adaptive_Ensemble')
     
     if results:
-        print(f"\n🎉 Misclassification analysis completed successfully!")
-        print(f"📁 Results saved to: {analyzer.results_path}")
+        print(f"\nMisclassification analysis completed successfully!")
+        print(f"Results saved to: {analyzer.results_path}")
     else:
-        print("❌ Misclassification analysis failed. Check model files and data availability.")
+        print("ERROR: Misclassification analysis failed. Check model files and data availability.")
 
 
 if __name__ == "__main__":

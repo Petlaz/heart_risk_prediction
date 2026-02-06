@@ -75,21 +75,21 @@ def setup_device():
     """
     Setup optimal device for Apple Silicon
     """
-    print("🔥 SETTING UP PYTORCH DEVICE")
+    print("SETTING UP PYTORCH DEVICE")
     print("=" * 50)
     
     # Priority: MPS (Apple Silicon) > CUDA (NVIDIA) > CPU
     if torch.backends.mps.is_available():
         device = torch.device('mps')
-        print(f"✅ Using Apple Silicon GPU acceleration (MPS)")
+        print(f"Using Apple Silicon GPU acceleration (MPS)")
         # Additional optimizations for Apple Silicon
         os.environ['PYTORCH_MPS_HIGH_WATERMARK_RATIO'] = '0.0'
     elif torch.cuda.is_available():
         device = torch.device('cuda')
-        print(f"✅ Using NVIDIA GPU acceleration (CUDA)")
+        print(f"SUCCESS: Using NVIDIA GPU acceleration (CUDA)")
     else:
         device = torch.device('cpu')
-        print(f"⚠️ Using CPU (consider enabling GPU acceleration)")
+        print(f"WARNING: Using CPU (consider enabling GPU acceleration)")
 
     print(f"Device: {device}")
     return device
@@ -99,7 +99,7 @@ def load_data():
     """
     Load processed datasets
     """
-    print("📥 LOADING PROCESSED DATASETS")
+    print("LOADING PROCESSED DATASETS")
     print("=" * 50)
     
     # Load train/validation datasets
@@ -110,9 +110,9 @@ def load_data():
     feature_names_df = pd.read_csv("data/processed/feature_names.csv")
     feature_names = feature_names_df['feature_name'].tolist()
     
-    print(f"✅ Training set: {train_df.shape}")
-    print(f"✅ Validation set: {val_df.shape}")
-    print(f"✅ Features: {len(feature_names)} predictors")
+    print(f"Training set: {train_df.shape}")
+    print(f"Validation set: {val_df.shape}")
+    print(f"Features: {len(feature_names)} predictors")
     
     # Separate features and targets
     X_train = train_df[feature_names]
@@ -135,7 +135,7 @@ def create_data_loaders(X_train, X_val, y_train, y_val, device, batch_size=128):
     """
     Create PyTorch data loaders with smaller batch size for stability
     """
-    print("🔄 CREATING DATA LOADERS")
+    print("CREATING DATA LOADERS")
     print("=" * 50)
     
     try:
@@ -145,7 +145,7 @@ def create_data_loaders(X_train, X_val, y_train, y_val, device, batch_size=128):
         X_val_tensor = torch.FloatTensor(X_val.values).to(device)
         y_val_tensor = torch.FloatTensor(y_val.values.reshape(-1, 1)).to(device)
         
-        print(f"✅ Tensors created successfully")
+        print(f"SUCCESS: Tensors created successfully")
         print(f"Training tensor shape: {X_train_tensor.shape}")
         print(f"Validation tensor shape: {X_val_tensor.shape}")
         
@@ -156,14 +156,14 @@ def create_data_loaders(X_train, X_val, y_train, y_val, device, batch_size=128):
         train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
         val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
         
-        print(f"✅ Data loaders created with batch size: {batch_size}")
+        print(f"SUCCESS: Data loaders created with batch size: {batch_size}")
         print(f"Training batches: {len(train_loader)}")
         print(f"Validation batches: {len(val_loader)}")
         
         return train_loader, val_loader
         
     except Exception as e:
-        print(f"❌ Error creating data loaders: {e}")
+        print(f"ERROR: Error creating data loaders: {e}")
         raise
 
 
@@ -173,7 +173,7 @@ def train_neural_network(model, train_loader, val_loader, criterion, optimizer, 
     Train neural network with early stopping and progress monitoring
     Reduced epochs and patience for faster execution
     """
-    print("🚀 STARTING NEURAL NETWORK TRAINING")
+    print("STARTING NEURAL NETWORK TRAINING")
     print("=" * 50)
     
     train_losses = []
@@ -215,7 +215,7 @@ def train_neural_network(model, train_loader, val_loader, criterion, optimizer, 
                         print(f"    Batch {batch_idx:3d}/{len(train_loader):3d}, Avg Loss: {avg_loss:.6f}")
                         
                 except Exception as e:
-                    print(f"❌ Error in training batch {batch_idx}: {e}")
+                    print(f"ERROR: Error in training batch {batch_idx}: {e}")
                     raise
             
             # Validation phase
@@ -231,7 +231,7 @@ def train_neural_network(model, train_loader, val_loader, criterion, optimizer, 
                         val_loss += loss.item()
                         val_batches_processed += 1
                     except Exception as e:
-                        print(f"❌ Error in validation batch: {e}")
+                        print(f"ERROR: Error in validation batch: {e}")
                         raise
             
             # Calculate average losses
@@ -249,7 +249,7 @@ def train_neural_network(model, train_loader, val_loader, criterion, optimizer, 
                 best_val_loss = val_loss
                 patience_counter = 0
                 best_model_state = model.state_dict().copy()
-                print(f"    ✅ New best validation loss: {best_val_loss:.6f}")
+                print(f"    SUCCESS: New best validation loss: {best_val_loss:.6f}")
             else:
                 patience_counter += 1
             
@@ -264,21 +264,21 @@ def train_neural_network(model, train_loader, val_loader, criterion, optimizer, 
                 
             # Safety check - if training is taking too long, stop
             if total_time > 1800:  # 30 minutes max
-                print(f"⚠️ Training timeout after {total_time:.0f}s - stopping early")
+                print(f"WARNING: Training timeout after {total_time:.0f}s - stopping early")
                 break
         
         # Load best model
         if best_model_state is not None:
             model.load_state_dict(best_model_state)
-            print(f"✅ Loaded best model state (val_loss: {best_val_loss:.6f})")
+            print(f"SUCCESS: Loaded best model state (val_loss: {best_val_loss:.6f})")
         
         total_training_time = time.time() - start_time
-        print(f"✅ Training completed in {total_training_time:.1f}s")
+        print(f"SUCCESS: Training completed in {total_training_time:.1f}s")
         
         return train_losses, val_losses
         
     except Exception as e:
-        print(f"❌ Training failed with error: {e}")
+        print(f"ERROR: Training failed with error: {e}")
         raise
 
 
@@ -286,7 +286,7 @@ def evaluate_model(model, X_train, X_val, y_train, y_val, device):
     """
     Evaluate the trained model
     """
-    print("📊 EVALUATING NEURAL NETWORK MODEL")
+    print("EVALUATING NEURAL NETWORK MODEL")
     print("=" * 50)
     
     # Create wrapper
@@ -319,7 +319,7 @@ def evaluate_model(model, X_train, X_val, y_train, y_val, device):
     }
     
     # Print results
-    print(f"📊 COMPREHENSIVE RESULTS:")
+    print(f"COMPREHENSIVE RESULTS:")
     print(f"Training   - Acc: {nn_metrics['train_accuracy']:.4f}, Prec: {nn_metrics['train_precision']:.4f}, Rec: {nn_metrics['train_recall']:.4f}, F1: {nn_metrics['train_f1']:.4f}")
     print(f"Validation - Acc: {nn_metrics['val_accuracy']:.4f}, Prec: {nn_metrics['val_precision']:.4f}, Rec: {nn_metrics['val_recall']:.4f}, F1: {nn_metrics['val_f1']:.4f}, AUC: {nn_metrics['val_auc']:.4f}")
     
@@ -330,7 +330,7 @@ def save_results(model, nn_metrics, y_pred_val_nn, y_pred_proba_val_nn, train_lo
     """
     Save model and results for loading in notebook
     """
-    print("💾 SAVING RESULTS")
+    print("SAVING RESULTS")
     print("=" * 50)
     
     # Create output directory
@@ -344,7 +344,7 @@ def save_results(model, nn_metrics, y_pred_val_nn, y_pred_proba_val_nn, train_lo
         'device': str(device),
         'training_complete': True
     }, model_path)
-    print(f"✅ Model saved to: {model_path}")
+    print(f"SUCCESS: Model saved to: {model_path}")
     
     # Save metrics and predictions
     results_path = "results/models/neural_network_results.joblib"
@@ -356,7 +356,7 @@ def save_results(model, nn_metrics, y_pred_val_nn, y_pred_proba_val_nn, train_lo
         'val_losses': val_losses,
         'timestamp': datetime.now().isoformat()
     }, results_path)
-    print(f"✅ Results saved to: {results_path}")
+    print(f"SUCCESS: Results saved to: {results_path}")
     
     # Save summary
     summary_path = "results/models/neural_network_summary.txt"
@@ -382,7 +382,7 @@ def save_results(model, nn_metrics, y_pred_val_nn, y_pred_proba_val_nn, train_lo
         f.write("TRAINING SUMMARY:\n")
         f.write(f"  Final training loss:   {train_losses[-1]:.6f}\n")
         f.write(f"  Best validation loss:  {min(val_losses):.6f}\n")
-    print(f"✅ Summary saved to: {summary_path}")
+    print(f"SUCCESS: Summary saved to: {summary_path}")
 
 
 def main():
@@ -390,7 +390,7 @@ def main():
     Main training pipeline
     """
     try:
-        print("🔥 PYTORCH NEURAL NETWORK BASELINE TRAINING")
+        print("PYTORCH NEURAL NETWORK BASELINE TRAINING")
         print("=" * 60)
         print(f"Start time: {datetime.now()}")
         print()
@@ -417,7 +417,7 @@ def main():
         print()
         
         # Initialize model
-        print("🏗️ INITIALIZING MODEL")
+        print("INITIALIZING MODEL")
         print("=" * 50)
         input_dim = X_train.shape[1]
         model = HeartDiseaseNN(input_dim).to(device)
@@ -451,13 +451,13 @@ def main():
         save_results(model, nn_metrics, y_pred_val_nn, y_pred_proba_val_nn, train_losses, val_losses, device)
         print()
         
-        print("🎉 NEURAL NETWORK TRAINING COMPLETED SUCCESSFULLY!")
+        print("NEURAL NETWORK TRAINING COMPLETED SUCCESSFULLY!")
         print(f"End time: {datetime.now()}")
         
         return True
         
     except Exception as e:
-        print(f"❌ TRAINING FAILED: {e}")
+        print(f"ERROR: TRAINING FAILED: {e}")
         print(f"Error type: {type(e).__name__}")
         import traceback
         traceback.print_exc()

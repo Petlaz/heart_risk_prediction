@@ -47,7 +47,7 @@ The entire workflow will be **containerized using Docker** for reproducibility a
 
 ---
 
-## 🧩 3-Month Research Project Roadmap
+## 3-Month Research Project Roadmap
 *(Biweekly meetings – 6 total, ~20 hrs/week)*
 
 ### Weeks 1–2 (Oct 20 – Nov 2): Data Understanding, Baseline Modeling & Error Analysis
@@ -95,29 +95,29 @@ The entire workflow will be **containerized using Docker** for reproducibility a
 
 ---
 
-### Weeks 5–6 (Nov 17 – Dec 1): Local Explainability Integration (XAI) ✅ **COMPLETED**
+### Weeks 5–6 (Nov 17 – Dec 1): Local Explainability Integration (XAI) **COMPLETED**
 
 **Focus:** XAI Implementation
 
 **Tasks:**
-- ✅ **Implement LIME and SHAP for selected model** - SHAP implementation completed with TreeExplainer
-- ✅ **Create SHAP summary, force plots, and LIME explanations** - SHAP summary plots, feature importance, beeswarm plots created
-- ✅ **Compare local explanations across models** - Baseline Random Forest analysis with individual patient cases
-- ✅ **Interpret healthcare-related insights from local explanations** - Clinical interpretation of BMI, exercise, psychological factors
-- ✅ **Ensure XAI modules run inside Docker** - All explainability code containerized and reproducible
-- ✅ **Continue writing State of the Art and Results section** - Literature review and final report updated with XAI findings
+- **Implement LIME and SHAP for selected model** - SHAP implementation completed with TreeExplainer
+- **Create SHAP summary, force plots, and LIME explanations** - SHAP summary plots, feature importance, beeswarm plots created
+- **Compare local explanations across models** - Baseline Random Forest analysis with individual patient cases
+- **Interpret healthcare-related insights from local explanations** - Clinical interpretation of BMI, exercise, psychological factors
+- **Ensure XAI modules run inside Docker** - All explainability code containerized and reproducible
+- **Continue writing State of the Art and Results section** - Literature review and final report updated with XAI findings
 
 **Completed Deliverables:** 
-- ✅ **XAI visualizations:** 4 SHAP plots saved (feature importance, summary beeswarm, detailed summary, bar plot)
-- ✅ **Interpretability report:** Comprehensive clinical interpretation identifying optimization paradox root cause
-- ✅ **Dockerized XAI workflow:** 15-cell explainability notebook with SHAP analysis
-- ✅ **Clinical insights:** BMI (0.0208) and exercise (0.0189) as top predictors, psychological factors as weak signals
-- ✅ **Root cause analysis:** XAI validation of dataset limitations and clinical deployment challenges
+- **XAI visualizations:** 4 SHAP plots saved (feature importance, summary beeswarm, detailed summary, bar plot)
+- **Interpretability report:** Comprehensive clinical interpretation identifying optimization paradox root cause
+- **Dockerized XAI workflow:** 15-cell explainability notebook with SHAP analysis
+- **Clinical insights:** BMI (0.0208) and exercise (0.0189) as top predictors, psychological factors as weak signals
+- **Root cause analysis:** XAI validation of dataset limitations and clinical deployment challenges
 
 **Reading:** 
-- ✅ Interpretable ML Ch. 4–6
-- ✅ Hands-On ML Ch. 11  
-- ✅ Designing ML Systems Ch. 8
+- Interpretable ML Ch. 4–6
+- Hands-On ML Ch. 11  
+- Designing ML Systems Ch. 8
 
 ---
 
@@ -140,24 +140,24 @@ The entire workflow will be **containerized using Docker** for reproducibility a
 
 ---
 
-### Weeks 9–10 (Dec 16 – Jan 1): Evaluation, Refinement & Discussion ✅ **100% COMPLETED**
+### Weeks 9–10 (Dec 16 – Jan 1): Evaluation, Refinement & Discussion **100% COMPLETED**
 
 **Focus:** Final Evaluation and Refinement
 
 **Tasks:**
-- ✅ **Evaluate final model on validation and test sets** - Comprehensive evaluation completed across all optimization approaches
-- ✅ **Assess stability and consistency of local explanations** - SHAP analysis validates consistent feature importance across models
-- ✅ **Refine XAI visuals and final discussion** - 4 comprehensive SHAP visualizations created with clinical interpretation
-- ✅ **Update Docker image with final model** - Docker configuration updated for Gradio app deployment
-- ✅ **Finalize Discussion and State of the Art sections** - All report sections updated with Week 7-8 application findings
-- ✅ **Final Docker testing with public URL deployment** - ✅ Completed (100%)
+- **Evaluate final model on validation and test sets** - Comprehensive evaluation completed across all optimization approaches
+- **Assess stability and consistency of local explanations** - SHAP analysis validates consistent feature importance across models
+- **Refine XAI visuals and final discussion** - 4 comprehensive SHAP visualizations created with clinical interpretation
+- **Update Docker image with final model** - Docker configuration updated for Gradio app deployment
+- **Finalize Discussion and State of the Art sections** - All report sections updated with Week 7-8 application findings
+- **Final Docker testing with public URL deployment** - Completed (100%)
 
 **Completed Deliverables:** 
-- ✅ **Final Model Evaluation**: Comprehensive assessment confirming optimization paradox across all approaches
-- ✅ **XAI Visual Refinement**: Professional SHAP plots with clinical decision support templates
-- ✅ **Professional Application**: Heart Disease Risk Prediction App with medical-grade interface
-- ✅ **Updated Documentation**: All reports enhanced with practical deployment insights
-- ✅ **Docker Integration**: Containerization ready for both local and public URL deployment
+- **Final Model Evaluation**: Comprehensive assessment confirming optimization paradox across all approaches
+- **XAI Visual Refinement**: Professional SHAP plots with clinical decision support templates
+- **Professional Application**: Heart Disease Risk Prediction App with medical-grade interface
+- **Updated Documentation**: All reports enhanced with practical deployment insights
+- **Docker Integration**: Containerization ready for both local and public URL deployment
 - ⏳ **Meeting 5 Summary**: To be completed with final Docker validation
 
 **Key Achievements:**
@@ -167,8 +167,8 @@ The entire workflow will be **containerized using Docker** for reproducibility a
 - **Honest Assessment**: Research provides unprecedented transparent evaluation of healthcare ML challenges
 
 **Reading:** 
-- ✅ Interpretable ML Ch. 7
-- ✅ Designing ML Systems Ch. 9
+- Interpretable ML Ch. 7
+- Designing ML Systems Ch. 9
 
 ---
 
@@ -190,15 +190,15 @@ The entire workflow will be **containerized using Docker** for reproducibility a
 
 ---
 
-## 📅 Summary of Biweekly Meetings
+## Summary of Biweekly Meetings
 
 | Meeting | Week | Focus | Key Deliverable | Status |
 |---------|------|-------|-----------------|--------|
-| 1 | 2 | EDA + Baseline + Error Analysis | Clean dataset + metrics + confusion matrix | ✅ Complete |
-| 2 | 4 | Model Optimization + Early Validation | Optimized models + validation results + literature insights | ✅ Complete |
-| 3 | 6 | Local XAI Integration | LIME/SHAP visualizations + interpretation | ✅ **Complete** |
-| 4 | 8 | Gradio Demo | Interactive demo (Dockerized) | ✅ **Complete** |
-| 5 | 10 | Evaluation + Refinement | Final metrics + discussion draft | ✅ **100% Complete** |
+| 1 | 2 | EDA + Baseline + Error Analysis | Clean dataset + metrics + confusion matrix | Complete |
+| 2 | 4 | Model Optimization + Early Validation | Optimized models + validation results + literature insights | Complete |
+| 3 | 6 | Local XAI Integration | LIME/SHAP visualizations + interpretation | **Complete** |
+| 4 | 8 | Gradio Demo | Interactive demo (Dockerized) | **Complete** |
+| 5 | 10 | Evaluation + Refinement | Final metrics + discussion draft | **100% Complete** |
 | 6 | 12 | Final Presentation | Report + Gradio demo + Docker image | ⏳ In Progress |
 
 ---
@@ -221,24 +221,24 @@ The entire workflow will be **containerized using Docker** for reproducibility a
 1. **Containerization:** Docker for reproducible environment
 2. **Interactive Interface:** Gradio application (port 7860)
 3. **Model Integration:** Classical and neural network comparison
-4. **Real-time Predictions:** Live prediction and explanation generation
+4. **Real-time Predictions:** Live prediction and explanation creation
 
 ---
 
 ## Success Metrics
 
 ### Technical Objectives
-- ✅ All models implemented and optimized
-- ✅ F1 score optimization achieved
-- ✅ **LIME and SHAP successfully integrated** - SHAP TreeExplainer implemented with clinical interpretation
+- All models implemented and optimized
+- F1 score optimization achieved
+- **LIME and SHAP successfully integrated** - SHAP TreeExplainer implemented with clinical interpretation
 - ⏳ Gradio demo functional and containerized (In Progress)
-- ✅ Docker environment fully reproducible
+- Docker environment fully reproducible
 
 ### Academic Deliverables
-- ✅ **Complete literature review** - Updated with Week 5-6 XAI findings
-- ✅ **Full report with all sections** - Final report updated with XAI results
-- ✅ Error analysis and model comparison
-- ✅ **XAI interpretability validation** - SHAP analysis confirms optimization paradox
+- **Complete literature review** - Updated with Week 5-6 XAI findings
+- **Full report with all sections** - Final report updated with XAI results
+- Error analysis and model comparison
+- **XAI interpretability validation** - SHAP analysis confirms optimization paradox
 - ⏳ Final presentation prepared (In Progress)
 
 ### Industry Collaboration

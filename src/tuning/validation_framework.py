@@ -76,7 +76,7 @@ class ValidationFramework:
         
     def load_test_data(self) -> Tuple[pd.DataFrame, pd.Series]:
         """Load test dataset for validation."""
-        print("📂 Loading test dataset...")
+        print("LOADING: Loading test dataset...")
         
         test_df = pd.read_csv(self.data_path / 'test.csv')
         
@@ -92,8 +92,8 @@ class ValidationFramework:
             X_test = test_df.iloc[:, :-1] 
             y_test = test_df.iloc[:, -1]
             
-        print(f"✅ Test data loaded: {X_test.shape[0]} samples, {X_test.shape[1]} features")
-        print(f"📊 Class distribution: {dict(y_test.value_counts().sort_index())}")
+        print(f"Test data loaded: {X_test.shape[0]} samples, {X_test.shape[1]} features")
+        print(f"Class distribution: {dict(y_test.value_counts().sort_index())}")
         
         return X_test, y_test
         
@@ -111,12 +111,12 @@ class ValidationFramework:
         if scaler_path.exists():
             return joblib.load(scaler_path)
         else:
-            print("⚠️ No scaler found - using raw features")
+            print("No scaler found - using raw features")
             return None
             
     def load_optimized_models(self) -> Dict[str, Any]:
         """Load all optimized models for validation."""
-        print("🔄 Loading optimized models...")
+        print("LOADING: Loading optimized models...")
         
         loaded_models = {}
         scaler = self.load_scaler()
@@ -140,13 +140,13 @@ class ValidationFramework:
                         'config': config,
                         'metadata': model_data if isinstance(model_data, dict) else None
                     }
-                    print(f"✅ {model_name}: Loaded successfully")
+                    print(f"{model_name}: Loaded successfully")
                 except Exception as e:
-                    print(f"❌ {model_name}: Failed to load - {e}")
+                    print(f"{model_name}: Failed to load - {e}")
             else:
-                print(f"❌ {model_name}: Model file not found at {model_path}")
-                
-        print(f"📊 Successfully loaded {len(loaded_models)} models")
+                print(f"{model_name}: Model file not found at {model_path}")
+            
+        print(f"Successfully loaded {len(loaded_models)} models")
         return loaded_models
         
     def calculate_clinical_metrics(self, y_true: np.ndarray, y_pred: np.ndarray) -> Dict[str, float]:
@@ -177,7 +177,7 @@ class ValidationFramework:
     def validate_single_model(self, model_name: str, model_info: Dict, 
                             X_test: pd.DataFrame, y_test: pd.Series) -> Dict[str, Any]:
         """Validate a single optimized model on test data."""
-        print(f"\n🔍 Validating {model_name}...")
+        print(f"\nValidating {model_name}...")
         
         model = model_info['model']
         scaler = model_info['scaler'] 
@@ -194,7 +194,7 @@ class ValidationFramework:
             y_pred = model.predict(X_test_processed)
             y_pred_proba = model.predict_proba(X_test_processed)[:, 1]
         except Exception as e:
-            print(f"❌ Prediction failed for {model_name}: {e}")
+            print(f"Prediction failed for {model_name}: {e}")
             return None
             
         # Standard metrics
@@ -220,7 +220,7 @@ class ValidationFramework:
         # Detailed classification report
         metrics['classification_report'] = classification_report(y_test, y_pred, output_dict=True)
         
-        print(f"📊 {model_name} Results:")
+        print(f"{model_name} Results:")
         print(f"   F1 Score: {metrics['f1_score']:.3f} (Expected: {config['expected_f1']:.3f})")
         print(f"   Accuracy: {metrics['accuracy']:.3f}")
         print(f"   Sensitivity: {metrics['sensitivity']:.3f}")
@@ -232,17 +232,17 @@ class ValidationFramework:
     def _assess_performance(self, f1_difference: float) -> str:
         """Assess model performance relative to expectations."""
         if f1_difference >= 0.02:
-            return "✅ EXCEEDS_EXPECTATIONS"
+            return "EXCEEDS_EXPECTATIONS"
         elif f1_difference >= -0.02:
-            return "✅ MEETS_EXPECTATIONS" 
+            return "MEETS_EXPECTATIONS" 
         elif f1_difference >= -0.05:
-            return "⚠️ BELOW_EXPECTATIONS"
+            return "BELOW_EXPECTATIONS"
         else:
-            return "❌ SIGNIFICANT_DEGRADATION"
+            return "SIGNIFICANT_DEGRADATION"
             
     def statistical_significance_test(self, results: List[Dict]) -> Dict[str, Any]:
         """Test statistical significance of performance differences."""
-        print("\n📈 Conducting statistical significance analysis...")
+        print("\nConducting statistical significance analysis...")
         
         # Compare top performers
         results_sorted = sorted(results, key=lambda x: x['f1_score'], reverse=True)
@@ -286,16 +286,16 @@ class ValidationFramework:
             'f1_difference': best_f1 - second_f1
         }
         
-        print(f"🏆 Best Model: {significance_results['best_model']} (F1: {best_f1:.3f})")
-        print(f"🥈 Second Model: {significance_results['second_model']} (F1: {second_f1:.3f})")
-        print(f"📊 Difference: {significance_results['f1_difference']:.3f}")
-        print(f"📈 Statistically Significant: {significant_difference}")
+        print(f"Best Model: {significance_results['best_model']} (F1: {best_f1:.3f})")
+        print(f"Second Model: {significance_results['second_model']} (F1: {second_f1:.3f})")
+        print(f"Difference: {significance_results['f1_difference']:.3f}")
+        print(f"Statistically Significant: {significant_difference}")
         
         return significance_results
         
     def create_performance_visualizations(self, results: List[Dict], output_dir: Path):
         """Create comprehensive performance visualization plots."""
-        print("\n📊 Creating performance visualizations...")
+        print("\nCreating performance visualizations...")
         
         # Performance comparison plot
         plt.figure(figsize=(15, 10))
@@ -387,11 +387,11 @@ class ValidationFramework:
         plt.savefig(output_dir / 'validation_performance_overview.png', dpi=300, bbox_inches='tight')
         plt.close()
         
-        print(f"✅ Performance visualizations saved to {output_dir / 'validation_performance_overview.png'}")
+        print(f"Performance visualizations saved to {output_dir / 'validation_performance_overview.png'}")
         
     def run_comprehensive_validation(self) -> Dict[str, Any]:
         """Run complete validation framework on all optimized models."""
-        print("🚀 STARTING COMPREHENSIVE MODEL VALIDATION")
+        print("STARTING COMPREHENSIVE MODEL VALIDATION")
         print("=" * 60)
         
         # Load data and models
@@ -399,7 +399,7 @@ class ValidationFramework:
         models = self.load_optimized_models()
         
         if not models:
-            print("❌ No models loaded successfully. Aborting validation.")
+            print("No models loaded successfully. Aborting validation.")
             return None
             
         # Validate each model
@@ -436,7 +436,7 @@ class ValidationFramework:
             json_safe_results = self._make_json_serializable(comprehensive_results)
             json.dump(json_safe_results, f, indent=2)
             
-        print(f"\n💾 Validation results saved to {results_file}")
+        print(f"\nSAVED: Validation results saved to {results_file}")
         
         # Print summary
         self._print_validation_summary(comprehensive_results)
@@ -498,27 +498,27 @@ class ValidationFramework:
         summary = results['summary']
         
         print("\n" + "="*60)
-        print("🎯 VALIDATION SUMMARY REPORT")
+        print("VALIDATION SUMMARY REPORT")
         print("="*60)
         
-        print(f"\n🏆 BEST PERFORMING MODEL: {summary['best_model']}")
+        print(f"\nBEST PERFORMING MODEL: {summary['best_model']}")
         print(f"   F1 Score: {summary['best_f1_score']:.3f}")
         
-        print(f"\n📊 PERFORMANCE DISTRIBUTION:")
-        print(f"   ✅ Exceeding Expectations: {summary['models_exceeding_expectations']} models")
-        print(f"   ✅ Meeting Expectations: {summary['models_meeting_expectations']} models") 
-        print(f"   ⚠️ Below Expectations: {summary['models_below_expectations']} models")
+        print(f"\nPERFORMANCE DISTRIBUTION:")
+        print(f"   Exceeding Expectations: {summary['models_exceeding_expectations']} models")
+        print(f"   Meeting Expectations: {summary['models_meeting_expectations']} models") 
+        print(f"   Below Expectations: {summary['models_below_expectations']} models")
         
-        print(f"\n📈 AVERAGE PERFORMANCE:")
+        print(f"\nAVERAGE PERFORMANCE:")
         print(f"   F1 Score: {summary['avg_f1_score']:.3f}")
         print(f"   Sensitivity: {summary['avg_sensitivity']:.3f}")
         print(f"   Specificity: {summary['avg_specificity']:.3f}")
         
-        print(f"\n💰 MOST COST-EFFECTIVE: {summary['lowest_cost_model']}")
+        print(f"\nCOST EFFECTIVE: MOST COST-EFFECTIVE: {summary['lowest_cost_model']}")
         
-        print(f"\n📊 STATISTICAL SIGNIFICANCE: {summary['statistically_significant_difference']}")
+        print(f"\nSTATISTICAL SIGNIFICANCE: {summary['statistically_significant_difference']}")
         
-        print("\n✅ VALIDATION COMPLETE - Models ready for production consideration!")
+        print("\nVALIDATION COMPLETE - Models ready for production consideration!")
 
 
 def main():
@@ -530,11 +530,11 @@ def main():
     results = validator.run_comprehensive_validation()
     
     if results:
-        print(f"\n🎉 Validation completed successfully!")
-        print(f"📁 Results saved to: {validator.results_path / 'metrics' / 'validation_results.json'}")
-        print(f"📊 Plots saved to: {validator.results_path / 'plots' / 'validation_performance_overview.png'}")
+        print(f"\nValidation completed successfully!")
+        print(f"Results saved to: {validator.results_path / 'metrics' / 'validation_results.json'}")
+        print(f"Plots saved to: {validator.results_path / 'plots' / 'validation_performance_overview.png'}")
     else:
-        print("❌ Validation failed. Check model files and data availability.")
+        print("Validation failed. Check model files and data availability.")
 
 
 if __name__ == "__main__":

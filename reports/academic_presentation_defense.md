@@ -126,7 +126,7 @@
 
 **Critical Finding: Discriminative Range Analysis**
 
-Our application testing revealed additional evidence supporting the optimization paradox:
+My application testing revealed additional evidence supporting the optimization paradox:
 
 | Risk Level | Patient Profile | Prob | Reality |
 |------------|-----------------|------|--------|
@@ -301,7 +301,7 @@ The application demonstrates professional development methodology with transpare
 
 **4. Honest Academic Assessment**
 
-- **Literature Reality Check:** Our 17.5% F1-score vs. published 65-89% reveals publication bias
+- **Literature Reality Check:** My 17.5% F1-score vs. published 65-89% reveals publication bias
 - **Reproducible Research:** Complete Docker infrastructure enables verification and replication
 - **Transparent Methodology:** Full documentation of both successes and failures
 - **Clinical Responsibility:** Prevents potential patient harm through honest limitation reporting

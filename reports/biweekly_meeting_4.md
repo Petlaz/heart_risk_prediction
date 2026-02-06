@@ -2,7 +2,7 @@
 
 **Date:** January 9, 2026  
 **Duration:** 1 hour  
-**Attendees:** Research Team, Supervisor, Industry Partner
+**Attendees:** Peter Obi, Supervisor, Industry Partner
 
 ## Sprint 7-8 Progress Summary - Interactive Application Development
 
@@ -14,7 +14,7 @@
 
 ### Progress Updates
 
-#### Completed Tasks ✅
+#### Completed Tasks
 - [x] **Professional Gradio Interface**: "Heart Disease Risk Prediction App" with medical-grade styling
 - [x] **Model Integration**: Successfully integrated Adaptive_Ensemble VotingClassifier
 - [x] **Real-time Predictions**: Sub-second risk assessment with probability scoring

@@ -42,7 +42,7 @@ class EnhancedFeatureEngineer:
         
     def create_domain_features(self, X, feature_names):
         """Create domain-specific heart risk features with consistent output."""
-        print("🔧 Creating domain-specific heart risk features...")
+        print("Creating domain-specific heart risk features...")
         
         # Convert to DataFrame for easier manipulation
         df = pd.DataFrame(X, columns=feature_names)
@@ -89,7 +89,7 @@ class EnhancedFeatureEngineer:
         
         # Calculate number of new features
         new_features_count = len(df.columns) - len(original_cols)
-        print(f"✅ Created {new_features_count} new features")
+        print(f"Created {new_features_count} new features")
         
         # Return consistent feature names
         feature_names_out = list(df.columns)
@@ -97,7 +97,7 @@ class EnhancedFeatureEngineer:
     
     def fit_transform(self, X_train, y_train, feature_names):
         """Full feature engineering pipeline with consistent transforms."""
-        print(f"🔧 Starting feature engineering on {X_train.shape}")
+        print(f"Starting feature engineering on {X_train.shape}")
         
         # 1. Create domain features
         X_enhanced, enhanced_names = self.create_domain_features(X_train, feature_names)
@@ -316,7 +316,7 @@ class CostSensitiveClassifier:
             else:
                 class_weights[cls] = 1.0
         
-        print(f"💰 Cost-sensitive weights: {class_weights}")
+        print(f"COST: Cost-sensitive weights: {class_weights}")
         
         # Apply weights to model
         if hasattr(self.base_model, 'class_weight'):
@@ -389,7 +389,7 @@ class EnhancedEnsemble:
         """Fit ensemble with validation-based weighting."""
         models = self.create_complementary_models()
         
-        print("🎭 Training Enhanced Ensemble...")
+        print("TRAINING: Training Enhanced Ensemble...")
         
         model_performances = []
         for name, model in models:
@@ -412,7 +412,7 @@ class EnhancedEnsemble:
         # Use softmax to convert to weights (gives more weight to better performers)
         self.weights = np.exp(performances * 5) / np.sum(np.exp(performances * 5))
         
-        print(f"📊 Ensemble weights: {dict(zip([name for name, _ in self.models], self.weights))}")
+        print(f"Ensemble weights: {dict(zip([name for name, _ in self.models], self.weights))}")
         
         return self
     
@@ -440,7 +440,7 @@ class EnhancedEnsemble:
 
 def load_processed_data():
     """Load processed heart risk data with full splits."""
-    print("📂 Loading processed heart risk data...")
+    print("LOADING: Loading processed heart risk data...")
     
     try:
         # Load all data splits
@@ -467,7 +467,7 @@ def load_processed_data():
         return X_train, y_train, X_val, y_val, X_test, y_test, feature_names
         
     except Exception as e:
-        print(f"❌ Error loading data: {e}")
+        print(f"Error loading data: {e}")
         raise
 
 def analyze_model_performance(train_score, val_score, model_name, technique):
@@ -483,23 +483,23 @@ def analyze_model_performance(train_score, val_score, model_name, technique):
     if gap > OVERFITTING_THRESHOLD:
         if val_score < UNDERFITTING_THRESHOLD:
             status = "SEVERE_OVERFITTING"
-            status_emoji = "🔴"
+            status_emoji = "POOR"
             description = f"Severe overfitting (gap: {gap:.3f}, low val performance)"
         else:
             status = "OVERFITTING"
-            status_emoji = "🟠"
+            status_emoji = "OVERFITTING"
             description = f"Overfitting detected (gap: {gap:.3f})"
     elif train_score < UNDERFITTING_THRESHOLD and val_score < UNDERFITTING_THRESHOLD:
         status = "UNDERFITTING"
-        status_emoji = "🟡"
+        status_emoji = "UNDERFITTING"
         description = f"Underfitting (both scores low: train={train_score:.3f}, val={val_score:.3f})"
     elif train_score >= GOOD_PERFORMANCE_THRESHOLD and val_score >= GOOD_PERFORMANCE_THRESHOLD and abs(gap) <= OVERFITTING_THRESHOLD:
         status = "GOOD"
-        status_emoji = "🟢"
+        status_emoji = "GOOD"
         description = f"Good performance (balanced scores)"
     else:
         status = "ACCEPTABLE"
-        status_emoji = "🟡"
+        status_emoji = "ACCEPTABLE"
         description = f"Acceptable performance (gap: {gap:.3f})"
     
     analysis = {
@@ -539,7 +539,7 @@ class EnhancedModelSaver:
         }
         
         joblib.dump(model_data, filepath)
-        print(f"💾 Saved {model_name} ({technique}) to {filepath}")
+        print(f"SAVED: Saved {model_name} ({technique}) to {filepath}")
         return filepath
     
     def save_results(self, results, timestamp):
@@ -557,12 +557,12 @@ class EnhancedModelSaver:
         with open(results_path, 'w') as f:
             json.dump(json_results, f, indent=2)
         
-        print(f"📊 Saved enhanced results to {results_path}")
+        print(f"Saved enhanced results to {results_path}")
         return results_path
 
 def test_enhanced_techniques():
     """Test enhanced class imbalance techniques with comprehensive improvements."""
-    print("🚀 TESTING ENHANCED CLASS IMBALANCE TECHNIQUES")
+    print("TESTING ENHANCED CLASS IMBALANCE TECHNIQUES")
     print("=" * 70)
     
     # Load data
@@ -572,7 +572,7 @@ def test_enhanced_techniques():
     feature_engineer = EnhancedFeatureEngineer()
     
     # Apply enhanced feature engineering
-    print(f"\n🔧 ENHANCED FEATURE ENGINEERING")
+    print(f"\nENHANCED FEATURE ENGINEERING")
     print("=" * 50)
     X_train_enhanced = feature_engineer.fit_transform(X_train, y_train, feature_names)
     X_val_enhanced = feature_engineer.transform(X_val, feature_names)
@@ -585,16 +585,16 @@ def test_enhanced_techniques():
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     model_saver = EnhancedModelSaver()
     
-    print(f"💾 Models will be saved to: {model_saver.enhanced_path}")
+    print(f"SAVING: Models will be saved to: {model_saver.enhanced_path}")
     
     results = {}
     
     # Test models with enhanced techniques
-    print(f"\n🧪 TESTING ENHANCED MODELS")
+    print(f"\nTESTING ENHANCED MODELS")
     print("=" * 50)
     
     # 1. Enhanced Logistic Regression with Cost-Sensitive Learning
-    print("\n💰 COST-SENSITIVE LOGISTIC REGRESSION:")
+    print("\nCOST: COST-SENSITIVE LOGISTIC REGRESSION:")
     lr_enhanced = CostSensitiveClassifier(
         LogisticRegression(C=0.1, max_iter=2000, random_state=42),
         cost_ratio=15.0
@@ -607,7 +607,7 @@ def test_enhanced_techniques():
     lr_analysis = analyze_model_performance(lr_train_f1, lr_val_f1, "Enhanced_LR", "cost_sensitive")
     
     # 2. Enhanced Neural Network
-    print("\n🧠 ENHANCED NEURAL NETWORK:")
+    print("\nNEURAL: ENHANCED NEURAL NETWORK:")
     nn_enhanced = EnhancedNeuralNetworkWrapper(
         hidden_layers=[128, 64, 32],
         learning_rate=0.001,
@@ -624,7 +624,7 @@ def test_enhanced_techniques():
     nn_analysis = analyze_model_performance(nn_train_f1, nn_val_f1, "Enhanced_NN", "regularized")
     
     # 3. Enhanced Ensemble
-    print("\n🎭 ENHANCED ENSEMBLE:")
+    print("\nENSEMBLE: ENHANCED ENSEMBLE:")
     ensemble_enhanced = EnhancedEnsemble(random_state=42)
     ensemble_enhanced.fit(X_train_enhanced, y_train, X_val_enhanced, y_val)
     ensemble_train_pred = ensemble_enhanced.predict(X_train_enhanced)
@@ -653,20 +653,20 @@ def test_enhanced_techniques():
     }
     
     # Save models
-    print(f"\n💾 Saving enhanced models...")
+    print(f"\nSAVING: Saving enhanced models...")
     model_saver.save_model(lr_enhanced, 'Enhanced_LR', 'cost_sensitive', timestamp)
     model_saver.save_model(nn_enhanced, 'Enhanced_NN', 'regularized', timestamp)
     model_saver.save_model(ensemble_enhanced, 'Enhanced_Ensemble', 'weighted_ensemble', timestamp)
     
     # Summary
-    print(f"\n📊 ENHANCED RESULTS SUMMARY")
+    print(f"\nENHANCED RESULTS SUMMARY")
     print("=" * 50)
     
     best_model = max(results.keys(), key=lambda k: results[k]['val_f1'])
     best_score = results[best_model]['val_f1']
     
-    print(f"🏆 Best Model: {best_model}")
-    print(f"🏆 Best Validation F1: {best_score:.4f}")
+    print(f"Best Model: {best_model}")
+    print(f"Best Validation F1: {best_score:.4f}")
     
     for model_name, data in results.items():
         analysis = data['analysis']

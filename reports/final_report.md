@@ -83,7 +83,7 @@ This research project is organized into seven main sections. Following this intr
 
 ## Literature Review Methodology
 
-A systematic literature review was conducted analyzing 58 high-quality peer-reviewed publications (2019-2026) across multiple authoritative databases including PubMed/MEDLINE, IEEE Xplore, ACM Digital Library, and ScienceDirect. The review was continuously informed by our empirical findings throughout all implementation phases, including baseline modeling, hyperparameter optimization, XAI analysis, and application development.
+A systematic literature review was conducted analyzing 58 high-quality peer-reviewed publications (2019-2026) across multiple authoritative databases including PubMed/MEDLINE, IEEE Xplore, ACM Digital Library, and ScienceDirect. The review was continuously informed by my empirical findings throughout all implementation phases, including baseline modeling, hyperparameter optimization, XAI analysis, and application development.
 
 Search Strategy: Systematic queries targeting heart disease prediction algorithms, healthcare ML optimization methodologies, clinical deployment challenges, and explainable AI implementation in medical applications.
 
@@ -99,11 +99,11 @@ Comprehensive Performance Analysis:
 | Rahman & Ahmed | 2024 | 4,238 | 0.78 | RF | 0.82 | Retrospective |
 | Chen et al. | 2023 | 15,000 | 0.85 | DL | 0.83 | Hospital deploy |
 | Kumar et al. | 2024 | 2,500 | 0.72 | XGBoost | 0.78 | Clinical review |
-| Our Study | 2026 | 8,476 | 0.175 | Adaptive Ensemble | 0.143 | Full implementation |
+| My Study | 2026 | 8,476 | 0.175 | Adaptive Ensemble | 0.143 | Full implementation |
 
 Critical Performance Gap Analysis:
 
-Our empirical results reveal a dramatic performance disparity compared to published benchmarks, with our best model achieving only 19.6% of the lowest published F1-score and 17.4% of the lowest published sensitivity. This unprecedented performance gap, validated through complete end-to-end implementation including application development, indicates:
+My empirical results reveal a dramatic performance disparity compared to published benchmarks, with my best model achieving only 19.6% of the lowest published F1-score and 17.4% of the lowest published sensitivity. This unprecedented performance gap, validated through complete end-to-end implementation including application development, indicates:
 
 1. Dataset Quality Impact: Lifestyle/psychological survey features vs. traditional cardiac biomarkers
 2. Methodological Rigor: Different preprocessing and evaluation methodologies across studies  
@@ -111,7 +111,7 @@ Our empirical results reveal a dramatic performance disparity compared to publis
 4. Publication Bias: Systematic under-reporting of negative results in medical ML literature
 5. Implementation Reality: Gap between theoretical performance and practical deployment challenges
 
-Our application development validation confirms that even professional containerized implementation framework cannot overcome fundamental dataset quality limitations identified through comprehensive XAI analysis.
+My application development validation confirms that even professional containerized implementation framework cannot overcome fundamental dataset quality limitations identified through comprehensive XAI analysis.
 
 ## Hyperparameter Optimization in Healthcare ML
 
@@ -119,7 +119,7 @@ Optimization Strategy Validation:
 
 - Kumar et al. (2024): RandomizedSearchCV achieves 95% of Bayesian optimization performance with 50% less computational cost for datasets <10,000 samples
 - Johnson et al. (2024): F1-score optimization often conflicts with accuracy maximization in medical applications
-- Ali & Hassan (2023): Apple Silicon optimization strategies validate our Mac M1/M2 approach
+- Ali & Hassan (2023): Apple Silicon optimization strategies validate my Mac M1/M2 approach
 
 ## Clinical Deployment Challenges
 
@@ -135,22 +135,22 @@ Major Gaps Identified and Addressed:
 
 1. Healthcare ML Optimization Paradox - Novel Discovery
    - Literature Gap: No systematic investigation of performance degradation following optimization
-   - Our Finding: 43% F1-score reduction and 65% sensitivity decline post-optimization
+   - My Finding: 43% F1-score reduction and 65% sensitivity decline post-optimization
    - Application Validation: Application development confirms optimization paradox persists in containerized environment
 
 2. Integrated XAI-Application Framework - Methodological Innovation  
    - Literature Gap: Limited integration of explainable AI with application readiness assessment
-   - Our Contribution: SHAP-based analysis explaining optimization failures and dataset limitations
+   - My Contribution: SHAP-based analysis explaining optimization failures and dataset limitations
    - Clinical Impact: XAI validates why psychological features cannot support cardiac prediction
 
 3. Complete Implementation Validation - Technical Innovation
    - Literature Gap: Most studies limited to cross-validation; few demonstrate end-to-end implementation
-   - Our Achievement: Full pipeline from data processing through containerized application development
+   - My Achievement: Full pipeline from data processing through containerized application development
    - Professional Standards: Medical-grade containerized application with clinical interface compliance
 
 4. Honest Performance Assessment - Academic Contribution
    - Literature Gap: Publication bias toward positive results; limited transparent failure analysis  
-   - Our Approach: Complete documentation of implementation challenges with evidence-based analysis
+   - My Approach: Complete documentation of implementation challenges with evidence-based analysis
    - Clinical Relevance: Realistic performance expectations for healthcare ML applications
 
 Academic and Clinical Impact:
@@ -340,7 +340,7 @@ System Architecture Components:
 - Frontend: Custom CSS medical interface with healthcare color schemes (blues/teals)
 - Backend: Model inference with StandardScaler preprocessing and probability calculation
 - Data Pipeline: Real-time input validation, Z-score normalization, and feature engineering
-- XAI Engine: SHAP background sampling and LIME tabular explanation generation
+- XAI Engine: SHAP background sampling and LIME tabular explanation creation
 - Output System: Risk probability, classification, and dual AI explanations
 - Safety Layer: Comprehensive medical disclaimers and professional consultation guidance
 
@@ -440,7 +440,7 @@ Calibrated Threshold System:
 Feature Engineering Pipeline Implementation:
 
 - Input Collection: 11 user-friendly inputs (age, height, weight, lifestyle factors)
-- Feature Expansion: Automatic generation of 22 model-required features
+- Feature Expansion: Automatic creation of 22 model-required features
 - BMI Calculation: Real-time weight/(height/100)² computation
 - Derived Features: Mental health, lifestyle, and social scores from input combinations
 - Z-Score Normalization: StandardScaler preprocessing matching training data distribution
@@ -472,7 +472,7 @@ Application Testing Results:
 
 - Functional Validation: Complete end-to-end user workflow from input to prediction successfully tested
 - Risk Stratification Testing: Low/Moderate/High classification verified across diverse patient profiles
-- XAI Integration Testing: Both SHAP and LIME explanations generating correctly with fallback systems
+- XAI Integration Testing: Both SHAP and LIME explanations creating correctly with fallback systems
 - Environment Detection Testing: Automatic Docker vs local detection working across macOS and Linux
 - Interface Responsiveness: Real-time BMI calculation and prediction updates confirmed
 - Error Handling Validation: Graceful degradation when models unavailable with trained fallback
@@ -490,7 +490,7 @@ Quality Assurance Results:
 
 **Empirical Validation of Dataset Limitations Through Application Testing**
 
-Through comprehensive application testing with diverse risk profiles, we discovered critical evidence supporting our core research findings about psychological-based cardiac prediction limitations:
+Through comprehensive application testing with diverse risk profiles, I discovered critical evidence supporting my core research findings about psychological-based cardiac prediction limitations:
 
 **Test Case Analysis:**
 
@@ -511,7 +511,7 @@ Despite dramatically different risk profiles, the model produces only an **11.1%
 
 **Research Significance:**
 
-This discriminative analysis transforms a potential model limitation into **empirical proof** of our core research project. The application successfully demonstrates that psychological-based cardiac prediction, regardless of algorithmic sophistication, cannot achieve clinically meaningful risk stratification.
+This discriminative analysis transforms a potential model limitation into **empirical proof** of my core research project. The application successfully demonstrates that psychological-based cardiac prediction, regardless of algorithmic sophistication, cannot achieve clinically meaningful risk stratification.
 
 **Key Research Validations:**
 
@@ -521,7 +521,7 @@ This discriminative analysis transforms a potential model limitation into **empi
 
 **Academic Contribution:**
 
-These findings provide the first documented evidence of discriminative limitations in lifestyle-based cardiovascular prediction models, supporting our recommendation for clinical biomarker integration in future healthcare ML development.
+These findings provide the first documented evidence of discriminative limitations in lifestyle-based cardiovascular prediction models, supporting my recommendation for clinical biomarker integration in future healthcare ML development.
 
 - Safety Protocols: Medical disclaimers and professional consultation guidance prominently displayed
 - Academic Standards: Technical documentation suitable for master's research project defense completed
@@ -561,7 +561,7 @@ The baseline models demonstrated moderate predictive capability with F1-scores r
 
 Systematic Optimization Outcomes:
 
-Following systematic hyperparameter optimization using RandomizedSearchCV, three optimized models were successfully generated and evaluated on the test set:
+Following systematic hyperparameter optimization using RandomizedSearchCV, three optimized models were successfully created and evaluated on the test set:
 
 Table 4.2: Hyperparameter Optimization Results
 
@@ -759,7 +759,7 @@ XAI Success Confirmation:
 Performance Benchmark Comparison:
 
 - Published Range: F1-scores 0.65-0.92 in recent heart disease prediction literature
-- Our Performance: 0.175 F1 (significantly below published benchmarks)
+- My Performance: 0.175 F1 (significantly below published benchmarks)
 - Clinical Reality: 40-60% of ML models fail actual deployment criteria (literature finding)
 - Research Gap: Limited honest assessment of deployment failures in published studies
 
@@ -789,7 +789,7 @@ This finding challenges conventional ML wisdom and suggests that healthcare appl
 
 Performance Reality Gap:
 
-Beyond the optimization paradox, the gap between our best baseline results (30.8% F1) and published benchmarks (65-89% F1) reveals critical issues in healthcare ML literature. This disparity suggests either: (1) our dataset's emphasis on psychological/lifestyle factors vs. traditional clinical markers creates fundamental prediction challenges, (2) published studies may suffer from overfitting or methodological limitations, or (3) real-world deployment performance significantly differs from controlled research environments.
+Beyond the optimization paradox, the gap between my best baseline results (30.8% F1) and published benchmarks (65-89% F1) reveals critical issues in healthcare ML literature. This disparity suggests either: (1) my dataset's emphasis on psychological/lifestyle factors vs. traditional clinical markers creates fundamental prediction challenges, (2) published studies may suffer from overfitting or methodological limitations, or (3) real-world deployment performance significantly differs from controlled research environments.
 
 Clinical Safety Concerns:
 

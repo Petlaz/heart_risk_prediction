@@ -9,20 +9,20 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Research](https://img.shields.io/badge/Research-Master's%20Project-purple.svg)](#)
 
-## 🫀 Project Overview
+## Project Overview
 
 An advanced machine learning system for predicting heart disease risk using comprehensive health and lifestyle data from the European Social Survey. The project integrates state-of-the-art ML algorithms with explainable AI (XAI) techniques, delivering insights through a professional web application with Docker containerization.
 
 **Status**: Production Complete | **Performance**: Research-grade analysis | **Focus**: Clinical applicability
 
-## ⭐ Key Features
+## Key Features
 
-🧠 **Machine Learning Pipeline**
+**Machine Learning Pipeline**
 - 5 baseline algorithms with comprehensive evaluation  
 - Advanced hyperparameter optimization using RandomizedSearchCV
 - Clinical safety assessment and application readiness evaluation
 
-🔍 **Explainable AI (XAI)**  
+**Explainable AI (XAI)**  
 - SHAP implementation for global feature importance analysis
 - LIME integration for individual patient-level explanations
 - Dual XAI approach: global insights + personalized risk factors

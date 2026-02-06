@@ -36,28 +36,28 @@ class AdaptiveComplexityTuner:
         
     def evaluate_complexity_levels(self, X_train, y_train, X_val, y_val):
         """Test different complexity levels to find optimal bias-variance balance."""
-        print("🎯 ADAPTIVE COMPLEXITY TUNING")
+        print("ADAPTIVE COMPLEXITY TUNING")
         print("=" * 50)
         
         results = {}
         
         # 1. Test Logistic Regression complexity levels
-        print("\n📈 TUNING LOGISTIC REGRESSION COMPLEXITY:")
+        print("\nTUNING LOGISTIC REGRESSION COMPLEXITY:")
         lr_results = self._tune_logistic_regression(X_train, y_train, X_val, y_val)
         results['Adaptive_LR'] = lr_results
         
         # 2. Test Neural Network regularization levels  
-        print("\n🧠 TUNING NEURAL NETWORK REGULARIZATION:")
+        print("\nNEURAL: TUNING NEURAL NETWORK REGULARIZATION:")
         nn_results = self._tune_neural_network(X_train, y_train, X_val, y_val)
         results['Adaptive_NN'] = nn_results
         
         # 3. Test Ensemble complexity levels
-        print("\n🎭 TUNING ENSEMBLE COMPLEXITY:")
+        print("\nENSEMBLE: TUNING ENSEMBLE COMPLEXITY:")
         ensemble_results = self._tune_ensemble_complexity(X_train, y_train, X_val, y_val)
         results['Adaptive_Ensemble'] = ensemble_results
         
         # 4. Create optimal hybrid ensemble
-        print("\n🚀 CREATING OPTIMAL HYBRID ENSEMBLE:")
+        print("\nCREATING OPTIMAL HYBRID ENSEMBLE:")
         hybrid_results = self._create_optimal_hybrid(X_train, y_train, X_val, y_val, results)
         results['Optimal_Hybrid'] = hybrid_results
         
@@ -106,7 +106,7 @@ class AdaptiveComplexityTuner:
                     best_model = model
                     best_val_f1 = val_f1
         
-        print(f"✅ Best LR: {best_params}, Val F1: {best_val_f1:.4f}")
+        print(f"Best LR: {best_params}, Val F1: {best_val_f1:.4f}")
         return {
             'model': best_model,
             'params': best_params, 
@@ -164,7 +164,7 @@ class AdaptiveComplexityTuner:
                 best_model = model
                 best_val_f1 = val_f1
         
-        print(f"✅ Best NN: Val F1: {best_val_f1:.4f}")
+        print(f"Best NN: Val F1: {best_val_f1:.4f}")
         return {
             'model': best_model,
             'params': best_config,
@@ -257,7 +257,7 @@ class AdaptiveComplexityTuner:
                 best_ensemble = ensemble
                 best_val_f1 = val_f1
         
-        print(f"✅ Best Ensemble: Val F1: {best_val_f1:.4f}")
+        print(f"Best Ensemble: Val F1: {best_val_f1:.4f}")
         return {
             'model': best_ensemble,
             'params': best_config,
@@ -414,7 +414,7 @@ class AdaptiveComplexityTuner:
 
 def load_processed_data():
     """Load processed heart risk data with full splits."""
-    print("📂 Loading processed heart risk data...")
+    print("LOADING: Loading processed heart risk data...")
     
     try:
         train_data = pd.read_csv('/Users/peter/Desktop/heart_risk_prediction/data/processed/train.csv')
@@ -438,7 +438,7 @@ def load_processed_data():
         return X_train, y_train, X_val, y_val, X_test, y_test, feature_names
         
     except Exception as e:
-        print(f"❌ Error loading data: {e}")
+        print(f"Error loading data: {e}")
         raise
 
 def analyze_model_performance(train_score, val_score, model_name, technique):
@@ -452,23 +452,23 @@ def analyze_model_performance(train_score, val_score, model_name, technique):
     if gap > OVERFITTING_THRESHOLD:
         if val_score < UNDERFITTING_THRESHOLD:
             status = "SEVERE_OVERFITTING"
-            status_emoji = "🔴"
+            status_emoji = "POOR"
             description = f"Severe overfitting (gap: {gap:.3f}, low val performance)"
         else:
             status = "OVERFITTING" 
-            status_emoji = "🟠"
+            status_emoji = "MODERATE"
             description = f"Overfitting detected (gap: {gap:.3f})"
     elif train_score < UNDERFITTING_THRESHOLD and val_score < UNDERFITTING_THRESHOLD:
         status = "UNDERFITTING"
-        status_emoji = "🟡"
+        status_emoji = "UNDERFITTING"
         description = f"Underfitting (both scores low: train={train_score:.3f}, val={val_score:.3f})"
     elif train_score >= GOOD_PERFORMANCE_THRESHOLD and val_score >= GOOD_PERFORMANCE_THRESHOLD and abs(gap) <= OVERFITTING_THRESHOLD:
         status = "GOOD"
-        status_emoji = "🟢"
+        status_emoji = "GOOD"
         description = f"Good performance (balanced scores)"
     else:
         status = "ACCEPTABLE"
-        status_emoji = "🟡"
+        status_emoji = "ACCEPTABLE"
         description = f"Acceptable performance (gap: {gap:.3f})"
     
     analysis = {
@@ -508,7 +508,7 @@ class AdaptiveModelSaver:
         }
         
         joblib.dump(model_data, filepath)
-        print(f"💾 Saved {model_name} ({technique}) to {filepath}")
+        print(f"SAVED: Saved {model_name} ({technique}) to {filepath}")
         return filepath
     
     def save_results(self, results, timestamp):
@@ -534,14 +534,14 @@ class AdaptiveModelSaver:
         with open(results_path, 'w') as f:
             json.dump(json_results, f, indent=2)
         
-        print(f"📊 Saved adaptive results to {results_path}")
+        print(f"Saved adaptive results to {results_path}")
         return results_path
 
 def test_adaptive_tuning():
     """Test adaptive tuning to find optimal bias-variance balance."""
-    print("🎯 ADAPTIVE BIAS-VARIANCE BALANCE TUNING")
+    print("ADAPTIVE BIAS-VARIANCE BALANCE TUNING")
     print("=" * 70)
-    print("🎯 Goal: Fix underfitting (LR, Ensemble) and overfitting (NN)")
+    print("Goal: Fix underfitting (LR, Ensemble) and overfitting (NN)")
     print()
     
     # Load data
@@ -560,7 +560,7 @@ def test_adaptive_tuning():
     results = tuner.evaluate_complexity_levels(X_train_scaled, y_train, X_val_scaled, y_val)
     
     # Analyze final results
-    print(f"\n📊 ADAPTIVE TUNING RESULTS SUMMARY")
+    print(f"\nADAPTIVE TUNING RESULTS SUMMARY")
     print("=" * 50)
     
     final_results = {}
@@ -598,16 +598,16 @@ def test_adaptive_tuning():
     best_model = max(final_results.keys(), key=lambda k: final_results[k]['val_f1'])
     best_score = final_results[best_model]['val_f1']
     
-    print(f"\n🏆 BEST MODEL: {best_model}")
-    print(f"🏆 BEST VALIDATION F1: {best_score:.4f}")
+    print(f"\nBEST MODEL: {best_model}")
+    print(f"BEST VALIDATION F1: {best_score:.4f}")
     print()
     
-    print("📈 IMPROVEMENT SUMMARY:")
+    print("IMPROVEMENT SUMMARY:")
     improvement_types = {
-        'complexity_increased': '📈 Increased Complexity (Fixed Underfitting)',
-        'regularization_increased': '🛡️ Increased Regularization (Fixed Overfitting)', 
-        'complexity_optimized': '⚖️ Optimized Complexity (Balanced)',
-        'optimal_hybrid': '🚀 Optimal Hybrid (Best of All)'
+        'complexity_increased': 'Increased Complexity (Fixed Underfitting)',
+        'regularization_increased': 'Increased Regularization (Fixed Overfitting)', 
+        'complexity_optimized': 'Optimized Complexity (Balanced)',
+        'optimal_hybrid': 'Optimal Hybrid (Best of All)'
     }
     
     for model_name, data in final_results.items():
@@ -619,7 +619,7 @@ def test_adaptive_tuning():
     # Save results
     model_saver.save_results(results, timestamp)
     
-    print(f"\n✅ Adaptive tuning complete! All models saved with timestamp: {timestamp}")
+    print(f"\nAdaptive tuning complete! All models saved with timestamp: {timestamp}")
     
     return final_results
 

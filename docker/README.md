@@ -1,16 +1,16 @@
 # Docker Setup for Heart Risk Prediction
 
-✅ **Status**: Successfully deployed with professional medical interface and working risk classification!
+**Status**: Docker configuration ready for deployment with professional medical interface and risk classification.
 
 This directory contains Docker configuration files for containerizing the Heart Risk Assessment Platform with professional-grade medical styling, intelligent environment detection, and working Low/Moderate/High risk stratification.
 
-## 🚀 **Deployment Architecture**
+## **Deployment Architecture**
 
-**🐳 Docker Environment**: Professional medical interface on port 7860
-**💻 Local Environment**: Development interface on port 7861  
-**🌐 No Port Conflicts**: Both can run simultaneously with identical styling
-**⚖️ Working Risk Classification**: Proper Low/Moderate/High stratification
-**🏥 Medical-Grade Interface**: Healthcare industry styling and compliance
+**Docker Environment**: Professional medical interface on port 7860
+**Local Environment**: Development interface on port 7861  
+**No Port Conflicts**: Both can run simultaneously with identical styling
+**Working Risk Classification**: Proper Low/Moderate/High stratification
+**Medical-Grade Interface**: Healthcare industry styling and compliance
 
 ## Files
 
@@ -42,7 +42,7 @@ This directory contains Docker configuration files for containerizing the Heart 
 3. **Access the application**:
    - **Docker URL**: http://localhost:7860 (auto-detected Docker environment)
    - **Local Dev URL**: http://localhost:7861 (if running `python app/app_gradio.py` separately)
-   - **Public URL**: Generated automatically when share=True is enabled
+   - **Public URL**: Created automatically when share=True is enabled
    - **Smart Detection**: App automatically detects environment and uses appropriate port
    - **Professional Startup**: View emoji-enhanced logs during startup
 
@@ -115,25 +115,25 @@ docker logs heart-risk-updated
 
 **Expected startup logs**:
 
-**🐳 Docker Environment:**
+**Docker Environment:**
 ```
-🫀 Starting Heart Risk Prediction Application...
-📋 Checking system requirements...
-✅ Processed data found
-⚠️  No trained models found - using fallback model
-🚀 Starting Professional Heart Disease Risk Prediction App...
-🐳 Detected Docker environment - using port 7860
-📱 Local URL: http://0.0.0.0:7860
-🌐 Public URL: Will be generated automatically with share=True
-🐳 Docker deployment ready
+Starting Heart Risk Prediction Application...
+Checking system requirements...
+Processed data found
+No trained models found - using fallback model
+Starting Professional Heart Disease Risk Prediction App...
+Detected Docker environment - using port 7860
+Local URL: http://0.0.0.0:7860
+Public URL: Will be created automatically with share=True
+Docker deployment ready
 ```
 
-**💻 Local Environment:**
+**Local Environment:**
 ```
-✅ Loaded Adaptive Ensemble model: Adaptive_Ensemble_complexity_optimized_20260108_233028.joblib
-✅ Loaded preprocessing scaler
-✅ Loaded 22 feature names
-💻 Detected local environment - using port 7861
+Loaded Adaptive Ensemble model: Adaptive_Ensemble_complexity_optimized_20260108_233028.joblib
+Loaded preprocessing scaler
+Loaded 22 feature names
+Detected local environment - using port 7861
 * Running on local URL: http://0.0.0.0:7861
 * Running on public URL: https://371dc0fbe9eeba4b2a.gradio.live
 ```
@@ -169,7 +169,7 @@ docker stop docker-heart-risk-app-1  # Legacy container name (if exists)
 - **URLs**: 
   - Docker: http://localhost:7860
   - Local: http://localhost:7861  
-  - Public: Auto-generated with Gradio sharing
+  - Public: Auto-created with Gradio sharing
 - **Volumes**: Maps data and results directories for persistence
 
 ### Dependencies
@@ -181,16 +181,16 @@ docker stop docker-heart-risk-app-1  # Legacy container name (if exists)
 
 ## Container Features
 
-- ✅ **Python 3.9** slim runtime environment
-- ✅ **Version-constrained dependencies** for stability
-- ✅ **Professional startup logging** with emoji status indicators
-- ✅ **Automatic system validation** (data, models, preprocessing)
-- ✅ **Both local and public URL access** capabilities
-- ✅ **Heart Disease Risk Prediction** with XAI explanations
-- ✅ **Adaptive Ensemble Model** with SHAP/LIME integration
-- ✅ **Medical-grade interface** for clinical decision support
-- ✅ **Persistent data storage** via volume mounts
-- ✅ **Production-ready deployment** with Docker best practices
+- **Python 3.9** slim runtime environment
+- **Version-constrained dependencies** for stability
+- **Professional startup logging** with emoji status indicators
+- **Automatic system validation** (data, models, preprocessing)
+- **Both local and public URL access** capabilities
+- **Heart Disease Risk Prediction** with XAI explanations
+- **Adaptive Ensemble Model** with SHAP/LIME integration
+- **Medical-grade interface** for clinical decision support
+- **Persistent data storage** via volume mounts
+- **Production-ready deployment** with Docker best practices
 
 ## Troubleshooting
 
@@ -261,14 +261,14 @@ Modify volume mounts in `docker-compose.yml` as needed for your setup.
 
 ## Production Deployment
 
-✅ **Current Status**: Production-ready deployment achieved!
+**Current Status**: Production-ready deployment achieved!
 
 The current configuration includes:
-- ✅ Professional startup logging and validation
-- ✅ Version-constrained dependencies for stability  
-- ✅ Both local and public URL capabilities
-- ✅ Medical-grade XAI interface
-- ✅ Proper Docker best practices
+- Professional startup logging and validation
+- Version-constrained dependencies for stability  
+- Both local and public URL capabilities
+- Medical-grade XAI interface
+- Proper Docker best practices
 
 For enhanced production deployment, consider:
 

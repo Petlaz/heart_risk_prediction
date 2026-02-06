@@ -46,7 +46,7 @@ def load_feature_names():
         return None
 
 def create_summary_stats(df):
-    """Generate summary statistics for a dataframe"""
+    """Create summary statistics for a dataframe"""
     summary = {
         'shape': df.shape,
         'columns': list(df.columns),

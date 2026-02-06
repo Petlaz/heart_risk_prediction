@@ -1,16 +1,16 @@
 # Adaptive Bias-Variance Tuning Methodology - CORRECTED AFTER TEST SET VALIDATION
 
-## 🎯 Overview
+## Overview
 
 The Adaptive Bias-Variance Tuning approach addresses class imbalance by systematically finding the optimal model complexity that balances bias and variance. **IMPORTANT**: While this method achieved high validation performance (29.0% F1), test set validation revealed severe overfitting issues.
 
-## ⚠️ CRITICAL UPDATE: TEST SET RESULTS
+## CRITICAL UPDATE: TEST SET RESULTS
 - **Validation Performance**: Adaptive_LR achieved 29.0% F1 score  
 - **Test Set Reality**: Adaptive_LR only achieved 3.2% F1 score
 - **Conclusion**: Method suffered from validation set overfitting
 - **True Winner**: Adaptive_Ensemble (17.5% F1 on test set)
 
-## 🧠 Core Philosophy
+## Core Philosophy
 
 ### Problem Identification
 - **Class Imbalance**: 11.3% minority class (heart disease)
@@ -31,7 +31,7 @@ def detect_overfitting_underfitting(self, train_score, val_score, threshold=0.05
     return "balanced"
 ```
 
-## 🔧 Technical Implementation
+## Technical Implementation
 
 ### 1. Logistic Regression Optimization
 **Complexity Control**: Regularization parameter (C) tuning
@@ -74,16 +74,16 @@ voting_weights = [
 ]
 ```
 
-## 📊 Performance Analysis
+## Performance Analysis
 
 ### Complexity vs Performance Trade-off
 
 | Model Type | Complexity Level | F1 Score | Train-Val Gap | Status |
 |------------|------------------|----------|---------------|---------|
-| **Adaptive_LR** | Low (C=0.01) | **29.0%** | 0.02 | ✅ **Optimal** |
-| Adaptive_NN_1Layer | Medium | 26.9% | 0.03 | ✅ Balanced |
-| Adaptive_NN_2Layer | High | 26.0% | 0.06 | ⚠️ Overfitting |
-| Adaptive_Ensemble | Medium-High | 25.5% | 0.04 | ✅ Acceptable |
+| **Adaptive_LR** | Low (C=0.01) | **29.0%** | 0.02 | **Optimal** |
+| Adaptive_NN_1Layer | Medium | 26.9% | 0.03 | Balanced |
+| Adaptive_NN_2Layer | High | 26.0% | 0.06 | Overfitting |
+| Adaptive_Ensemble | Medium-High | 25.5% | 0.04 | Acceptable |
 
 ### Key Insights
 
@@ -92,7 +92,7 @@ voting_weights = [
 3. **Class Weighting**: Built-in imbalance handling outperformed sampling techniques
 4. **Validation Gap**: Models with <0.05 gap showed best generalization
 
-## 🔄 Adaptive Tuning Process
+## Adaptive Tuning Process
 
 ### Step-by-Step Methodology
 
@@ -123,7 +123,7 @@ voting_weights = [
    final_model = train_with_optimal_config(optimal_config)
    ```
 
-## 💡 Why This Approach Works
+## Why This Approach Works
 
 ### Theoretical Foundation
 - **Bias-Variance Decomposition**: Systematically addresses both sources of error
@@ -136,7 +136,7 @@ voting_weights = [
 - **Production-Ready**: Optimal models are simple and fast
 - **Maintainable**: Easy to retune as data evolves
 
-## 📈 Success Metrics
+## Success Metrics
 
 ### Primary Achievement
 - **F1 Score**: 29.0% (107% improvement from baseline)
@@ -149,14 +149,14 @@ voting_weights = [
 - **Memory Usage**: <1MB model size
 - **Interpretability**: Full coefficient analysis available
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 1. **Automated Hyperparameter Search**: Implement Bayesian optimization
 2. **Dynamic Complexity**: Adapt complexity based on data drift
 3. **Multi-Objective**: Balance F1, precision, and recall simultaneously
 4. **Ensemble Evolution**: Dynamic ensemble weights based on performance
 
-## 📚 References & Methodology
+## References & Methodology
 
 - Bias-Variance Tradeoff Theory (Hastie et al., Elements of Statistical Learning)
 - Adaptive Learning Rate Methods (Kingma & Ba, Adam Optimizer)

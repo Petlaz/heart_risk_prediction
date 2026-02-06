@@ -166,7 +166,7 @@ Published studies consistently report F1-scores between 0.65-0.92 and sensitivit
 - **Key Finding**: Traditional cardiac features (chest pain, ECG) outperform lifestyle factors by 25-40% F1-score
 - **Clinical Features**: Chest pain type, maximum heart rate, ST depression (oldpeak)
 - **Lifestyle Features**: Exercise, diet, smoking (secondary importance)
-- **Relevance**: Our dataset emphasis on psychological factors may explain low performance
+- **Relevance**: My dataset emphasis on psychological factors may explain low performance
 
 **Patel & Singh (2023)** - *Journal of Behavioral Medicine*
 - **Focus**: Mental health factors in cardiovascular risk (2,500 patients)
@@ -256,7 +256,7 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 - **Healthcare Context**: 10 medical prediction tasks including cardiac risk
 - **Key Finding**: RandomizedSearchCV achieves 95% of Bayesian optimization performance with 50% less computational cost
 - **Sample Size Effect**: Random search optimal for datasets <10,000 samples
-- **Validation**: Strongly supports our RandomizedSearchCV approach choice
+- **Validation**: Strongly supports my RandomizedSearchCV approach choice
 - **Clinical Relevance**: Faster optimization enables more clinical iterations
 
 **Ali & Hassan (2023)** - *Computers & Electrical Engineering*
@@ -264,7 +264,7 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 - **SVM Optimization**: Reduced parameter grids prevent memory overflow
 - **Parallel Processing**: Tree-based methods benefit from M1/M2 architecture
 - **Performance**: 60% faster training with minimal accuracy loss
-- **Implementation**: Direct validation of our Mac M1/M2 optimization approach
+- **Implementation**: Direct validation of my Mac M1/M2 optimization approach
 - **Resource Management**: Critical for healthcare ML deployment
 
 #### **Clinical Metric Optimization**
@@ -275,13 +275,13 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 - **Key Insight**: F1-score optimization often conflicts with accuracy maximization
 - **Clinical Recommendation**: F1-score priority for screening, accuracy for diagnosis
 - **Threshold Analysis**: Systematic threshold optimization improves clinical utility by 25%
-- **Validation**: Confirms our F1-score focus and threshold optimization methodology
+- **Validation**: Confirms my F1-score focus and threshold optimization methodology
 
 **Brown & Wilson (2023)** - *Expert Systems with Applications*
 - **Cost Framework**: Economic optimization with false negative (€1000) vs. false positive (€100) costs
 - **Optimization Target**: Minimize total healthcare costs rather than traditional metrics
 - **Clinical Impact**: 30% reduction in total costs through optimized thresholds
-- **Economic Validation**: Supports our clinical cost analysis approach
+- **Economic Validation**: Supports my clinical cost analysis approach
 - **Healthcare Adoption**: Cost-effectiveness critical for institutional buy-in
 
 ### 4.2 Model-Specific Optimization Insights
@@ -302,7 +302,7 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 - **Threshold Optimization**: Critical for addressing conservative prediction bias
 - **Learning Rate Sensitivity**: Medical data requires careful learning rate tuning
 - **Clinical Adaptation**: Domain-specific initialization improves convergence
-- **Validation**: Aligns with our neural network optimization challenges
+- **Validation**: Aligns with my neural network optimization challenges
 
 ---
 
@@ -318,14 +318,14 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 - **Key Components**: Feature correlation, clustering analysis, clinical risk assessment
 - **Hospital Validation**: Deployed in 5 hospitals with 20% improvement in safety metrics
 - **Innovation**: Multi-dimensional error investigation beyond confusion matrices
-- **Alignment**: Our analysis framework follows similar comprehensive approach
+- **Alignment**: My analysis framework follows similar comprehensive approach
 
 **Thompson & Lee (2023)** - *BMC Medical Informatics and Decision Making*
 - **Method**: Statistical correlation between patient features and prediction errors
 - **Healthcare Application**: Cardiac, diabetes, and cancer prediction models
 - **Key Finding**: Demographic features often drive systematic errors
 - **Clinical Insight**: Age and gender interaction effects critical for error analysis
-- **Gap**: Limited psychological factor analysis (our research contribution area)
+- **Gap**: Limited psychological factor analysis (my research contribution area)
 
 #### **Post-Optimization Error Investigation**
 
@@ -335,7 +335,7 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 - **Healthcare Framework**: Lives saved per 1000, cost per patient analysis
 - **Deployment Criteria**: Sensitivity ≥80%, Specificity ≥60% for screening applications
 - **Key Result**: 40% of optimized models still fail clinical deployment criteria
-- **Validation**: Matches our finding that even best model fails clinical standards
+- **Validation**: Matches my finding that even best model fails clinical standards
 
 ### 5.2 Clinical Safety and Error Pattern Detection
 
@@ -346,8 +346,8 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 - **Safety Framework**: Minimize missed diagnoses while controlling false alarms
 - **Optimization**: Multi-objective optimization for sensitivity/specificity trade-off
 - **Clinical Implementation**: Improved patient outcomes in 3 hospital systems
-- **Cost Analysis**: €950 per missed case vs. €120 per false positive (similar to our framework)
-- **Application**: Directly applicable to our threshold optimization methodology
+- **Cost Analysis**: €950 per missed case vs. €120 per false positive (similar to my framework)
+- **Application**: Directly applicable to my threshold optimization methodology
 
 #### **Cross-Model Error Comparison**
 
@@ -356,7 +356,7 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 - **Clinical Application**: Ensemble potential assessment through error agreement
 - **Key Finding**: Models often fail on similar patient subgroups
 - **Clinical Implication**: Single model limitations persist across algorithms
-- **Research Gap**: Our cross-model analysis provides novel insights into systematic failures
+- **Research Gap**: My cross-model analysis provides novel insights into systematic failures
 
 ---
 
@@ -390,7 +390,7 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 - **Healthcare Context**: Emergency screening vs. diagnostic applications
 - **Implementation**: Real-world testing in clinical environments
 - **Key Finding**: Default thresholds (0.5) rarely optimal for medical applications
-- **Validation**: Supports our threshold optimization methodology
+- **Validation**: Supports my threshold optimization methodology
 
 #### **Cost-Sensitive Medical ML**
 
@@ -413,15 +413,15 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 - **Key Finding**: Traditional clinical markers (BMI, blood pressure) consistently rank highest
 - **Healthcare Validation**: Correlation between SHAP importance and clinical expert rankings (r=0.84)
 - **Clinical Integration**: SHAP explanations improve physician trust in AI recommendations by 45%
-- **Alignment**: Our SHAP analysis confirms BMI as strongest predictor, validating clinical relevance
+- **Alignment**: My SHAP analysis confirms BMI as strongest predictor, validating clinical relevance
 
 **Zhang et al. (2024)** - *JAMA Network Open*
 - **Explainability Framework**: SHAP-based explanation system for cardiac risk prediction
 - **Clinical Study**: 2,000 patients across 3 hospitals with physician evaluation
 - **Key Result**: SHAP reveals traditional risk factors outperform lifestyle questionnaires
 - **Clinical Insight**: Psychological factors show weak predictive signal in cardiac applications
-- **Implementation**: 89% physician satisfaction with SHAP-generated explanations
-- **Validation**: Matches our finding that psychological features drive decisions but lack predictive power
+- **Implementation**: 89% physician satisfaction with SHAP-created explanations
+- **Validation**: Matches my finding that psychological features drive decisions but lack predictive power
 
 #### **Clinical Feature Importance Validation**
 
@@ -431,7 +431,7 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 - **Critical Finding**: Models trained on lifestyle data miss traditional cardiac markers
 - **Clinical Reality**: Survey-based features insufficient for medical-grade prediction
 - **Deployment Impact**: XAI analysis prevents unsafe clinical deployment
-- **Research Match**: Exactly validates our finding of dataset limitation
+- **Research Match**: Exactly validates my finding of dataset limitation
 
 ### 7.2 Clinical Explainability Standards
 
@@ -472,27 +472,27 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 
 ### 8.1 Major Gaps Identified and Addressed
 
-#### **Healthcare ML Optimization Paradox** ⭐ **Novel Discovery**
+#### **Healthcare ML Optimization Paradox** - Novel Discovery
 **Literature Gap**: No systematic investigation of performance degradation following hyperparameter optimization in healthcare ML
-**Our Contribution**: Documented 43% F1-score reduction (30.8% → 17.5%) and 65% sensitivity decline (40.5% → 14.3%) post-optimization
+**My Contribution**: Documented 43% F1-score reduction (30.8% → 17.5%) and 65% sensitivity decline (40.5% → 14.3%) post-optimization
 **Clinical Impact**: Challenges fundamental ML optimization assumptions for medical applications
 **Production Validation**: Production deployment confirms that containerization cannot overcome optimization-induced performance degradation
 
-#### **Comprehensive Error Analysis Framework** ⭐ **Methodological Innovation**  
+#### **Comprehensive Error Analysis Framework** - Methodological Innovation  
 **Literature Gap**: Limited systematic error pattern analysis following hyperparameter optimization
-**Our Innovation**: Integrated optimization-error analysis methodology with XAI validation
+**My Innovation**: Integrated optimization-error analysis methodology with XAI validation
 **Critical Finding**: False negative rate increased from 59.5% to 85.7%, creating unacceptable clinical risk
 **Production Impact**: Docker deployment validates that error patterns persist across implementation environments
 
-#### **Honest Performance Assessment** ⭐ **Academic Contribution**
+#### **Honest Performance Assessment** - Academic Contribution
 **Literature Gap**: Publication bias toward positive results; limited transparent failure analysis
-**Our Approach**: Complete documentation of significant performance gaps (17.5% vs. published 65-89% F1)
+**My Approach**: Complete documentation of significant performance gaps (17.5% vs. published 65-89% F1)
 **Clinical Reality**: Both baseline and optimized models fail clinical deployment criteria (≥80% sensitivity)
 **Implementation Validation**: Professional containerized deployment confirms technical feasibility despite clinical limitations
 
-#### **XAI-Validated Deployment Assessment** ⭐ **Technical Innovation**
+#### **XAI-Validated Deployment Assessment** - Technical Innovation
 **Literature Gap**: Limited integration of explainable AI with deployment readiness evaluation
-**Our Framework**: SHAP analysis explaining optimization failures and dataset limitations
+**My Framework**: SHAP analysis explaining optimization failures and dataset limitations
 **Key Insight**: Psychological features drive model decisions but provide weak cardiac predictive signal
 **Production Confirmation**: Production deployment validates XAI findings through complete implementation testing
 
@@ -615,12 +615,12 @@ Neural networks in medical applications often exhibit excessive conservatism, de
 ### 10.3 Future Research Directions
 
 #### **10.3.1 Completed Achievements**
-- ✅ **Explainable AI Implementation**: SHAP analysis completed with clinical feature importance ranking
-- ✅ **Feature Importance Analysis**: BMI (0.0208) and exercise (0.0189) identified as top predictors
-- ✅ **Root Cause Validation**: XAI confirms psychological factors insufficient for cardiac prediction
-- ✅ **Clinical Assessment**: SHAP validates dataset limitations and deployment safety concerns
-- ✅ **Patient-Level Explanations**: Individual case analysis framework established
-- ✅ **Optimization Paradox Explanation**: XAI reveals why optimizing weak predictors fails
+- **Explainable AI Implementation**: SHAP analysis completed with clinical feature importance ranking
+- **Feature Importance Analysis**: BMI (0.0208) and exercise (0.0189) identified as top predictors
+- **Root Cause Validation**: XAI confirms psychological factors insufficient for cardiac prediction
+- **Clinical Assessment**: SHAP validates dataset limitations and deployment safety concerns
+- **Patient-Level Explanations**: Individual case analysis framework established
+- **Optimization Paradox Explanation**: XAI reveals why optimizing weak predictors fails
 
 #### **10.3.2 Long-term Research Opportunities**
 - **Multi-Modal Integration**: Combining clinical data with imaging and ECG
@@ -836,7 +836,7 @@ Our work addresses critical gaps identified in literature:
 
 ---
 
-**Literature Review Completion Status**: ✅ **Complete**  
+**Literature Review Completion Status**: **Complete**  
 **Total References**: 58 peer-reviewed publications (2019-2026)  
 **Research Validation**: Comprehensive end-to-end implementation including production deployment  
 **Academic Contribution**: Novel integration of optimization analysis, error investigation, XAI validation, and production deployment assessment

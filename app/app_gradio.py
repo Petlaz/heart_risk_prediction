@@ -141,7 +141,7 @@ class HeartRiskPredictor:
             # Create background samples that represent typical health profiles
             background_samples = []
             for _ in range(n_background):
-                # Generate baseline representing unhealthy population for proper SHAP comparison
+                # Create baseline representing unhealthy population for proper SHAP comparison
                 sample_inputs = {
                     'height': np.random.normal(170, 10),  # cm
                     'weight': np.random.normal(85, 25),   # Higher baseline weight 
@@ -251,7 +251,7 @@ class HeartRiskPredictor:
             if len(instances.shape) == 1:
                 instances = instances.reshape(1, -1)
             
-            # Ensure we have the right number of features
+            # Ensure I have the right number of features
             if instances.shape[1] != len(self.feature_names):
                 print(f"Feature dimension mismatch: expected {len(self.feature_names)}, got {instances.shape[1]}")
                 # Pad or truncate as needed
@@ -414,7 +414,7 @@ class HeartRiskPredictor:
     
     def _convert_lime_feature_to_meaningful(self, feature_condition):
         """Convert LIME's generic feature conditions to meaningful descriptions"""
-        # Map feature indices to meaningful names based on our feature order
+        # Map feature indices to meaningful names based on my feature order
         feature_mappings = {
             'Feature_0': 'Life Satisfaction',
             'Feature_1': 'Social Engagement', 
@@ -954,7 +954,7 @@ For medical decisions, consult healthcare professionals.*
                 
             # Map back to interpretable feature names and get top contributors
             feature_contributions = []
-            # Include ALL user controllable features that we get from inputs
+            # Include ALL user controllable features that I get from inputs
             user_controllable_features = ['happy', 'sclmeet', 'ctrlife', 'dosprt', 'cgtsmok', 'alcfreq', 'etfruit', 'eatveg', 'slprl', 'bmi']
             
             # Track combined features to avoid duplicates

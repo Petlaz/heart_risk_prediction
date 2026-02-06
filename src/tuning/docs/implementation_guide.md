@@ -1,10 +1,10 @@
 # Implementation Guide - Heart Risk Prediction - CORRECTED
 
-## 🚀 Quick Start Guide
+## Quick Start Guide
 
 This guide provides step-by-step instructions to reproduce our results and deploy the optimal heart risk prediction model. **IMPORTANT**: Updated to reflect test set validation results.
 
-## 📋 Prerequisites
+## Prerequisites
 
 ### Environment Setup
 ```bash
@@ -28,7 +28,7 @@ numpy>=1.21.0
 joblib>=1.0.0
 ```
 
-## 🏆 Reproducing Best Results (17.5% F1 - Test Set Validated)
+## Reproducing Best Results (17.5% F1 - Test Set Validated)
 
 ### Option 1: Quick Deploy (Recommended) - CORRECTED
 ```bash
@@ -48,10 +48,10 @@ model = model_data['model']  # Extract actual model from saved dictionary
 preprocessing = joblib.load('data/processed/preprocessing_artifacts.joblib')
 scaler = preprocessing['scaler']
 
-print(f'✅ Loaded optimal model: Adaptive_Ensemble')
-print(f'📊 Test Set F1 Score: 17.5% (VALIDATED)')
-print(f'🎯 Model type: {type(model).__name__}')
-print(f'📈 Ready for production deployment')
+print(f'Loaded optimal model: Adaptive_Ensemble')
+print(f'Test Set F1 Score: 17.5% (VALIDATED)')
+print(f'Model type: {type(model).__name__}')
+print(f'Ready for production deployment')
 "
 ```
 
@@ -64,20 +64,20 @@ python adaptive_bias_variance_tuning.py
 
 **Expected Output:**
 ```
-🏆 VALIDATION WINNER: Adaptive_LR
+VALIDATION WINNER: Adaptive_LR
    Validation F1 Score: 29.0%
    Configuration: LogisticRegression(C=0.01, class_weight='balanced')
-   Status: ⚠️ Requires test set validation
+   Status: Requires test set validation
    
-🎯 TEST SET WINNER: Adaptive_Ensemble  
+TEST SET WINNER: Adaptive_Ensemble  
    Test F1 Score: 17.5%
-   Status: ✅ Production ready
+   Status: Production ready
    
-📁 Models saved to: results/models/adaptive_tuning/
-📊 Results saved to: results/adaptive_tuning_results.json
+Models saved to: results/models/adaptive_tuning/
+Results saved to: results/adaptive_tuning_results.json
 ```
 
-## 🔧 Using the Optimal Model - CORRECTED
+## Using the Optimal Model - CORRECTED
 
 ### 1. Load and Predict
 ```python
@@ -154,11 +154,11 @@ importance_df = pd.DataFrame({
     'abs_importance': np.abs(coefficients)
 }).sort_values('abs_importance', ascending=False)
 
-print("📊 Feature Importance (Top 5):")
+print("Feature Importance (Top 5):")
 print(importance_df.head().to_string(index=False))
 ```
 
-## 🔄 Running Alternative Approaches
+## Running Alternative Approaches
 
 ### Enhanced Ensemble Method (28.4% F1)
 ```bash
@@ -194,7 +194,7 @@ print(f"Best model: {results['best_model_name']}")
 print(f"Best F1: {results['best_f1']:.3f}")
 ```
 
-## 🏗️ Production Deployment
+## Production Deployment
 
 ### 1. Model Validation
 ```python
@@ -221,16 +221,16 @@ def validate_production_model():
     f1 = f1_score(y_test, y_pred)
     report = classification_report(y_test, y_pred)
     
-    print(f"✅ Production Validation:")
-    print(f"📊 F1 Score: {f1:.3f}")
-    print(f"📋 Classification Report:")
+    print(f"Production Validation:")
+    print(f"F1 Score: {f1:.3f}")
+    print(f"Classification Report:")
     print(report)
     
     return f1 > 0.25  # Minimum acceptable threshold
 
 # Run validation
 is_valid = validate_production_model()
-print(f"🚀 Production Ready: {is_valid}")
+print(f"Production Ready: {is_valid}")
 ```
 
 ### 2. API Integration
@@ -277,7 +277,7 @@ if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=5000)
 ```
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -321,11 +321,11 @@ expected_f1 = 0.29
 actual_f1 = evaluate_model()
 
 if actual_f1 < expected_f1 - 0.02:
-    print("⚠️ Performance below expected")
-    print("🔄 Retrain model or check data preprocessing")
+    print("Performance below expected")
+    print("RETRAIN: Retrain model or check data preprocessing")
 ```
 
-## 📊 Performance Monitoring
+## Performance Monitoring
 
 ### 1. Model Monitoring
 ```python
@@ -340,9 +340,9 @@ def monitor_model_performance(predictions, actuals):
     performance_drop = baseline_f1 - current_f1
     
     if performance_drop > 0.05:
-        print("🚨 Alert: Model performance degraded")
-        print(f"📉 F1 drop: {performance_drop:.3f}")
-        print("🔄 Consider model retraining")
+        print("ALERT: Alert: Model performance degraded")
+        print(f"F1 drop: {performance_drop:.3f}")
+        print("RETRAIN: Consider model retraining")
     
     return {
         'current_f1': current_f1,
@@ -376,7 +376,7 @@ def detect_data_drift(new_data, reference_data):
     return drift_detected, drift_features
 ```
 
-## 🚀 Deployment Checklist
+## Deployment Checklist
 
 ### Pre-Production
 - [ ] Model validation F1 > 25%

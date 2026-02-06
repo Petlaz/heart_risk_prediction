@@ -59,7 +59,7 @@ class PostOptimizationAnalysis:
         
     def load_data_and_models(self):
         """Load test data and available models for analysis."""
-        print("📂 Loading data and models for error analysis...")
+        print("LOADING: Loading data and models for error analysis...")
         
         # Load test data
         test_df = pd.read_csv(self.data_path / 'test.csv')
@@ -78,7 +78,7 @@ class PostOptimizationAnalysis:
         X_test_scaled = scaler.transform(X_test)
         X_test_scaled_df = pd.DataFrame(X_test_scaled, columns=X_test.columns, index=X_test.index)
         
-        # Load models and generate predictions
+        # Load models and create predictions
         models_data = {}
         for model_name, config in self.models_config.items():
             model_path = self.models_path / config['path']
@@ -91,7 +91,7 @@ class PostOptimizationAnalysis:
                     else:
                         model = model_data
                         
-                    # Generate predictions
+                    # Create predictions
                     y_pred = model.predict(X_test_scaled)
                     y_pred_proba = model.predict_proba(X_test_scaled)[:, 1]
                     
@@ -102,22 +102,22 @@ class PostOptimizationAnalysis:
                         'config': config,
                         'metadata': model_data if isinstance(model_data, dict) else None
                     }
-                    print(f"✅ Loaded {model_name}")
+                    print(f"SUCCESS: Loaded {model_name}")
                     
                 except Exception as e:
-                    print(f"❌ Failed to load {model_name}: {e}")
+                    print(f"ERROR: Failed to load {model_name}: {e}")
                     
         return X_test, y_test, X_test_scaled_df, models_data
         
     def analyze_misclassification_patterns(self, X_test, y_test, models_data):
         """Analyze misclassification patterns across models."""
-        print("\n🔍 Analyzing misclassification patterns...")
+        print("\nAnalyzing misclassification patterns...")
         
         analysis_results = {}
         feature_names = X_test.columns.tolist()
         
         for model_name, model_info in models_data.items():
-            print(f"\n📊 Analyzing {model_name}...")
+            print(f"\nAnalyzing {model_name}...")
             
             y_pred = model_info['predictions']
             y_proba = model_info['probabilities']
@@ -176,7 +176,7 @@ class PostOptimizationAnalysis:
         
     def feature_based_error_correlation(self, X_test, y_test, models_data):
         """Analyze feature correlation with prediction errors."""
-        print("\n📈 Analyzing feature-based error correlations...")
+        print("\nAnalyzing feature-based error correlations...")
         
         feature_error_analysis = {}
         
@@ -211,7 +211,7 @@ class PostOptimizationAnalysis:
         
     def cross_model_error_comparison(self, y_test, models_data):
         """Compare error patterns across different models."""
-        print("\n🔄 Analyzing cross-model error patterns...")
+        print("\nANALYZING: Analyzing cross-model error patterns...")
         
         model_names = list(models_data.keys())
         cross_model_analysis = {
@@ -275,7 +275,7 @@ class PostOptimizationAnalysis:
         
     def clinical_risk_assessment(self, y_test, models_data):
         """Assess clinical risk implications of model errors."""
-        print("\n🏥 Conducting clinical risk assessment...")
+        print("\nCLINICAL: Conducting clinical risk assessment...")
         
         clinical_analysis = {}
         
@@ -346,7 +346,7 @@ class PostOptimizationAnalysis:
         
     def create_error_visualizations(self, analysis_results, feature_analysis, cross_model_analysis, clinical_analysis):
         """Create comprehensive error analysis visualizations."""
-        print("\n📊 Creating error analysis visualizations...")
+        print("\nCreating error analysis visualizations...")
         
         fig, axes = plt.subplots(3, 3, figsize=(18, 15))
         
@@ -505,22 +505,22 @@ class PostOptimizationAnalysis:
         plt.savefig(output_file, dpi=300, bbox_inches='tight')
         plt.close()
         
-        print(f"✅ Error analysis visualizations saved to {output_file}")
+        print(f"SUCCESS: Error analysis visualizations saved to {output_file}")
         
     def run_comprehensive_error_analysis(self):
         """Run complete post-optimization error analysis."""
-        print("🚀 STARTING COMPREHENSIVE POST-OPTIMIZATION ERROR ANALYSIS")
+        print("STARTING COMPREHENSIVE POST-OPTIMIZATION ERROR ANALYSIS")
         print("=" * 70)
         
         # Load data and models
         X_test, y_test, X_test_scaled, models_data = self.load_data_and_models()
         
         if not models_data:
-            print("❌ No models loaded successfully. Aborting error analysis.")
+            print("ERROR: No models loaded successfully. Aborting error analysis.")
             return None
             
         # Run all analysis components
-        print("\n📊 Running analysis components...")
+        print("\nRunning analysis components...")
         
         # 1. Misclassification pattern analysis
         misclass_analysis = self.analyze_misclassification_patterns(X_test, y_test, models_data)
@@ -562,7 +562,7 @@ class PostOptimizationAnalysis:
         with open(results_file, 'w') as f:
             json.dump(comprehensive_results, f, indent=2, default=str)
             
-        print(f"\n💾 Error analysis results saved to {results_file}")
+        print(f"\nSAVED: Error analysis results saved to {results_file}")
         
         # Print summary
         self._print_error_analysis_summary(comprehensive_results)
@@ -601,20 +601,20 @@ class PostOptimizationAnalysis:
         summary = results['summary']
         
         print("\n" + "="*70)
-        print("🎯 ERROR ANALYSIS SUMMARY REPORT")
+        print("ERROR ANALYSIS SUMMARY REPORT")
         print("="*70)
         
-        print(f"\n🏆 BEST PERFORMING MODEL: {summary['best_performing_model']}")
+        print(f"\nBEST PERFORMING MODEL: {summary['best_performing_model']}")
         print(f"   Misclassification Rate: {summary['lowest_misclassification_rate']:.3f}")
         
-        print(f"\n📊 MODEL RANKING (by misclassification rate):")
+        print(f"\nMODEL RANKING (by misclassification rate):")
         for i, model in enumerate(summary['model_ranking'], 1):
             rate = results['misclassification_analysis'][model]['misclassification_rate']
             f1 = results['misclassification_analysis'][model]['test_f1']
             status = results['misclassification_analysis'][model]['status']
             print(f"   {i}. {model}: {rate:.3f} misclass rate, {f1:.3f} F1 ({status})")
         
-        print(f"\n🏥 CLINICAL ASSESSMENT:")
+        print(f"\nCLINICAL ASSESSMENT: CLINICAL ASSESSMENT:")
         for model in summary['model_ranking']:
             clinical = results['clinical_risk_analysis'][model]
             sensitivity = clinical['current_performance']['sensitivity']
@@ -622,11 +622,11 @@ class PostOptimizationAnalysis:
             print(f"   {model}: {sensitivity:.1%} sensitivity, {missed_cases} missed cases")
             
         if summary['clinical_concern_models']:
-            print(f"\n⚠️ CLINICAL CONCERN MODELS (sensitivity < 20%):")
+            print(f"\nWARNING: CLINICAL CONCERN MODELS (sensitivity < 20%):")
             for model in summary['clinical_concern_models']:
                 print(f"   - {model}")
         
-        print("\n✅ ERROR ANALYSIS COMPLETE - Insights ready for clinical review!")
+        print("\nSUCCESS: ERROR ANALYSIS COMPLETE - Insights ready for clinical review!")
 
 
 def main():
@@ -638,11 +638,11 @@ def main():
     results = analyzer.run_comprehensive_error_analysis()
     
     if results:
-        print(f"\n🎉 Error analysis completed successfully!")
-        print(f"📁 Results saved to: {analyzer.results_path / 'explanations' / 'post_optimization_error_analysis.json'}")
-        print(f"📊 Plots saved to: {analyzer.results_path / 'plots' / 'error_analysis_comprehensive.png'}")
+        print(f"\nError analysis completed successfully!")
+        print(f"Results saved to: {analyzer.results_path / 'explanations' / 'post_optimization_error_analysis.json'}")
+        print(f"Plots saved to: {analyzer.results_path / 'plots' / 'error_analysis_comprehensive.png'}")
     else:
-        print("❌ Error analysis failed. Check model files and data availability.")
+        print("ERROR: Error analysis failed. Check model files and data availability.")
 
 
 if __name__ == "__main__":

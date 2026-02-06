@@ -1,16 +1,16 @@
 # Enhanced Class Imbalance Techniques - TEST SET VALIDATION UPDATE
 
-## 🎯 Overview
+## Overview
 
 The Enhanced Class Imbalance approach applies modern ML systems design principles to tackle class imbalance through sophisticated feature engineering, cost-sensitive learning, and ensemble methods. **VALIDATION UPDATE**: This approach achieved 28.4% F1 score on validation set but failed to load during test set validation due to custom class dependencies.
 
-## ⚠️ TEST SET VALIDATION RESULTS
+## TEST SET VALIDATION RESULTS
 - **Enhanced_Ensemble**: Failed to load (custom class dependency issues)
 - **Enhanced_NN**: Failed to load (custom wrapper issues)  
 - **Enhanced_LR**: Failed to load (custom classifier issues)
 - **Lesson**: Production deployment requires standard sklearn-compatible models
 
-## 🔬 Methodology Framework
+## Methodology Framework
 
 ### Core Strategy
 1. **Domain-Specific Feature Engineering**: Create meaningful clinical predictors
@@ -18,7 +18,7 @@ The Enhanced Class Imbalance approach applies modern ML systems design principle
 3. **Ensemble Diversity**: Combine complementary models
 4. **Regularization**: Prevent overfitting in complex models
 
-## 🛠️ Technical Implementation
+## Technical Implementation
 
 ### 1. Enhanced Feature Engineering
 
@@ -126,17 +126,17 @@ voting_classifier = VotingClassifier(
 )
 ```
 
-## 📊 Performance Results
+## Performance Results
 
 ### Individual Model Performance
 
 | Model | F1 Score | Precision | Recall | Issue |
 |-------|----------|-----------|---------|--------|
-| Enhanced_LR | 14.0% | 24.4% | 9.7% | ❌ Underfitting |
-| Enhanced_RF | 11.1% | 20.0% | 7.6% | ❌ Underfitting |
-| Enhanced_XGBoost | 12.1% | 22.2% | 8.3% | ❌ Underfitting |
-| **Enhanced_Ensemble** | **28.4%** | **21.7%** | **40.3%** | ✅ **Best Result** |
-| Enhanced_NN | 28.2% | 20.8% | 42.4% | ⚠️ Overfitting |
+| Enhanced_LR | 14.0% | 24.4% | 9.7% | Underfitting |
+| Enhanced_RF | 11.1% | 20.0% | 7.6% | Underfitting |
+| Enhanced_XGBoost | 12.1% | 22.2% | 8.3% | Underfitting |
+| **Enhanced_Ensemble** | **28.4%** | **21.7%** | **40.3%** | **Best Result** |
+| Enhanced_NN | 28.2% | 20.8% | 42.4% | Overfitting |
 
 ### Key Findings
 
@@ -145,7 +145,7 @@ voting_classifier = VotingClassifier(
 3. **Neural Network Overfitting**: Despite regularization, showed overfitting
 4. **Feature Engineering Impact**: 861 features helped ensemble but hurt individuals
 
-## 🔍 Technical Analysis
+## Technical Analysis
 
 ### Why Underfitting Occurred
 ```python
@@ -180,25 +180,25 @@ validation_f1 = 0.28  # Much lower on validation
 overfitting_gap = 0.67  # Significant overfitting
 ```
 
-## 💡 Lessons Learned
+## Lessons Learned
 
 ### Feature Engineering Insights
-- ✅ **Domain knowledge helps**: Clinical features showed promise
-- ❌ **More isn't always better**: 861 features created noise for individual models
-- ✅ **Polynomial interactions**: Captured non-linear relationships
-- ⚠️ **Dimensionality curse**: High features-to-samples ratio problematic
+- **Domain knowledge helps**: Clinical features showed promise
+- **More isn't always better**: 861 features created noise for individual models
+- **Polynomial interactions**: Captured non-linear relationships
+- **Dimensionality curse**: High features-to-samples ratio problematic
 
 ### Cost-Sensitive Learning
-- ✅ **Class weights effective**: Helped address imbalance
-- ❌ **Not sufficient alone**: Couldn't overcome feature noise
-- ✅ **Ensemble amplification**: Works better in combination
+- **Class weights effective**: Helped address imbalance
+- **Not sufficient alone**: Couldn't overcome feature noise
+- **Ensemble amplification**: Works better in combination
 
 ### Regularization Strategies
-- ✅ **Dropout helped**: Reduced overfitting in neural networks
-- ❌ **Not enough**: Still showed overfitting on complex features
-- ✅ **Batch normalization**: Stabilized training
+- **Dropout helped**: Reduced overfitting in neural networks
+- **Not enough**: Still showed overfitting on complex features
+- **Batch normalization**: Stabilized training
 
-## 🔄 Method Comparison
+## Method Comparison
 
 ### vs Adaptive Bias-Variance Tuning
 | Aspect | Enhanced Techniques | Adaptive Tuning |
@@ -217,12 +217,12 @@ overfitting_gap = 0.67  # Significant overfitting
 3. **Generalization**: Less prone to overfitting
 4. **Maintainability**: Easier to deploy and monitor
 
-## 🚀 Future Improvements
+## Future Improvements
 
 ### Feature Engineering
 1. **Feature Selection**: Use RFE or Lasso to reduce dimensionality
 2. **Domain Expertise**: Collaborate with cardiologists for better features
-3. **Automated Feature Generation**: Use AutoML for feature discovery
+3. **Automated Feature Creation**: Use AutoML for feature discovery
 
 ### Model Architecture
 1. **Stacked Ensembles**: Multi-level ensemble approaches
@@ -234,7 +234,7 @@ overfitting_gap = 0.67  # Significant overfitting
 2. **Ensemble Regularization**: Apply regularization to ensemble weights
 3. **Cross-Validation**: More robust validation strategies
 
-## 📈 Business Value
+## Business Value
 
 ### Technical Achievement
 - **28.4% F1 Score**: Significant improvement from baseline
@@ -246,7 +246,7 @@ overfitting_gap = 0.67  # Significant overfitting
 - **Ensemble Framework**: Reusable for other imbalanced datasets
 - **Feature Engineering Pipeline**: Systematic approach to domain features
 
-## 📚 References
+## References
 
 - **Feature Engineering**: (Kuhn & Johnson, Feature Engineering and Selection)
 - **Cost-Sensitive Learning**: (Elkan, 2001, Cost-Sensitive Learning)
