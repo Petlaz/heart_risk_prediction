@@ -17,6 +17,9 @@ import sys
 import os
 import json
 import warnings
+import logging
+import re
+from typing import Dict, List, Tuple, Optional, Union, Any
 from pathlib import Path
 import matplotlib.pyplot as plt
 import io
@@ -34,30 +37,83 @@ except ImportError:
 
 warnings.filterwarnings('ignore')
 
+# Configure structured logging for production monitoring
+# Ensure logs directory exists
+logs_dir = Path(__file__).parent.parent / "logs"
+logs_dir.mkdir(exist_ok=True)
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler(logs_dir / 'heart_risk_app.log', mode='a')
+    ]
+)
+logger = logging.getLogger(__name__)
+
 # Add src to path for imports
 sys.path.append(str(Path(__file__).parent.parent / "src"))
+
+# Risk Assessment Constants
+RISK_THRESHOLDS = {
+    'HIGH': 0.35,
+    'MODERATE': 0.25,
+    'LOW': 0.0
+}
+
+# Model Configuration Constants
+MODEL_CONFIG = {
+    'SHAP_BACKGROUND_SAMPLES': 10,
+    'LIME_SAMPLES': 100,
+    'MAX_FEATURES_DISPLAY': 10,
+    'FEATURE_COUNT': 22,
+    'DEFAULT_PORT_DOCKER': 7860,
+    'DEFAULT_PORT_LOCAL': 7861
+}
+
+# Feature Normalization Constants
+NORMALIZATION_CONFIG = {
+    'SCALE_MEAN': 5.0,
+    'SCALE_STD': 2.5,
+    'BMI_BASELINE': 25.0,
+    'BMI_SCALE_FACTOR': 5.0
+}
+
+# Clinical Interpretation Thresholds
+CLINICAL_THRESHOLDS = {
+    'BMI': {'NORMAL_MAX': 24.9, 'OVERWEIGHT_MAX': 29.9, 'OBESE_MIN': 30.0},
+    'EXERCISE': {'LOW_MAX': 3, 'GOOD_MIN': 7},
+    'SMOKING': {'LIGHT_MAX': 3, 'MODERATE_MAX': 6},
+    'ALCOHOL': {'LOW_MAX': 2, 'MODERATE_MAX': 6},
+    'SLEEP': {'POOR_MAX': 4, 'GOOD_MIN': 7},
+    'HAPPINESS': {'POOR_MAX': 5, 'GOOD_MIN': 7},
+    'SOCIAL': {'LOW_MAX': 3, 'GOOD_MIN': 7}
+}
 
 class HeartRiskPredictor:
     """Heart Disease Risk Prediction with Explainable AI"""
     
-    def __init__(self):
-        self.model = None
-        self.scaler = None
-        self.explainer = None
-        self.lime_explainer = None
-        self.feature_names = None
-        self.feature_descriptions = None
-        self.training_sample = None
+    def __init__(self) -> None:
+        self.model: Optional[Any] = None
+        self.scaler: Optional[Any] = None
+        self.explainer: Optional[Any] = None
+        self.lime_explainer: Optional[Any] = None
+        self.feature_names: Optional[List[str]] = None
+        self.feature_descriptions: Optional[Dict[str, str]] = None
+        self.training_sample: Optional[np.ndarray] = None
         self._load_models()
         self._setup_feature_info()
         self._setup_shap_explainer()
         self._setup_lime_explainer()
         
-    def _load_models(self):
+    def _load_models(self) -> None:
         """Load trained models and preprocessing components"""
+        logger.info("Starting model loading process...")
         try:
             # Load the best performing model (Adaptive_Ensemble)
             base_path = Path(__file__).parent.parent / "results" / "models"
+            logger.debug(f"Model base path: {base_path}")
             
             # Try adaptive tuning models first (best performance)
             adaptive_path = base_path / "adaptive_tuning"
@@ -126,17 +182,19 @@ class HeartRiskPredictor:
             self.feature_names = [f"feature_{i}" for i in range(22)]
             print("Using emergency trained fallback model")
     
-    def _setup_shap_explainer(self):
+    def _setup_shap_explainer(self) -> None:
         """Initialize SHAP explainer for global feature importance analysis"""
+        logger.info("Setting up SHAP explainer")
         try:
             if self.model is None:
-                print("Warning: No model loaded - SHAP explainer not initialized")
+                logger.warning("No model loaded - SHAP explainer not initialized")
                 self.explainer = None
                 return
                 
             # Create representative background dataset that matches training data distribution
             np.random.seed(42)
-            n_background = 10  # Smaller for faster initialization
+            n_background = MODEL_CONFIG['SHAP_BACKGROUND_SAMPLES']  # Smaller for faster initialization
+            logger.debug(f"Creating {n_background} background samples for SHAP")
             
             # Create background samples that represent typical health profiles
             background_samples = []
@@ -190,7 +248,7 @@ class HeartRiskPredictor:
             self.explainer = None
             self.background_data = None
 
-    def _setup_feature_info(self):
+    def _setup_feature_info(self) -> None:
         """Setup feature descriptions for user interface"""
         self.feature_descriptions = {
             'happy': "Overall life satisfaction and happiness level",
@@ -210,7 +268,7 @@ class HeartRiskPredictor:
             'social_score': "Social engagement and connection level"
         }
     
-    def _setup_lime_explainer(self):
+    def _setup_lime_explainer(self) -> None:
         """Initialize LIME explainer for individual prediction explanations"""
         if not LIME_AVAILABLE:
             print("LIME not available - using alternative explanation method")
@@ -244,7 +302,7 @@ class HeartRiskPredictor:
             print(f"LIME explainer setup failed: {e}")
             self.lime_explainer = None
     
-    def _lime_predict_proba(self, instances):
+    def _lime_predict_proba(self, instances: np.ndarray) -> np.ndarray:
         """Wrapper function for LIME to call model predictions"""
         try:
             # Ensure instances is 2D array
@@ -269,10 +327,13 @@ class HeartRiskPredictor:
             # Return dummy probabilities if prediction fails
             return np.array([[0.5, 0.5]] * len(instances))
     
-    def _get_lime_explanation(self, features, user_inputs):
+    def _get_lime_explanation(self, features: np.ndarray, 
+                            user_inputs: Dict[str, Union[int, float]]) -> str:
         """Provide LIME-based individual explanation for prediction"""
+        logger.debug("Generating LIME explanation for individual prediction")
         try:
             if self.lime_explainer is None or not LIME_AVAILABLE:
+                logger.info("LIME not available, using fallback analysis")
                 return self._get_fallback_individual_analysis(features, user_inputs)
                 
             # Prepare instance for LIME explanation
@@ -412,7 +473,7 @@ class HeartRiskPredictor:
             print(f"LIME explanation failed: {e}")
             return self._get_fallback_individual_analysis(features, user_inputs)
     
-    def _convert_lime_feature_to_meaningful(self, feature_condition):
+    def _convert_lime_feature_to_meaningful(self, feature_condition: str) -> str:
         """Convert LIME's generic feature conditions to meaningful descriptions"""
         # Map feature indices to meaningful names based on my feature order
         feature_mappings = {
@@ -444,7 +505,6 @@ class HeartRiskPredictor:
         meaningful_condition = feature_condition
         for generic_name, meaningful_name in feature_mappings.items():
             # Use word boundaries to avoid partial replacements
-            import re
             pattern = r'\b' + re.escape(generic_name) + r'\b'
             if re.search(pattern, feature_condition):
                 meaningful_condition = re.sub(pattern, meaningful_name, feature_condition)
@@ -455,7 +515,8 @@ class HeartRiskPredictor:
         
         return meaningful_condition
     
-    def _convert_lime_to_user_friendly(self, feature_condition, user_inputs):
+    def _convert_lime_to_user_friendly(self, feature_condition: str, 
+                                      user_inputs: Dict[str, Union[int, float]]) -> str:
         """Convert LIME's feature conditions to user-friendly descriptions with actual input values"""
         # Map feature indices to user input descriptions
         feature_input_map = {
@@ -497,7 +558,8 @@ class HeartRiskPredictor:
         # Fallback to original if no match found
         return self._convert_lime_feature_to_meaningful(feature_condition)
     
-    def _get_user_input_value(self, feature_name, user_inputs):
+    def _get_user_input_value(self, feature_name: str, 
+                            user_inputs: Dict[str, Union[int, float]]) -> str:
         """Get the actual user input value for display"""
         value_map = {
             'BMI': f"({user_inputs.get('weight', 70) / ((user_inputs.get('height', 170)/100)**2):.1f})",
@@ -600,7 +662,8 @@ class HeartRiskPredictor:
         else:
             return "This factor influences your cardiovascular risk based on your personal health profile"
     
-    def _get_fallback_individual_analysis(self, features, user_inputs):
+    def _get_fallback_individual_analysis(self, features: np.ndarray, 
+                                         user_inputs: Dict[str, Union[int, float]]) -> str:
         """Professional individual analysis when LIME is not available"""
         lime_analysis = []
         lime_analysis.append("**Individual Risk Factor Analysis:**")
@@ -777,13 +840,15 @@ class HeartRiskPredictor:
         
         return feature_mapping.get(lime_feature_name, "N/A")
     
-    def _prepare_features(self, inputs):
+    def _prepare_features(self, inputs: Dict[str, Union[int, float]]) -> np.ndarray:
         """Convert user inputs to model features with proper scaling"""
+        logger.debug("Preparing features from user inputs")
         # Map user inputs to actual model features based on the dataset structure
         # Normalize inputs to match training data scale using Z-score standardization
         
         # Normalize 0-10 scale inputs to standardized range
-        def normalize_0_10(value, mean_val=5, std_val=2.5):
+        def normalize_0_10(value: float, mean_val: float = NORMALIZATION_CONFIG['SCALE_MEAN'], 
+                          std_val: float = NORMALIZATION_CONFIG['SCALE_STD']) -> float:
             """Convert 0-10 scale to standardized scale
             
             Z-score formula: (value - mean) / std_dev
@@ -817,7 +882,7 @@ class HeartRiskPredictor:
             'fltsd': -normalize_0_10(inputs.get('happiness', 7)) * 0.2,  # Sadness
             'gndr': 0.5,  # Neutral gender encoding
             'paccnois': 0.0,  # Neutral physical activity noise
-            'bmi': (bmi - 25.0) / 5.0,  # Normalize BMI around 25
+            'bmi': (bmi - NORMALIZATION_CONFIG['BMI_BASELINE']) / NORMALIZATION_CONFIG['BMI_SCALE_FACTOR'],  # Normalize BMI around 25
             'lifestyle_score': ((inputs.get('exercise', 4) + inputs.get('fruit_intake', 4) - inputs.get('smoking', 0)) / 30.0),
             'social_score': inputs.get('social_meetings', 5) / 10.0,
             'mental_health_score': ((inputs.get('happiness', 7) + inputs.get('life_control', 7)) / 20.0)
@@ -839,8 +904,9 @@ class HeartRiskPredictor:
         
         return X
     
-    def predict_risk(self, **inputs):
+    def predict_risk(self, **inputs: Union[int, float]) -> str:
         """Make heart disease risk prediction with explanations"""
+        logger.info("Starting risk prediction analysis")
         try:
             # Prepare features
             X = self._prepare_features(inputs)
@@ -858,15 +924,18 @@ class HeartRiskPredictor:
             
             # Determine risk level based on model output distribution
             # Calibrated thresholds for meaningful risk stratification
-            if has_disease_prob >= 0.35:
+            if has_disease_prob >= RISK_THRESHOLDS['HIGH']:
                 risk_level = "High Risk"
                 risk_msg = "Elevated cardiovascular risk detected. Recommend medical consultation."
-            elif has_disease_prob >= 0.25:
+                logger.info(f"High risk prediction: {has_disease_prob:.3f}")
+            elif has_disease_prob >= RISK_THRESHOLDS['MODERATE']:
                 risk_level = "Moderate Risk"
                 risk_msg = "Moderate cardiovascular risk. Consider lifestyle improvements."
+                logger.info(f"Moderate risk prediction: {has_disease_prob:.3f}")
             else:
                 risk_level = "Low Risk"
                 risk_msg = "Lower cardiovascular risk. Maintain healthy lifestyle."
+                logger.debug(f"Low risk prediction: {has_disease_prob:.3f}")
             
             # Feature importance insights
             key_factors = self._get_key_factors(inputs)
@@ -1038,8 +1107,9 @@ For medical decisions, consult healthcare professionals.*
             print(f"SHAP analysis failed: {e}")
             return self._get_fallback_key_factors(inputs)
     
-    def _get_clinical_direction(self, feature_name, display_value, inputs):
-        """Determine clinical risk direction based on actual health values"""        
+    def _get_clinical_direction(self, feature_name: str, display_value: str, 
+                              inputs: Dict[str, Union[int, float]]) -> str:
+        """Determine clinical risk direction based on actual health values"""
         try:
             # Extract numeric value from display string
             if '/' in display_value:
@@ -1051,9 +1121,9 @@ For medical decisions, consult healthcare professionals.*
             else:
                 return "Influences risk"  # Fallback
             
-            # Clinical interpretation based on actual values
+            # Clinical interpretation based on actual values using constants
             if feature_name == 'BMI':
-                return "Increases risk" if value >= 25 else "Decreases risk"
+                return "Increases risk" if value >= CLINICAL_THRESHOLDS['BMI']['NORMAL_MAX'] else "Decreases risk"
             elif feature_name == 'Physical Activity':
                 return "Decreases risk" if value >= 5 else "Increases risk"
             elif feature_name == 'Smoking Level':
@@ -1148,7 +1218,7 @@ For medical decisions, consult healthcare professionals.*
 # Initialize predictor
 predictor = HeartRiskPredictor()
 
-def create_professional_interface():
+def create_professional_interface() -> gr.Blocks:
     """Create professional Heart Disease Risk Prediction interface"""
     
     # Custom CSS for professional medical-grade styling
@@ -1498,11 +1568,11 @@ if __name__ == "__main__":
         server_port = int(manual_port)
         print(f"Using manual port override: {server_port}")
     elif is_docker:
-        server_port = 7860  # Docker deployment port
-        print("Detected Docker environment - using port 7860")
+        server_port = MODEL_CONFIG['DEFAULT_PORT_DOCKER']  # Docker deployment port
+        logger.info(f"Detected Docker environment - using port {server_port}")
     else:
-        server_port = 7861  # Local development port
-        print("Detected local environment - using port 7861")
+        server_port = MODEL_CONFIG['DEFAULT_PORT_LOCAL']  # Local development port
+        logger.info(f"Detected local environment - using port {server_port}")
     
     app.launch(
         server_name="0.0.0.0",

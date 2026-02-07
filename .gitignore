@@ -194,3 +194,7 @@ flagged/
 *.gradio
 app_cache/
 static/uploads/
+
+# Application logs
+logs/
+*.log
