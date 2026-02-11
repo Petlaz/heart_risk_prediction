@@ -8,7 +8,7 @@
 
 ## Overview
 
-This document provides a comprehensive overview of the backend and frontend frameworks, libraries, and technologies used in the Heart Disease Risk Prediction project.
+This document provides a comprehensive overview of the backend and frontend frameworks, libraries, and technologies used in my Heart Disease Risk Prediction project.
 
 ---
 
@@ -16,58 +16,52 @@ This document provides a comprehensive overview of the backend and frontend fram
 
 ### **Core Framework**
 - **Python 3.9**
-  - Primary programming language
-  - Used for all machine learning, data processing, and web application logic
+  - Primary programming language for the entire project
+  - Handles all machine learning, data processing, and web application logic
 
 - **Gradio 4.x**
-  - Full-stack web framework for ML applications
-  - Handles HTTP requests, API endpoints, and server logic
-  - Provides automatic REST API generation
-  - Manages real-time prediction processing
+  - Full-stack web framework implemented for ML applications
+  - Manages HTTP requests, API endpoints, and server logic
+  - Provides automatic REST API generation capabilities
+  - Handles real-time prediction processing
 
 ### **Machine Learning Stack**
 - **scikit-learn**
   - Primary ML library for model training and prediction
   - Used for: RandomForestClassifier, StandardScaler, train_test_split
-  - Model evaluation metrics and cross-validation
+  - Handles model evaluation metrics and cross-validation
 
 - **pandas**
-  - Data manipulation and analysis
-  - CSV file processing and DataFrame operations
-  - Feature engineering and data preprocessing
+  - Core library for data manipulation and analysis
+  - Manages CSV file processing and DataFrame operations
+  - Performs feature engineering and data preprocessing
 
 - **numpy**
-  - Numerical computing and array operations
-  - Mathematical calculations for normalization and feature scaling
+  - Numerical computing and array operations foundation
+  - Handles mathematical calculations for normalization and feature scaling
 
 - **joblib**
-  - Model serialization and persistence
-  - Loading pre-trained models and preprocessing artifacts
-  - Efficient handling of large numpy arrays
+  - Model serialization and persistence solution
+  - Loads pre-trained models and preprocessing artifacts
+  - Efficiently processes large numpy arrays
 
 ### **Explainable AI**
 - **SHAP (SHapley Additive exPlanations)**
-  - Model interpretability and global feature importance analysis
+  - Provides model interpretability and global feature importance analysis
   - Research-grade explainability for comprehensive insights
+  - TreeExplainer configuration for ensemble models
   
 - **LIME (Local Interpretable Model-agnostic Explanations)**
-  - Individual patient-level explanations
-  - Personalized risk factor analysis
-  - Local interpretability for specific predictions
-  - Professional fallback system for robust deployment
-  - TreeExplainer for ensemble models
-  - Research-grade explainability implementation
-
-- **LIME (Local Interpretable Model-agnostic Explanations)**
-  - Individual prediction explanations for each user
-  - Personalized risk factor analysis
-  - Real-time local interpretability
-  - Professional fallback system when LIME unavailable
+  - Delivers individual patient-level explanations
+  - Enables personalized risk factor analysis capabilities
+  - Implements local interpretability for specific predictions
+  - Features professional fallback system for robust deployment
+  - Supports real-time local interpretability
 
 ### **Data Visualization**
 - **matplotlib**
-  - Statistical plots and model performance visualizations
-  - Research analysis charts and graphs
+  - Creates statistical plots and model performance visualizations
+  - Generates research analysis charts and graphs
 
 ### **Data Processing Libraries**
 - **pathlib** - Modern file system path handling
@@ -109,20 +103,17 @@ This document provides a comprehensive overview of the backend and frontend fram
 
 ### **Containerization**
 - **Docker**
-  - Application containerization
-  - Multi-stage build process
+  - Application containerization with multi-stage build process
   - Production-ready deployment configuration
   - Environment isolation and consistency
 
 - **Docker Compose**
-  - Service orchestration
-  - Development environment setup
+  - Service orchestration and development environment setup
   - Port mapping and volume management
 
 ### **Base Infrastructure**
 - **Python 3.9-slim Docker Image**
-  - Lightweight container base
-  - Optimized for production deployment
+  - Lightweight container base optimized for production deployment
   - Security-hardened Python environment
 
 ### **Development Tools**
@@ -179,10 +170,10 @@ This document provides a comprehensive overview of the backend and frontend fram
 
 ---
 
-## Summary for Supervisor
+## Technical Summary
 
-**Quick Response:**
-*"The project uses **Python 3.9 with Gradio** as the main full-stack framework, handling both backend ML processing and frontend web interface. The machine learning stack includes **scikit-learn, pandas, numpy, and SHAP** for explainable AI. The application is **containerized with Docker** for production deployment and features **custom CSS styling** for a professional medical-grade interface."*
+**Project Overview:**
+*This project uses **Python 3.9 with Gradio** as the main full-stack framework, handling both backend ML processing and frontend web interface. The machine learning stack includes **scikit-learn, pandas, numpy, and SHAP** for explainable AI. The application is **containerized with Docker** for production deployment and features **custom CSS styling** for a professional medical-grade interface.*
 
 **Technical Stack:**
 - **Backend:** Python 3.9, Gradio, scikit-learn, pandas, numpy, SHAP, LIME

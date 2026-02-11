@@ -1,4 +1,4 @@
-# Heart Diesease Risk Prediction with Explainable AI
+# Heart Disease Risk Prediction with Explainable AI
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![Gradio](https://img.shields.io/badge/Gradio-4.0%2B-orange.svg)](https://gradio.app/)
@@ -11,14 +11,14 @@
 
 ## Project Overview
 
-An advanced machine learning system for predicting heart disease risk using comprehensive health and lifestyle data from the European Social Survey. The project integrates state-of-the-art ML algorithms with explainable AI (XAI) techniques, delivering insights through a professional web application with Docker containerization.
+An advanced machine learning system for predicting heart disease risk using comprehensive health and lifestyle data from the European Social Survey. This project integrates state-of-the-art ML algorithms with explainable AI (XAI) techniques, delivering insights through a professional web application with Docker containerization.
 
 **Status**: Production Complete | **Performance**: Research-grade analysis | **Focus**: Clinical applicability
 
 ## Key Features
 
 **Machine Learning Pipeline**
-- 5 baseline algorithms with comprehensive evaluation  
+- 5 baseline algorithms with comprehensive evaluation
 - Advanced hyperparameter optimization using RandomizedSearchCV
 - Clinical safety assessment and application readiness evaluation
 
@@ -34,7 +34,7 @@ An advanced machine learning system for predicting heart disease risk using comp
 - Enterprise-grade code quality with comprehensive type hints
 - Structured logging with file output and production-ready error handling
 - Configuration externalization with clinical threshold constants
-- Three-tier classification system (Low/Moderate/High risk) 
+- Three-tier classification system (Low/Moderate/High risk)
 - Comprehensive explainable AI with SHAP and LIME analysis
 - Clinical interpretation with patient-friendly explanations
 - Medical-grade styling with comprehensive safety guidance
@@ -46,8 +46,7 @@ An advanced machine learning system for predicting heart disease risk using comp
 - Professional logging and system validation protocols
 
 **Academic Documentation**
-- Comprehensive final report and literature review
-- 58 peer-reviewed references (2019-2026)
+- Comprehensive final report and research documentation
 - Master's thesis-quality documentation and analysis
 
 ## Research Achievements
@@ -60,9 +59,9 @@ An advanced machine learning system for predicting heart disease risk using comp
 | Adaptive_LR | 0.032 | 1.8% | 99.4% | Clinically unusable |
 
 ### Key Findings
-- **Performance Gap**: Significant disparity vs. published benchmarks (0.65-0.92 F1) 
+- **Performance Gap**: Significant disparity vs. published benchmarks (0.65-0.92 F1)
 - **Clinical Safety**: All models fail clinical safety criteria (≥80% sensitivity required)
-- **Feature Analysis**: BMI (0.0208) and Physical Activity (0.0189) top predictors
+- **Feature Analysis**: BMI (0.0208) and Physical Activity (0.0189) identified as top predictors
 - **Medical Risk**: 822 missed cases per 8,476 patients represents unacceptable clinical risk
 
 ### Clinical Implications
@@ -71,7 +70,7 @@ An advanced machine learning system for predicting heart disease risk using comp
 - **Optimization Paradox**: Standard ML optimization may worsen healthcare performance
 - **Academic Impact**: Demonstrates need for honest assessment in healthcare ML research
 
-## � Installation
+## Installation
 
 ### Prerequisites
 - Python 3.8+ 
@@ -137,7 +136,7 @@ python app/app_gradio.py
 1. **Hyperparameter Optimization**: RandomizedSearchCV with F1-score optimization and Apple Silicon efficiency
 2. **Model Validation**: Test set validation revealing performance hierarchy and overfitting patterns
 3. **Error Analysis**: Comprehensive post-optimization investigation with clinical safety assessment
-4. **Literature Review**: 58 peer-reviewed references (2019-2026) with healthcare ML methodology analysis
+4. **Research Documentation**: Comprehensive documentation with healthcare ML methodology analysis
 5. **Explainable AI**: SHAP implementation for clinical feature importance and root cause analysis
 6. **Application Framework**: Professional Docker containerization with medical-grade interface
 
@@ -159,16 +158,19 @@ python app/app_gradio.py
 ```
 heart_risk_prediction/
 ├── app/                         # Web Application
-│   └── app_gradio.py            # Professional medical interface
+│   ├── app_gradio.py            # Professional medical interface
+│   ├── app_technical_documentation.md # Technical documentation
+│   └── LIME_Usage_Evidence.md   # XAI implementation evidence
 ├── data/                        # Dataset & Processing  
-│   ├── raw/heart_data.csv        # European Social Survey data
-│   └── processed/               # Clean splits & preprocessing artifacts
+│   ├── raw/heart_data.csv       # European Social Survey data
+│   ├── processed/               # Clean splits & preprocessing artifacts
+│   └── data_dictionary.md       # Dataset documentation
 ├── docker/                      # Containerization
 │   ├── Dockerfile               # Optimized container image
 │   ├── docker-compose.yml       # Multi-service orchestration
-│   └── entrypoint_app.sh        # Professional startup script
-├── logs/                        # Application Logs
-│   └── heart_risk_app.log       # Structured logging output
+│   ├── entrypoint_app.sh        # Professional startup script
+│   ├── requirements_docker.txt  # Container dependencies
+│   └── README.md                # Docker documentation
 ├── notebooks/                   # Research Pipeline (Complete)
 │   ├── 01_eda.ipynb             # Data exploration & analysis
 │   ├── 02_data_processing.ipynb # Preprocessing & feature engineering 
@@ -177,14 +179,22 @@ heart_risk_prediction/
 │   └── 05_explainability.ipynb  # SHAP analysis & XAI implementation
 ├── reports/                     # Academic Documentation
 │   ├── final_report.md          # Master's thesis report
-│   └── literature_review.md     # 58-reference state-of-the-art review
+│   ├── academic_presentation_defense.md # Defense presentation
+│   ├── project_plan_and_roadmap.md # Project documentation
+│   └── technology_stack_documentation.md # Technology documentation
 ├── results/                     # Model Artifacts & Analysis
 │   ├── explainability/          # SHAP visualizations & clinical insights
+│   ├── explanations/            # XAI analysis results
+│   ├── metrics/                 # Performance evaluation results
 │   ├── models/                  # Trained models & preprocessing artifacts
-│   └── metrics/                 # Performance evaluation results
-└── src/                        # Core Implementation
-    ├── tuning/                  # Hyperparameter optimization
-    └── analysis/                # Clinical decision support
+│   └── plots/                   # Research visualizations
+├── src/                        # Core Implementation
+│   ├── tuning/                  # Hyperparameter optimization
+│   ├── analysis/                # Clinical decision support
+│   ├── config.yaml              # Configuration management
+│   └── utils.py                 # Utility functions
+├── requirements.txt             # Python dependencies
+└── README.md                   # This file
 ```
 
 ## Research Pipeline
@@ -228,21 +238,21 @@ Modify `src/config.yaml` for:
 - Best model sensitivity: only 14.3% (misses 85.7% of actual cases)
 
 **Performance vs. Literature Gap** 
-- Our results: 17.5% F1-score vs. published benchmarks: 65-92% F1
+- Results: 17.5% F1-score vs. published benchmarks: 65-92% F1
 - Significant methodological challenges identified
 - Demonstrates need for honest assessment in healthcare ML
 
 **Root Cause Analysis (via SHAP)**
 - Missing traditional cardiac risk factors (ECG, chest pain, family history)
-- Dataset emphasizes psychological/lifestyle factors with weak predictive signal  
+- Dataset emphasizes psychological/lifestyle factors with weak predictive signal
 - Optimization paradox: weak predictors cannot be optimized for clinical performance
 
 ## Academic Documentation
 
 ### Research Reports
 - **[Final Report](reports/final_report.md)**: Master's thesis with comprehensive methodology and findings
-- **[Literature Review](reports/literature_review.md)**: 58 peer-reviewed references (2019-2026)
-- **[Technical Documentation](reports/)**: Progress reports and implementation specifications
+- **[Academic Presentation Defense](reports/academic_presentation_defense.md)**: Complete defense presentation
+- **[Technical Documentation](reports/)**: Project planning and implementation specifications
 
 ### Research Impact
 - **Academic Contribution**: Methodology for honest assessment of healthcare ML challenges
@@ -280,4 +290,4 @@ Modify `src/config.yaml` for:
 
 ---
 
-**Project Status**: Production Complete | **Code Quality**: Enterprise-Grade | **Last Updated**: February 2026 | **Author**: Peter Ugoona Obi
+**Project Status**: Production Complete | **Code Quality**: Enterprise-Grade | **Last Updated**: February 2026 | **Author**: Peter Ugonna Obi
