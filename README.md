@@ -11,7 +11,7 @@
 
 ## Project Overview
 
-An advanced machine learning system for predicting heart disease risk using comprehensive health and lifestyle data from the European Social Survey. This project integrates state-of-the-art ML algorithms with explainable AI (XAI) techniques, delivering insights through a professional web application with Docker containerization.
+An advanced machine learning system for predicting heart disease risk using lifestyle and psychological data from the European Social Survey. This project integrates state-of-the-art ML algorithms with explainable AI (XAI) techniques, delivering insights through a professional web application with Docker containerization.
 
 **Status**: Production Complete | **Performance**: Research-grade analysis | **Focus**: Clinical applicability
 

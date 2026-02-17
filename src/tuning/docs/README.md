@@ -1,4 +1,4 @@
-# Heart Risk Prediction - Week 3-4: Advanced Class Imbalance Solutions
+# Heart Risk Prediction - Advanced Class Imbalance Solutions
 
 ## Executive Summary
 
