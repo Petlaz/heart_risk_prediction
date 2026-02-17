@@ -62,7 +62,7 @@ An advanced machine learning system for predicting heart disease risk using comp
 - **Performance Gap**: Significant disparity vs. published benchmarks (0.65-0.92 F1)
 - **Clinical Safety**: All models fail clinical safety criteria (≥80% sensitivity required)
 - **Feature Analysis**: BMI (0.0208) and Physical Activity (0.0189) identified as top predictors
-- **Medical Risk**: 822 missed cases per 8,476 patients represents unacceptable clinical risk
+- **Medical Risk**: ~4,100 missed cases per 42,377 patients represents unacceptable clinical risk
 
 ### Clinical Implications
 - **Dataset Limitations**: Missing traditional cardiac risk factors (ECG, chest pain, family history)
@@ -151,16 +151,14 @@ python app/app_gradio.py
 - **Clinical Safety Failure**: All models fail healthcare safety criteria (required ≥80% sensitivity)
 - **Performance Gap**: Significant disparity vs. published benchmarks (65-92% F1) indicates methodological challenges
 - **Psychological Insufficiency**: Mental health variables inadequate for clinical-grade heart disease prediction
-- **Economic Impact**: 822 missed cases per 8,476 patients represents unacceptable medical risk
+- **Economic Impact**: ~4,100 missed cases per 42,377 patients represents unacceptable medical risk
 
 ## Project Structure
 
 ```
 heart_risk_prediction/
 ├── app/                         # Web Application
-│   ├── app_gradio.py            # Professional medical interface
-│   ├── app_technical_documentation.md # Technical documentation
-│   └── LIME_Usage_Evidence.md   # XAI implementation evidence
+│   └── app_gradio.py            # Professional medical interface
 ├── data/                        # Dataset & Processing  
 │   ├── raw/heart_data.csv       # European Social Survey data
 │   ├── processed/               # Clean splits & preprocessing artifacts
@@ -179,9 +177,7 @@ heart_risk_prediction/
 │   └── 05_explainability.ipynb  # SHAP analysis & XAI implementation
 ├── reports/                     # Academic Documentation
 │   ├── final_report.md          # Master's thesis report
-│   ├── academic_presentation_defense.md # Defense presentation
-│   ├── project_plan_and_roadmap.md # Project documentation
-│   └── technology_stack_documentation.md # Technology documentation
+│   └── project_plan_and_roadmap.md # Project documentation
 ├── results/                     # Model Artifacts & Analysis
 │   ├── explainability/          # SHAP visualizations & clinical insights
 │   ├── explanations/            # XAI analysis results
@@ -210,9 +206,9 @@ Systematic 5-notebook research methodology:
 
 ### Dataset Information
 - **Source**: European Social Survey Health Dataset
-- **Sample Size**: 8,476 patients with 22 health/lifestyle features  
-- **Target**: Binary heart disease indicator (18.4% positive rate)
-- **Splits**: 70% train / 15% validation / 15% test (stratified)
+- **Sample Size**: 42,377 lifestyle and psychological health records
+- **Target**: Binary heart disease indicator (11.3% positive rate)
+- **Splits**: 60% train / 20% validation / 20% test (stratified)
 
 ### Configuration
 Modify `src/config.yaml` for:
@@ -234,7 +230,7 @@ Modify `src/config.yaml` for:
 
 **Clinical Safety Crisis**
 - All models fail healthcare safety criteria (required ≥80% sensitivity)
-- 822 missed heart disease cases per 8,476 patients = unacceptable medical risk
+- ~4,100 missed heart disease cases per 42,377 patients = unacceptable medical risk
 - Best model sensitivity: only 14.3% (misses 85.7% of actual cases)
 
 **Performance vs. Literature Gap** 
@@ -251,7 +247,6 @@ Modify `src/config.yaml` for:
 
 ### Research Reports
 - **[Final Report](reports/final_report.md)**: Master's thesis with comprehensive methodology and findings
-- **[Academic Presentation Defense](reports/academic_presentation_defense.md)**: Complete defense presentation
 - **[Technical Documentation](reports/)**: Project planning and implementation specifications
 
 ### Research Impact
